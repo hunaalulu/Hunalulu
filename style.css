@@ -1,18 +1,14 @@
-/* تصغير الصور وجعلها مرتبة */
-#shop img {
-  width: 150px;       /* عرض الصورة أصغر */
-  height: auto;       /* الارتفاع يتناسب مع العرض */
-  border-radius: 10px; /* زوايا ناعمة */
-  display: block;
-  margin: 10px auto;  /* وسط الصفحة */
-  object-fit: cover;  /* حتى ما تنقص الصورة */
+/* ===== TOP BAR (logo + order) ===== */
+.topbar{
+  position: sticky; top: 0; z-index: 1000;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 16px;
+  background:#fff; border-bottom:1px solid #e9eef0;
 }
+.brand{display:flex; align-items:center; gap:10px; font-weight:800; color:#111;}
+.logo{width:42px; height:42px; object-fit:contain}
 
-/* ترتيب الصور بجانب بعض */
-#shop {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-  gap: 15px;
-  padding: 15px;
-  text-align: center;
-}
+/* زر واتساب */
+.btn{display:inline-block; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:700}
+.btn-wa{background:#25D366; color:#fff}
+.btn-wa:hover{filter:brightness(0.95)}
