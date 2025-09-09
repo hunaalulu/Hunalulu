@@ -1,79 +1,115 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hunalulu Swimwear</title>
   <link rel="stylesheet" href="style.css">
-  <meta name="description" content="مايوهات أنثوية بتصاميم فاخرة وألوان تيفاني">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e0f7f6;
+    }
+
+    /* قسم الهيرو */
+    .hero {
+      background: url('images/22EBEA58-3893-4A61-8482-LOGO.png') no-repeat center top;
+      background-color: #7de0de;
+      background-size: 150px;
+      text-align: center;
+      padding: 100px 20px 50px;
+    }
+
+    .hero h1 {
+      color: white;
+      font-size: 2.5em;
+      margin: 20px 0 10px;
+    }
+
+    .hero p {
+      color: white;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .hero a {
+      background-color: black;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    /* قسم المنتجات */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product h3 {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- شريط علوي -->
-  <header class="topbar">
-    <div class="brand">
-      <img src="images/logo.png" alt="Hunalulu" class="logo">
-      <span>Hunalulu <b>Swimwear</b></span>
-    </div>
-    <nav class="nav">
-      <a href="#products">المنتجات</a>
-      <a href="#about">عنّا</a>
-      <a href="#contact">تواصل</a>
-    </nav>
-  </header>
-
-  <!-- هيرو بموج -->
+  <!-- Hero Section -->
   <section class="hero">
-    <div class="hero__inner">
-      <h1>أناقة تيفاني على الشاطئ</h1>
-      <p>مايوهات فاخرة بلمسة أنثوية وشحن داخل الإمارات</p>
-      <a class="btn btn-dark" href="#products">تسوقي الآن</a>
-    </div>
-    <!-- أمواج زخرفية -->
-    <div class="wave w1"></div>
-    <div class="wave w2"></div>
+    <h1>Hunalulu Swimwear</h1>
+    <p>مايوهات بتصاميم أنثوية وألوان تيفاني راقية 🌊</p>
+    <a href="#products">تسوقي الآن</a>
   </section>
 
-  <!-- المنتجات -->
-  <section id="products" class="section">
-    <h2>منتجاتنا</h2>
-    <div class="grid">
-      <article class="card">
-        <img src="images/IMG_5407.jpeg" alt="مايوه 1">
-        <h3>Tummy Control</h3>
-        <p class="price">299 AED</p>
-        <a class="btn btn-wa" href="https://wa.me/971501234567?text=مرحباً%20أرغب%20بطلب%20Tummy%20Control">اطلبي الآن</a>
-      </article>
+  <!-- Products Section -->
+  <section id="products" class="products">
+    <div class="product">
+      <img src="images/IMG_5407.jpeg" alt="مايوه 1">
+      <h3>299 AED</h3>
+      <a class="whatsapp-btn" href="https://wa.me/971504654412?text=مرحبا، أود طلب هذا المايوه">اطلبي عبر الواتساب</a>
+    </div>
 
-      <article class="card">
-        <img src="images/IMG_5410.jpeg" alt="مايوه 2">
-        <h3>Swimsuit Dress</h3>
-        <p class="price">240 AED</p>
-        <a class="btn btn-wa" href="https://wa.me/971501234567?text=مرحباً%20أرغب%20بطلب%20Swimsuit%20Dress">اطلبي الآن</a>
-      </article>
+    <div class="product">
+      <img src="images/IMG_5410.jpeg" alt="مايوه 2">
+      <h3>249 AED</h3>
+      <a class="whatsapp-btn" href="https://wa.me/971504654412?text=مرحبا، أود طلب هذا المايوه">اطلبي عبر الواتساب</a>
+    </div>
 
-      <article class="card">
-        <img src="images/IMG_5411.jpeg" alt="مايوه 3">
-        <h3>Tropical Vibes</h3>
-        <p class="price">299 AED</p>
-        <a class="btn btn-wa" href="https://wa.me/971501234567?text=مرحباً%20أرغب%20بطلب%20Tropical%20Vibes">اطلبي الآن</a>
-      </article>
+    <div class="product">
+      <img src="images/IMG_5411.jpeg" alt="مايوه 3">
+      <h3>240 AED</h3>
+      <a class="whatsapp-btn" href="https://wa.me/971504654412?text=مرحبا، أود طلب هذا المايوه">اطلبي عبر الواتساب</a>
     </div>
   </section>
 
-  <!-- عنّا -->
-  <section id="about" class="section soft">
-    <h2>عن Hunalulu</h2>
-    <p class="lead">نختار لك خامات مريحة وقصّات تبرز الجمال بألوان تيفاني وزهري فخم—مثالية للبحر والمنتجعات.</p>
-  </section>
-
-  <!-- تواصل -->
-  <section id="contact" class="section">
-    <h2>تواصل</h2>
-    <p>واتساب: <a class="link" href="https://wa.me/971501234567">+971 50 123 4567</a> — إنستغرام: <a class="link" href="https://instagram.com/hunalulu" target="_blank">@hunalulu</a></p>
-  </section>
-
-  <footer class="footer">© <span id="y"></span> Hunalulu</footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
