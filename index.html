@@ -1,31 +1,53 @@
-.hero {
-  background: linear-gradient(rgba(64,224,208,0.4), rgba(64,224,208,0.4)),
-              url('images/hero-bg-tiffany.jpg') no-repeat center/cover;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-}
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hunalulu Swimwear</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-.hero h1 {
-  font-size: 32px;
-  font-weight: bold;
-}
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__inner">
+      <h1>Hunalulu Swimwear</h1>
+      <p>مايوهات بتصاميم أنثوية وألوان تيفاني راقية 🌊</p>
+      <a class="btn" href="#products">تسوقي الآن</a>
+    </div>
+  </section>
 
-.hero p {
-  font-size: 18px;
-  margin-top: 10px;
-}
+  <!-- منتجات (اختياري) -->
+  <section id="products" class="products">
+    <h2>منتجاتنا</h2>
+    <div class="grid">
+      <article class="card">
+        <img src="images/product1.jpg" alt="مايوه 1">
+        <h3>Tummy Control</h3>
+        <p class="price">299 AED</p>
+        <a class="order" href="https://wa.me/971000000000?text=أرغب%20بطلب%20Tummy%20Control">Order Now</a>
+      </article>
 
-.hero .btn {
-  display: inline-block;
-  margin-top: 20px;
-  background: #40e0d0;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-}
+      <article class="card">
+        <img src="images/product2.jpg" alt="مايوه 2">
+        <h3>Swimsuit Dress</h3>
+        <p class="price">240 AED</p>
+        <a class="order" href="https://wa.me/971000000000?text=أرغب%20بطلب%20Swimsuit%20Dress">Order Now</a>
+      </article>
+
+      <article class="card">
+        <img src="images/product3.jpg" alt="مايوه 3">
+        <h3>Tropical Vibes</h3>
+        <p class="price">299 AED</p>
+        <a class="order" href="https://wa.me/971000000000?text=أرغب%20بطلب%20Tropical%20Vibes">Order Now</a>
+      </article>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © <span id="y"></span> Hunalulu
+  </footer>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
