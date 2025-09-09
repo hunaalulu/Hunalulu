@@ -1,16 +1,31 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Hunalulu Swimwear</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <section class="hero">
-  <div>
-    <h1>Hunalulu Swimwear</h1>
-    <p>مايوهات بتصاميم أنثوية وألوان تيفاني راقية 🌊</p>
-    <a class="btn" href="#shop">تسوقي الآن</a>
-  </div>
-</section>
+.hero {
+  background: linear-gradient(rgba(64,224,208,0.4), rgba(64,224,208,0.4)),
+              url('images/hero-bg-tiffany.jpg') no-repeat center/cover;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.hero .btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: #40e0d0;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
