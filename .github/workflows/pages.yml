@@ -1,0 +1,29 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main  # هذا يضمن التحديث عند كل تغيير في الفرع الرئيسي
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Build static site
+        run: |
+          echo "Building website..."
+          # إذا عندك ملفات HTML و CSS فقط، ما تحتاجي build هنا
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: .  # هذا يرفع كل ملفات المشروع
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
