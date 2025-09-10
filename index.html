@@ -1,63 +1,101 @@
-<div class="products">
+<body>
+  <!-- قسم الهيدر مع اللوجو -->
+  <header class="header">
+    <div class="logo-container">
+      <img src="images/logo.png" alt="Hunalulu Logo" class="logo">
+      <p class="tagline">Swim like a mermaid 🧜‍♀️</p>
+    </div>
+  </header>
 
-  <div class="product">
-    <figure class="media">
-      <img src="images/IMG_5394.jpeg" alt="Green Swimsuit">
-    </figure>
-    <div class="info">
-      <span class="badge">M</span>
-      <h3>Green Swimsuit</h3>
-      <p class="desc">Elegant green bikini with soft, stretchy fabric for ultimate comfort.</p>
-      <div class="meta">
-        <span class="price">AED 249</span>
-        <a class="order-btn" href="https://wa.me/971504654412?text=I%20want%20to%20order%20the%20Green%20Swimsuit">Order Now</a>
+  <!-- تبويبات المقاسات -->
+  <div class="size-tabs">
+    <button class="size-btn active" onclick="filterProducts('all')">All</button>
+    <button class="size-btn" onclick="filterProducts('S')">S</button>
+    <button class="size-btn" onclick="filterProducts('M')">M</button>
+    <button class="size-btn" onclick="filterProducts('L')">L</button>
+    <button class="size-btn" onclick="filterProducts('XL')">XL</button>
+    <button class="size-btn" onclick="filterProducts('2XL')">2XL</button>
+  </div>
+
+  <!-- شبكة المنتجات -->
+  <div class="products">
+    <div class="product" data-size="M">
+      <figure class="media">
+        <img src="images/IMG_5394.jpeg" alt="Green Swimsuit">
+      </figure>
+      <div class="info">
+        <span class="badge">M</span>
+        <h3>Green Swimsuit</h3>
+        <p class="desc">Elegant green bikini with soft, stretchy fabric for ultimate comfort.</p>
+        <div class="meta">
+          <span class="price">AED 249</span>
+          <a class="order-btn" href="https://wa.me/971504654412?text=I%20want%20to%20order%20the%20Green%20Swimsuit">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product" data-size="L">
+      <figure class="media">
+        <img src="images/IMG_5407.jpeg" alt="Black Classic Swimsuit">
+      </figure>
+      <div class="info">
+        <span class="badge">L</span>
+        <h3>Black Classic Swimsuit</h3>
+        <p class="desc">Timeless black swimsuit, perfect for a sleek, modern look.</p>
+        <div class="meta">
+          <span class="price">AED 249</span>
+          <a class="order-btn" href="https://wa.me/971504654412?text=I%20want%20to%20order%20the%20Black%20Classic%20Swimsuit">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product" data-size="XL">
+      <figure class="media">
+        <img src="images/IMG_5410.jpeg" alt="Pink Bikini">
+      </figure>
+      <div class="info">
+        <span class="badge">XL</span>
+        <h3>Pink Bikini</h3>
+        <p class="desc">Soft pink bikini designed for style and comfort by the beach.</p>
+        <div class="meta">
+          <span class="price">AED 249</span>
+          <a class="order-btn" href="https://wa.me/971504654412?text=I%20want%20to%20order%20the%20Pink%20Bikini">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product" data-size="2XL">
+      <figure class="media">
+        <img src="images/IMG_5411.jpeg" alt="Blue Swimsuit">
+      </figure>
+      <div class="info">
+        <span class="badge">2XL</span>
+        <h3>Blue Swimsuit</h3>
+        <p class="desc">Vibrant blue swimsuit with a perfect medium fit for comfort.</p>
+        <div class="meta">
+          <span class="price">AED 249</span>
+          <a class="order-btn" href="https://wa.me/971504654412?text=I%20want%20to%20order%20the%20Blue%20Swimsuit">Order Now</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="product">
-    <figure class="media">
-      <img src="images/IMG_5407.jpeg" alt="Black Classic Swimsuit">
-    </figure>
-    <div class="info">
-      <span class="badge">M</span>
-      <h3>Black Classic Swimsuit</h3>
-      <p class="desc">Timeless black swimsuit, perfect for a sleek, modern look.</p>
-      <div class="meta">
-        <span class="price">AED 249</span>
-        <a class="order-btn" href="https://wa.me/971504654412?text=I%20want%20to%20order%20the%20Black%20Classic%20Swimsuit">Order Now</a>
-      </div>
-    </div>
-  </div>
+  <!-- كود الفلترة للمقاسات -->
+  <script>
+    function filterProducts(size) {
+      const products = document.querySelectorAll('.product');
+      const buttons = document.querySelectorAll('.size-btn');
 
-  <div class="product">
-    <figure class="media">
-      <img src="images/IMG_5410.jpeg" alt="Pink Bikini">
-    </figure>
-    <div class="info">
-      <span class="badge">M</span>
-      <h3>Pink Bikini</h3>
-      <p class="desc">Soft pink bikini designed for style and comfort by the beach.</p>
-      <div class="meta">
-        <span class="price">AED 249</span>
-        <a class="order-btn" href="https://wa.me/971504654412?text=I%20want%20to%20order%20the%20Pink%20Bikini">Order Now</a>
-      </div>
-    </div>
-  </div>
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
 
-  <div class="product">
-    <figure class="media">
-      <img src="images/IMG_5411.jpeg" alt="Blue Swimsuit">
-    </figure>
-    <div class="info">
-      <span class="badge">M</span>
-      <h3>Blue Swimsuit</h3>
-      <p class="desc">Vibrant blue swimsuit with a perfect medium fit for comfort.</p>
-      <div class="meta">
-        <span class="price">AED 249</span>
-        <a class="order-btn" href="https://wa.me/971504654412?text=I%20want%20to%20order%20the%20Blue%20Swimsuit">Order Now</a>
-      </div>
-    </div>
-  </div>
-
-</div>
+      products.forEach(product => {
+        if (size === 'all' || product.getAttribute('data-size') === size) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
