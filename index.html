@@ -1,13 +1,181 @@
-<!-- Top bar with logo + Order Now -->
-<header class="topbar">
-  <div class="brand">
-<img src="images/22EBEA58-3893-4A61-8482-24676350425D.png" alt="Hunalulu" class="logo">
-    <span>Hunalulu <b>Swimwear</b></span>
-  </div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hunalulu Swimwear — المقاسات</title>
+  <style>
+    body{font-family: Arial, sans-serif;background:#f9f9f9;margin:0;padding:20px}
+    header{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between}
+    h1{color:#00bfa6;margin:0}
+    .filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+    .filter-btn{border:1px solid #00bfa6;background:#fff;color:#00bfa6;padding:8px 14px;border-radius:999px;cursor:pointer}
+    .filter-btn.active,.filter-btn:hover{background:#00bfa6;color:#fff}
+    .filter-btn .count{opacity:.8;font-size:.85em;margin-inline-start:6px}
+    .product-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .product{background:#fff;padding:14px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:transform .2s}
+    .product:hover{transform:translateY(-4px)}
+    .product img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px}
+    .product h2{font-size:18px;margin:10px 0 6px;color:#333}
+    .price{color:#00bfa6;font-weight:bold}
+    .sizes{color:#666;font-size:13px;margin:6px 0}
+    .description{font-size:14px;color:#444;margin:8px 0 12px}
+    .order-btn{background:#00bfa6;color:#fff;padding:10px 14px;border:none;border-radius:8px;cursor:pointer;text-decoration:none;display:inline-block}
+    .order-btn:hover{background:#00947a}
+    .empty{display:none;text-align:center;color:#777;margin:24px 0}
+    /* شارة المقاس على الصورة (اختياري) */
+    .badge{position:absolute;inset:10px auto auto 10px;background:#00000099;color:#fff;padding:4px 8px;border-radius:999px;font-size:12px}
+    .img-wrap{position:relative}
+  </style>
+</head>
+<body>
 
-  <a class="btn btn-wa" 
-     href="https://wa.me/971504654412?text=مرحباً%20أرغب%20بالطلب%20من%20Hunalulu" 
-     target="_blank" rel="noopener">
-    Order Now
-  </a>
-</header>
+  <header>
+    <h1>منتجات Hunalulu — فلترة حسب المقاس</h1>
+    <!-- أزرار الفلترة -->
+    <nav class="filters" aria-label="فلترة حسب المقاس">
+      <button class="filter-btn active" data-size="all">الكل</button>
+      <button class="filter-btn" data-size="XS">XS<span class="count"></span></button>
+      <button class="filter-btn" data-size="S">S<span class="count"></span></button>
+      <button class="filter-btn" data-size="M">M<span class="count"></span></button>
+      <button class="filter-btn" data-size="L">L<span class="count"></span></button>
+      <button class="filter-btn" data-size="XL">XL<span class="count"></span></button>
+      <button class="filter-btn" data-size="2XL">2XL<span class="count"></span></button>
+    </nav>
+  </header>
+
+  <div id="emptyMsg" class="empty">لا توجد قطع ضمن هذا المقاس حالياً.</div>
+
+  <section class="product-container" id="grid">
+    <!-- أمثلة منتجات — عدّلي كما تشائين -->
+
+    <!-- المنتج 1 -->
+    <article class="product" data-sizes="S,M,L">
+      <div class="img-wrap">
+        <img src="images/black_swimsuit.jpg" alt="مايوه أسود كلاسيكي">
+        <span class="badge">S–L</span>
+      </div>
+      <h2>Black Swimsuit</h2>
+      <p class="price">249 AED</p>
+      <p class="sizes">المقاسات المتاحة: S, M, L</p>
+      <p class="description">قماش مرن ومريح، قصّة كلاسيكية ترفع القوام.</p>
+      <a class="order-btn"
+         href="https://wa.me/971504654412?text=مرحباً، أريد طلب Black Swimsuit (الرجاء تحديد المقاس)">
+        Order Now
+      </a>
+    </article>
+
+    <!-- المنتج 2 -->
+    <article class="product" data-sizes="M,L,XL">
+      <div class="img-wrap">
+        <img src="images/pink_bikini.jpg" alt="بكيني زهري">
+        <span class="badge">M–XL</span>
+      </div>
+      <h2>Pink Bikini</h2>
+      <p class="price">199 AED</p>
+      <p class="sizes">المقاسات المتاحة: M, L, XL</p>
+      <p class="description">خامة ناعمة وتجفيف سريع، ألوان ثابتة بالماء.</p>
+      <a class="order-btn"
+         href="https://wa.me/971504654412?text=مرحباً، أريد طلب Pink Bikini (الرجاء تحديد المقاس)">
+        Order Now
+      </a>
+    </article>
+
+    <!-- المنتج 3 -->
+    <article class="product" data-sizes="XS,S,M">
+      <div class="img-wrap">
+        <img src="images/tropical_set.jpg" alt="طقم تروبيكال">
+        <span class="badge">XS–M</span>
+      </div>
+      <h2>Tropical Set</h2>
+      <p class="price">299 AED</p>
+      <p class="sizes">المقاسات المتاحة: XS, S, M</p>
+      <p class="description">نقشة تروبيكال فاخرة، ستيتش قوي وثبات ممتاز.</p>
+      <a class="order-btn"
+         href="https://wa.me/971504654412?text=مرحباً، أريد طلب Tropical Set (الرجاء تحديد المقاس)">
+        Order Now
+      </a>
+    </article>
+
+    <!-- المنتج 4 (مثال 2XL) -->
+    <article class="product" data-sizes="XL,2XL">
+      <div class="img-wrap">
+        <img src="images/tummy_control.jpg" alt="Tummy Control">
+        <span class="badge">XL–2XL</span>
+      </div>
+      <h2>Tummy Control</h2>
+      <p class="price">279 AED</p>
+      <p class="sizes">المقاسات المتاحة: XL, 2XL</p>
+      <button class="filter-btn" data-size="3XL">3XL<span class="count"></span></button>
+      <p class="description">دعم خفيف للبطن مع مرونة عالية وراحة طوال اليوم.</p>
+      <a class="order-btn"
+         href="https://wa.me/971504654412?text=مرحباً، أريد طلب Tummy Control (الرجاء تحديد المقاس)">
+        Order Now
+      </a>
+    </article>
+
+  </section>
+
+  <script>
+    // فلترة حسب المقاس
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards   = document.querySelectorAll('.product');
+    const emptyMsg = document.getElementById('emptyMsg');
+
+    // تحديث الأعداد على الأزرار
+    function updateCounts(){
+      const sizesSet = {};
+      cards.forEach(card=>{
+        const sizes = card.dataset.sizes.split(',').map(s=>s.trim());
+        sizes.forEach(sz=>{ sizesSet[sz]=(sizesSet[sz]||0)+1; });
+      });
+      buttons.forEach(btn=>{
+        const sz = btn.dataset.size;
+        const span = btn.querySelector('.count');
+        if(!span) return;
+        if(sz==='all'){
+          const total = cards.length;
+          span.textContent = ` (${total})`;
+        } else {
+          span.textContent = ` (${sizesSet[sz]||0})`;
+        }
+      });
+    }
+
+    function filterBy(size){
+      let shown = 0;
+      cards.forEach(card=>{
+        const sizes = card.dataset.sizes.split(',').map(s=>s.trim());
+        const hit = size==='all' ? true : sizes.includes(size);
+        card.style.display = hit ? '' : 'none';
+        if(hit) shown++;
+      });
+      emptyMsg.style.display = shown ? 'none' : '';
+    }
+
+    buttons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        buttons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        filterBy(btn.dataset.size);
+      });
+    });
+
+    // تحديث رابط الواتساب ليحمل اسم المنتج والمقاس المختار (اختياري)
+    document.getElementById('grid').addEventListener('click', e=>{
+      const a = e.target.closest('.order-btn');
+      if(!a) return;
+      const activeBtn = document.querySelector('.filter-btn.active');
+      const size = activeBtn ? activeBtn.dataset.size : 'unspecified';
+      const card = e.target.closest('.product');
+      const name = card.querySelector('h2')?.textContent?.trim() || '';
+      const base = 'https://wa.me/971504654412';
+      const text = `مرحباً، أريد طلب ${name}${size && size!=='all' ? ' - مقاس '+size : ''}`;
+      a.href = `${base}?text=${encodeURIComponent(text)}`;
+    });
+
+    updateCounts();
+    filterBy('all');
+  </script>
+</body>
+</html>
