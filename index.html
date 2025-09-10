@@ -1,140 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Huna Lulu Swimwear</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      text-align: center;
+    :root{
+      --brand:#00bcd4;
+      --brand-dark:#0097a7;
+      --txt:#222;
+      --bg:#f8f9fa;
+      --card:#fff;
+      --price:#e91e63;
     }
-
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--txt);
+      text-align:center;
+    }
     /* Header */
-    header {
-      background-color: #ffffff;
-      padding: 20px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    header{
+      background:#fff;
+      padding:18px 12px 10px;
+      box-shadow:0 2px 10px rgba(0,0,0,.06);
+      position:sticky; top:0; z-index:100;
+    }
+    header img.logo{
+      max-width:140px; height:auto; display:block; margin:0 auto 6px;
+    }
+    header .tag{
+      margin:0; font-size:18px; color:#444; font-weight:500;
     }
 
-    /* Logo */
-    header img {
-      max-width: 130px;
-      display: block;
-      margin: 0 auto;
+    /* Grid */
+    .wrap{max-width:1150px; margin:0 auto; padding:24px 16px 40px;}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap:20px;
     }
+    .card{
+      background:var(--card);
+      border-radius:10px;
+      padding:12px;
+      box-shadow:0 4px 14px rgba(0,0,0,.08);
+      transition:transform .18s ease, box-shadow .18s ease;
+      text-align:center;
+    }
+    .card:hover{ transform:translateY(-4px); box-shadow:0 8px 18px rgba(0,0,0,.12); }
+    .card img{
+      width:100%; height:auto; display:block;
+      border-radius:10px; object-fit:cover;
+      aspect-ratio: 4/5;
+    }
+    .card h3{ margin:10px 0 6px; font-size:18px; }
+    .price{ color:var(--price); font-weight:700; margin:0 0 10px; font-size:18px; }
+    .sizes{ margin:0 0 10px; font-size:13px; color:#555; }
 
-    /* Slogan */
-    h1 {
-      color: #333;
-      font-size: 26px;
-      margin-top: 10px;
-      font-weight: normal;
+    .btn{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:8px;
+      background:var(--brand);
+      color:#fff; text-decoration:none; font-weight:600; font-size:15px;
+      transition:background .2s ease, transform .05s ease;
     }
+    .btn:hover{ background:var(--brand-dark); }
+    .btn:active{ transform:scale(.98); }
 
-    /* Product Grid */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 30px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .product-card {
-      background: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .product-card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .product-card h3 {
-      color: #222;
-      margin: 10px 0 5px;
-    }
-
-    .price {
-      color: #e91e63;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    /* Order Button */
-    .order-btn {
-      background-color: #00bcd4;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .order-btn:hover {
-      background-color: #0097a7;
-    }
+    footer{ color:#666; font-size:12px; padding:22px 0 30px; }
   </style>
 </head>
 <body>
 
   <!-- Header with Logo -->
   <header>
-    <!-- Logo -->
-    <img src="images/22EBEA58-3893-4A61-8482-24676350425D.png" alt="Huna Lulu Logo">
-    <!-- Slogan -->
-    <h1>Swim like a mermaid 🧜‍♀️</h1>
+    <img class="logo" src="images/22EBEA58-3893-4A61-8482-24676350425D.png" alt="Huna Lulu Logo">
+    <p class="tag">Swim like a mermaid 🧜‍♀️</p>
   </header>
 
-  <!-- Product Section -->
-  <section class="product-grid">
+  <div class="wrap">
+    <div class="grid">
 
-    <!-- Product 1 -->
-    <div class="product-card">
-      <img src="images/swimsuit1.jpg" alt="Swimsuit 1">
-      <h3>Tropical One-Piece</h3>
-      <p class="price">$29.99</p>
-      <a href="https://wa.me/971XXXXXXXXX?text=I%20want%20to%20order%20Tropical%20One-Piece" class="order-btn" target="_blank">
-        Order Now
-      </a>
+      <!-- 1 -->
+      <div class="card">
+        <img src="images/IMG_5394.jpeg" alt="Swimsuit - Tropical Style">
+        <h3>مايوه تروبيكال</h3>
+        <p class="sizes">المقاسات: S • M • L • XL • 2XL</p>
+        <p class="price">AED 120</p>
+        <a class="btn" target="_blank"
+           href="https://wa.me/971501234567?text=Hello%2C%20I%20want%20to%20order%20Mayoh%20Tropical%20(AED%20120)">
+           Order Now
+        </a>
+      </div>
+
+      <!-- 2 -->
+      <div class="card">
+        <img src="images/IMG_5407.jpeg" alt="Swimsuit - Elegant">
+        <h3>مايوه إليغنت</h3>
+        <p class="sizes">المقاسات: S • M • L • XL • 2XL</p>
+        <p class="price">AED 135</p>
+        <a class="btn" target="_blank"
+           href="https://wa.me/971501234567?text=Hello%2C%20I%20want%20to%20order%20Mayoh%20Elegant%20(AED%20135)">
+           Order Now
+        </a>
+      </div>
+
+      <!-- 3 -->
+      <div class="card">
+        <img src="images/IMG_5410.jpeg" alt="Swimsuit - Mermaid Vibes">
+        <h3>Mermaid Vibes</h3>
+        <p class="sizes">المقاسات: S • M • L • XL • 2XL</p>
+        <p class="price">AED 145</p>
+        <a class="btn" target="_blank"
+           href="https://wa.me/971501234567?text=Hello%2C%20I%20want%20to%20order%20Mermaid%20Vibes%20(AED%20145)">
+           Order Now
+        </a>
+      </div>
+
+      <!-- 4 -->
+      <div class="card">
+        <img src="images/IMG_5411.jpeg" alt="Swimsuit - Classic">
+        <h3>كلاسيك سليم</h3>
+        <p class="sizes">المقاسات: S • M • L • XL • 2XL</p>
+        <p class="price">AED 129</p>
+        <a class="btn" target="_blank"
+           href="https://wa.me/971501234567?text=Hello%2C%20I%20want%20to%20order%20Classic%20Slim%20(AED%20129)">
+           Order Now
+        </a>
+      </div>
+
+      <!-- 5 -->
+      <div class="card">
+        <img src="images/IMG_5412.jpeg" alt="Swimsuit - Sporty">
+        <h3>سبور فيت</h3>
+        <p class="sizes">المقاسات: S • M • L • XL • 2XL</p>
+        <p class="price">AED 119</p>
+        <a class="btn" target="_blank"
+           href="https://wa.me/971501234567?text=Hello%2C%20I%20want%20to%20order%20Sporty%20Fit%20(AED%20119)">
+           Order Now
+        </a>
+      </div>
+
+      <!-- 6 -->
+      <div class="card">
+        <img src="images/IMG_5413.jpeg" alt="Swimsuit - Chic">
+        <h3>شيك باندو</h3>
+        <p class="sizes">المقاسات: S • M • L • XL • 2XL</p>
+        <p class="price">AED 198 </p>
+        <a class="btn" target="_blank"
+           href="https://wa.me/971501234567?text=Hello%2C%20I%20want%20to%20order%20Chic%20Bandeau%20(AED%20139)">
+           Order Now
+        </a>
+      </div>
+
+      <!-- 7 -->
+      <div class="card">
+        <img src="images/IMG_5845.jpeg" alt="Swimsuit - Summer Set">
+        <h3>صيفي ست</h3>
+        <p class="sizes">المقاسات: S • M • L • XL • 2XL</p>
+        <p class="price">AED 249</p>
+        <a class="btn" target="_blank"
+           href="https://wa.me/971501234567?text=Hello%2C%20I%20want%20to%20order%20Summer%20Set%20(AED%20149)">
+           Order Now
+        </a>
+      </div>
+
     </div>
+  </div>
 
-    <!-- Product 2 -->
-    <div class="product-card">
-      <img src="images/swimsuit2.jpg" alt="Swimsuit 2">
-      <h3>Elegant Bikini Set</h3>
-      <p class="price">$34.99</p>
-      <a href="https://wa.me/971XXXXXXXXX?text=I%20want%20to%20order%20Elegant%20Bikini%20Set" class="order-btn" target="_blank">
-        Order Now
-      </a>
-    </div>
-
-    <!-- Product 3 -->
-    <div class="product-card">
-      <img src="images/swimsuit3.jpg" alt="Swimsuit 3">
-      <h3>Mermaid Vibes</h3>
-      <p class="price">$39.99</p>
-      <a href="https://wa.me/971XXXXXXXXX?text=I%20want%20to%20order%20Mermaid%20Vibes" class="order-btn" target="_blank">
-        Order Now
-      </a>
-    </div>
-
-  </section>
+  <footer>
+    © Huna Lulu — Powered by GitHub Pages
+  </footer>
 
 </body>
 </html>
