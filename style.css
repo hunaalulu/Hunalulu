@@ -1,14 +1,54 @@
-/* ===== TOP BAR (logo + order) ===== */
-.topbar{
-  position: sticky; top: 0; z-index: 1000;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:10px 16px;
-  background:#fff; border-bottom:1px solid #e9eef0;
+/* تصميم عام للصفحة */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e0f7f9; /* خلفية تيفاني فاتح */
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
-.brand{display:flex; align-items:center; gap:10px; font-weight:800; color:#111;}
-.logo{width:42px; height:42px; object-fit:contain}
 
-/* زر واتساب */
-.btn{display:inline-block; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:700}
-.btn-wa{background:#25D366; color:#fff}
-.btn-wa:hover{filter:brightness(0.95)}
+/* تصميم المنتجات */
+.product {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px auto;
+  width: 250px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* تصميم الصور */
+.product img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* عنوان المنتج */
+.product h3 {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+}
+
+/* سعر المنتج */
+.product p {
+  font-size: 16px;
+  color: #444;
+}
+
+/* زر Order Now */
+button {
+  background-color: #008080; /* لون تيفاني غامق */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #006666; /* لون أغمق عند تمرير الماوس */
+}
