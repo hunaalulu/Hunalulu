@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>منتجات Hunalulu</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ——— تنسيقات سريعة للصفحة ——— */
+    body{font-family:Arial, sans-serif;background:#eaf9f7;margin:0}
+    .topbar{position:sticky;top:0;z-index:1000;display:flex;gap:12px;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #e6efee;padding:10px 16px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand img{width:40px;height:40px;object-fit:contain}
+    .topbar a{text-decoration:none;font-weight:700}
+    .btn{display:inline-block;background:#25D366;color:#fff;padding:10px 14px;border-radius:10px}
+    .btn:hover{filter:brightness(0.95)}
+
+    .container{max-width:1100px;margin:20px auto;padding:0 16px}
+    h1{margin:6px 0 14px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .card{background:#fff;border:1px solid #e6efee;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.04);display:flex;flex-direction:column}
+    .card img{width:100%;height:220px;object-fit:cover}
+    .card .content{padding:12px}
+    .price{color:#06b6a9;font-weight:800;margin:6px 0}
+    .row{display:flex;gap:8px;align-items:center;margin:8px 0}
+    select, input[type="number"]{padding:8px;border:1px solid #d9e6e5;border-radius:8px;width:100%}
+    .actions{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:10px}
+    .small{font-size:12px;color:#7a8b8a}
+    .back{background:#111}
+  </style>
+</head>
+<body>
+
+  <!-- شريط علوي بسيط -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="images/22EBEA58-3893-4A61-8482-24676350425D.png" alt="Hunalulu">
+      <span>Hunalulu <b>Swimwear</b></span>
+    </div>
+    <div style="display:flex; gap:8px">
+      <a class="btn back" href="index.html">الصفحة الرئيسية</a>
+      <a class="btn" href="https://wa.me/971504654412?text=مرحباً%20أرغب%20بالاستفسار%20عن%20المنتجات" target="_blank" rel="noopener">Order Now</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>منتجاتنا</h1>
+    <p class="small">اختاري المقاس والكمية ثم اضغطي "Order Now" لطلب سريع عبر واتساب.</p>
+
+    <section class="grid" id="products">
+
+      <!-- بطاقة 1 -->
+      <article class="card" data-name="Tummy Control" data-price="299" data-img="images/IMG_5407.jpeg">
+        <img src="images/IMG_5407.jpeg" alt="Tummy Control">
+        <div class="content">
+          <h3>Tummy Control</h3>
+          <div class="price">299 AED</div>
+
+          <div class="row">
+            <label class="small">المقاس</label>
+            <select class="size">
+              <option value="S">S</option>
+              <option value="M" selected>M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <label class="small">الكمية</label>
+            <input class="qty" type="number" min="1" value="1">
+          </div>
+
+          <div class="actions">
+            <a class="btn wa">Order Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- بطاقة 2 -->
+      <article class="card" data-name="Swimsuit Dress" data-price="249" data-img="images/IMG_5410.jpeg">
+        <img src="images/IMG_5410.jpeg" alt="Swimsuit Dress">
+        <div class="content">
+          <h3>Swimsuit Dress</h3>
+          <div class="price">249 AED</div>
+
+          <div class="row">
+            <label class="small">المقاس</label>
+            <select class="size">
+              <option value="S">S</option>
+              <option value="M" selected>M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <label class="small">الكمية</label>
+            <input class="qty" type="number" min="1" value="1">
+          </div>
+
+          <div class="actions">
+            <a class="btn wa">Order Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- بطاقة 3 -->
+      <article class="card" data-name="Tropical Vibes" data-price="249" data-img="images/IMG_5411.jpeg">
+        <img src="images/IMG_5411.jpeg" alt="Tropical Vibes">
+        <div class="content">
+          <h3>Tropical Vibes</h3>
+          <div class="price">249 AED</div>
+
+          <div class="row">
+            <label class="small">المقاس</label>
+            <select class="size">
+              <option value="S">S</option>
+              <option value="M" selected>M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <label class="small">الكمية</label>
+            <input class="qty" type="number" min="1" value="1">
+          </div>
+
+          <div class="actions">
+            <a class="btn wa">Order Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- بطاقة 4 -->
+      <article class="card" data-name="Classic One Piece" data-price="249" data-img="images/IMG_5412.jpeg">
+        <img src="images/IMG_5412.jpeg" alt="Classic One Piece">
+        <div class="content">
+          <h3>Classic One Piece</h3>
+          <div class="price">249 AED</div>
+
+          <div class="row">
+            <label class="small">المقاس</label>
+            <select class="size">
+              <option value="S">S</option>
+              <option value="M" selected>M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <label class="small">الكمية</label>
+            <input class="qty" type="number" min="1" value="1">
+          </div>
+
+          <div class="actions">
+            <a class="btn wa">Order Now</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- أضيفي بطاقات زيادة بنفس النمط وغيري اسم الصورة والسعر -->
+      <!-- مثال: images/IMG_5394.jpeg , images/IMG_5845.jpeg -->
+
+    </section>
+  </main>
+
+  <script>
+    // توليد رابط واتساب حسب اسم/سعر/مقاس/كمية
+    const PHONE = '971504654412'; // رقم الواتساب بدون +
+    document.querySelectorAll('.card').forEach(card => {
+      const name = card.dataset.name;
+      const price = card.dataset.price;
+      const btn = card.querySelector('.wa');
+      const sizeEl = card.querySelector('.size');
+      const qtyEl  = card.querySelector('.qty');
+
+      btn.addEventListener('click', () => {
+        const size = sizeEl.value;
+        const qty  = Math.max(1, parseInt(qtyEl.value || '1', 10));
+        const msg  = `مرحباً، أود طلب: ${name}%0Aالمقاس: ${size}%0Aالكمية: ${qty}%0Aالسعر: ${price} AED`;
+        const url  = `https://wa.me/${PHONE}?text=${msg}`;
+        window.open(url, '_blank');
+      });
+    });
+  </script>
+</body>
+</html>
