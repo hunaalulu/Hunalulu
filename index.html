@@ -7,60 +7,48 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- الهيدر مع اللوجو -->
-  <header>
+
+  <!-- الشريط العلوي -->
+  <header class="header">
     <div class="logo-container">
-      <img class="logo" src="images/EC7DE99A-02A1-4883-8493-D6E462C598C1.jpeg" alt="Hunalulu Logo">
-      <h2>swim like a mermaid 🧜‍♀️</h2>
+      <img src="images/EC7DE99A-02A1-4883-8493-D6E462C598C1.jpeg" alt="Hunalulu Logo" class="logo">
+      <h1 class="tagline">Swim like a mermaid 🧜‍♀️</h1>
     </div>
   </header>
 
-  <!-- أزرار الفلترة للمقاسات -->
-  <div class="filter-buttons">
-    <button class="filter-btn active" data-size="all">الكل</button>
-    <button class="filter-btn" data-size="S">S</button>
-    <button class="filter-btn" data-size="M">M</button>
-    <button class="filter-btn" data-size="L">L</button>
-    <button class="filter-btn" data-size="XL">XL</button>
-    <button class="filter-btn" data-size="2XL">2XL</button>
+  <!-- تبويبات المقاسات -->
+  <div class="filter-bar">
+    <button class="filter active">All</button>
+    <button class="filter">S</button>
+    <button class="filter">M</button>
+    <button class="filter">L</button>
+    <button class="filter">XL</button>
+    <button class="filter">2XL</button>
   </div>
 
-  <!-- عرض المنتجات -->
-  <div class="products">
-    <div class="product" data-size="S M L">
-      <img src="images/IMG_5407.jpeg" alt="Blue Swimsuit">
-      <h3>Blue One-Piece Swimsuit</h3>
-      <p class="sizes">Available: S, M, L</p>
+  <!-- المنتجات -->
+  <main class="products">
+    <div class="product">
+      <img src="images/IMG_5407.jpeg" alt="Blue One-Piece Swimsuit">
+      <h2>Blue One-Piece Swimsuit</h2>
+      <p class="available">Available: S, M, L</p>
       <p class="price">AED 249</p>
     </div>
 
-    <div class="product" data-size="S">
-      <img src="images/IMG_5404.jpeg" alt="Cotton Candy Swimsuit">
-      <h3>Cotton Candy One-Piece Swimsuit</h3>
-      <p class="sizes">Available: S</p>
+    <div class="product">
+      <img src="images/IMG_5404.jpeg" alt="Pink and Blue Swimsuit">
+      <h2>Pinky Blue Cutout Swimsuit</h2>
+      <p class="available">Available: M, L</p>
+      <p class="price">AED 249</p>
+    </div>
+
+    <div class="product">
+      <img src="images/IMG_5410.jpeg" alt="Green Bikini Set">
+      <h2>Green Bikini Set</h2>
+      <p class="available">Available: S, M</p>
       <p class="price">AED 230</p>
     </div>
-  </div>
+  </main>
 
-  <script>
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const products = document.querySelectorAll(".product");
-
-    filterButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        filterButtons.forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
-
-        const size = button.getAttribute("data-size");
-        products.forEach(product => {
-          if (size === "all" || product.getAttribute("data-size").includes(size)) {
-            product.style.display = "block";
-          } else {
-            product.style.display = "none";
-          }
-        });
-      });
-    });
-  </script>
 </body>
 </html>
