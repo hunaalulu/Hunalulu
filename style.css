@@ -1,100 +1,60 @@
-/* خلفية عامة */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to bottom, #aeeeee, #ffffff);
-  color: #333;
+/* أساسيات */
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:Arial, Helvetica, sans-serif;
+  background:linear-gradient(#b2f7ef 0%, #ffffff 40%); color:#222;
+  text-align:center;
 }
 
 /* الهيدر */
-.header {
-  text-align: center;
-  padding: 20px;
+.header{
+  background:#fff; border-bottom:1px solid #e8e8e8;
+  position:sticky; top:0; z-index:10; padding:14px 0 10px;
 }
-
-.logo {
-  width: 120px;
-  height: auto;
-  display: block;
-  margin: 0 auto 10px auto;
+.logo{
+  width:80px; height:80px; border-radius:50%; object-fit:cover;
+  display:block; margin:0 auto 6px; border:2px solid #00bfa6;
 }
-
-.tagline {
-  font-size: 18px;
-  color: #333;
-  font-weight: bold;
-  text-align: center;
-}
+.tagline{ margin:0; font-size:18px; font-weight:600; color:#333 }
 
 /* تبويبات المقاسات */
-.size-tabs {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-  gap: 10px;
+.size-tabs{
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+  padding:12px 10px;
 }
-
-.tab {
-  border: 2px solid #00bfa6;
-  border-radius: 20px;
-  padding: 8px 16px;
-  background: white;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
+.tab{
+  padding:8px 14px; border-radius:22px; cursor:pointer;
+  background:#fff; color:#00bfa6; border:2px solid #00bfa6;
+  font-weight:600; font-size:14px;
 }
-
-.tab.active,
-.tab:hover {
-  background: #00bfa6;
-  color: white;
-}
+.tab.active{ background:#00bfa6; color:#fff }
 
 /* شبكة المنتجات */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  max-width: 900px;
-  margin: 0 auto;
+.product-grid{
+  max-width:1100px; margin:14px auto 40px; padding:0 14px;
+  display:grid; gap:18px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
-.product-card {
-  background: white;
-  border-radius: 12px;
-  padding: 15px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+/* كارت المنتج */
+.product-card{
+  background:#fff; border:1px solid #e9e9e9; border-radius:12px;
+  padding:12px; transition:transform .2s, box-shadow .2s;
+}
+.product-card:hover{ transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,.06) }
+
+.product-card img{
+  width:100%; height:320px; object-fit:cover; border-radius:10px; display:block;
 }
 
-.product-card:hover {
-  transform: translateY(-5px);
-}
+.title{ font-size:16px; margin:10px 0 6px }
+.avail{ color:#777; font-size:13px; margin:0 0 6px }
+.price{ display:block; color:#00bfa6; font-weight:800; margin:0 0 10px }
 
-.product-card img {
-  width: 100%;
-  max-height: 250px;
-  object-fit: cover;
-  border-radius: 10px;
+/* زر الطلب */
+.order-btn{
+  display:inline-block; text-decoration:none; font-weight:700;
+  background:#111; color:#fff; padding:10px 14px; border-radius:10px;
+  width:100%;
 }
-
-.product-card h3 {
-  font-size: 16px;
-  margin: 10px 0 5px;
-}
-
-.product-card p {
-  font-size: 14px;
-  color: #666;
-}
-
-.price {
-  display: block;
-  margin-top: 8px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #00bfa6;
-}
+.order-btn:hover{ opacity:.9 }
