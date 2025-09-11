@@ -104,3 +104,23 @@ body {
 .order-btn:hover {
   background: #009e8c;
 }
+.filter-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.size-filter button {
+  background-color: #00bfa6;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.size-filter button:hover {
+  background-color: #009e87;
+}
