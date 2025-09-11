@@ -1,98 +1,63 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hunalulu Swimwear</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- الهيدر -->
-  <header class="site-header">
-    <img class="logo" src="<img class="logo" src="images/EC7DE99A-02A1-4883-8493-D6E462C598C1.jpeg" alt="Hunalulu logo">images/logo.png" alt="Hunalulu logo" />
-    <p class="tagline">🧜‍♀️ swim like a mermaid</p>
-    <nav class="filters" aria-label="Filter by size">
-      <button class="filter-btn active" data-size="all">الكل</button>
-      <button class="filter-btn" data-size="S">S</button>
-      <button class="filter-btn" data-size="M">M</button>
-      <button class="filter-btn" data-size="L">L</button>
-      <button class="filter-btn" data-size="XL">XL</button>
-      <button class="filter-btn" data-size="2XL">2XL</button>
-    </nav>
+  <!-- الهيدر مع اللوجو -->
+  <header>
+    <div class="logo-container">
+      <img class="logo" src="images/EC7DE99A-02A1-4883-8493-D6E462C598C1.jpeg" alt="Hunalulu Logo">
+      <h2>swim like a mermaid 🧜‍♀️</h2>
+    </div>
   </header>
 
-  <!-- المنتجات -->
-  <main class="container">
-    <section id="products" class="grid">
+  <!-- أزرار الفلترة للمقاسات -->
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-size="all">الكل</button>
+    <button class="filter-btn" data-size="S">S</button>
+    <button class="filter-btn" data-size="M">M</button>
+    <button class="filter-btn" data-size="L">L</button>
+    <button class="filter-btn" data-size="XL">XL</button>
+    <button class="filter-btn" data-size="2XL">2XL</button>
+  </div>
 
-      <!-- مثال منتج 1 -->
-      <article class="card" data-sizes="S,M,L">
-        <a class="thumb" href="images/IMG_5407.jpeg" target="_blank" rel="noopener">
-          <img loading="lazy" src="images/IMG_5407.jpeg" alt="Blue one piece swimsuit" />
-        </a>
-        <div class="info">
-          <h3>Blue One-Piece Swimsuit</h3>
-          <p class="sizes">Available: S, M, L</p>
-          <p class="price">AED 249</p>
-          <a class="order-btn"
-             href="https://wa.me/971504654412?text=Hello%20Hunalulu!%20I%20want%20Blue%20One-Piece%20(size%20S)."
-             target="_blank" rel="noopener">Order Now</a>
-        </div>
-      </article>
+  <!-- عرض المنتجات -->
+  <div class="products">
+    <div class="product" data-size="S M L">
+      <img src="images/IMG_5407.jpeg" alt="Blue Swimsuit">
+      <h3>Blue One-Piece Swimsuit</h3>
+      <p class="sizes">Available: S, M, L</p>
+      <p class="price">AED 249</p>
+    </div>
 
-      <!-- مثال منتج 2 -->
-      <article class="card" data-sizes="S">
-        <a class="thumb" href="images/IMG_5404.jpeg" target="_blank" rel="noopener">
-          <img loading="lazy" src="images/IMG_5404.jpeg" alt="Cotton Candy One-Piece, small" />
-        </a>
-        <div class="info">
-          <h3>Cotton Candy One-Piece</h3>
-          <p class="sizes">Available: S</p>
-          <p class="price">AED 230</p>
-          <a class="order-btn"
-             href="https://wa.me/971504654412?text=Hello%20Hunalulu!%20I%20want%20Cotton%20Candy%20(size%20S)."
-             target="_blank" rel="noopener">Order Now</a>
-        </div>
-      </article>
+    <div class="product" data-size="S">
+      <img src="images/IMG_5404.jpeg" alt="Cotton Candy Swimsuit">
+      <h3>Cotton Candy One-Piece Swimsuit</h3>
+      <p class="sizes">Available: S</p>
+      <p class="price">AED 230</p>
+    </div>
+  </div>
 
-      <!-- أضيفي منتجات جديدة بنسخ نفس الكارت وتغيير الصورة/المقاس/السعر -->
-      <!-- مثال ثالث (لو حبيتي): 
-      <article class="card" data-sizes="M,XL,2XL">
-        <a class="thumb" href="images/pink_blue.jpeg" target="_blank" rel="noopener">
-          <img loading="lazy" src="images/pink_blue.jpeg" alt="Pink & Blue Cutout Swimsuit" />
-        </a>
-        <div class="info">
-          <h3>Pink & Blue Cutout</h3>
-          <p class="sizes">Available: M, XL, 2XL</p>
-          <p class="price">AED 249</p>
-          <a class="order-btn"
-             href="https://wa.me/971504654412?text=Hello%20Hunalulu!%20I%20want%20Pink%20%26%20Blue%20(size%20M)."
-             target="_blank" rel="noopener">Order Now</a>
-        </div>
-      </article>
-      -->
-
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    © Hunalulu — دبي، الإمارات
-  </footer>
-
-  <!-- فلترة المقاسات -->
   <script>
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.card');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const size = btn.dataset.size;
-        cards.forEach(c => {
-          if (size === 'all') { c.style.display = ''; return; }
-          const sizes = c.dataset.sizes.split(',').map(s => s.trim());
-          c.style.display = sizes.includes(size) ? '' : 'none';
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const products = document.querySelectorAll(".product");
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        const size = button.getAttribute("data-size");
+        products.forEach(product => {
+          if (size === "all" || product.getAttribute("data-size").includes(size)) {
+            product.style.display = "block";
+          } else {
+            product.style.display = "none";
+          }
         });
       });
     });
