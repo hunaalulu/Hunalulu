@@ -41,6 +41,19 @@
     .back{background:#111}
   </style>
 </head>
+<script>
+  function filterProducts(size) {
+    const products = document.querySelectorAll('.product');
+
+    products.forEach(product => {
+      if (size === 'all' || product.getAttribute('data-size') === size) {
+        product.style.display = 'block';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  }
+</script>
 <body>
 
   <!-- شريط علوي بسيط -->
