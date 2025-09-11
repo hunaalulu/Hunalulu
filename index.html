@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hunalulu Swimwear</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <!-- الهيدر مع اللوجو والعبارة -->
+
+  <!-- الشريط العلوي: لوجو + عبارة -->
   <header class="header">
     <img class="logo" src="images/22EBEA58-3893-4A61-8482-24676350425D.png" alt="Hunalulu Logo">
-    <h2 class="tagline">Swim like a mermaid 🧜‍♀️</h2>
+    <h1 class="tagline">Swim like a mermaid 🧜‍♀️</h1>
   </header>
 
   <!-- تبويبات المقاسات -->
-  <div class="size-tabs">
-    <button class="tab active" onclick="filterProducts('all')">الكل</button>
+  <nav class="size-tabs">
+    <button class="tab active" onclick="filterProducts('all')">All</button>
     <button class="tab" onclick="filterProducts('S')">S</button>
     <button class="tab" onclick="filterProducts('M')">M</button>
     <button class="tab" onclick="filterProducts('L')">L</button>
     <button class="tab" onclick="filterProducts('XL')">XL</button>
     <button class="tab" onclick="filterProducts('2XL')">2XL</button>
-  </div>
+  </nav>
 
-  <!-- المنتجات -->
-  <div class="product-grid">
-    <!-- المنتج الأول -->
-    <div class="product-card" data-size="S M L">
-      <img src="images/IMG_5407.jpeg" alt="Blue Swimsuit">
-      <h3>Blue One-Piece Swimsuit</h3>
-      <p>Available: S, M, L</p>
+  <!-- شبكة المنتجات -->
+  <main class="product-grid">
+    <!-- مثال 1 -->
+    <article class="product-card" data-size="S M L">
+      <img src="images/IMG_5407.jpeg" alt="Blue One-Piece Swimsuit">
+      <h3 class="title">Blue One-Piece Swimsuit</h3>
+      <p class="avail">Available: S, M, L</p>
       <span class="price">AED 249</span>
-    </div>
+      <a href="#" class="order-btn">Order Now</a>
+    </article>
 
-    <!-- المنتج الثاني -->
-    <div class="product-card" data-size="S">
-      <img src="images/IMG_5404.jpeg" alt="Cotton Candy Swimsuit">
-      <h3>Cotton Candy One-Piece Swimsuit</h3>
-      <p>Available: S</p>
+    <!-- مثال 2 -->
+    <article class="product-card" data-size="S">
+      <img src="images/IMG_5404.jpeg" alt="Cotton Candy One-Piece">
+      <h3 class="title">Cotton Candy One-Piece</h3>
+      <p class="avail">Available: S</p>
       <span class="price">AED 230</span>
-    </div>
-  </div>
+      <a href="#" class="order-btn">Order Now</a>
+    </article>
+
+    <!-- كرري الكارت فوق لأي منتج جديد: غيّري الصورة/العنوان/المقاسات/السعر -->
+  </main>
 
   <script src="script.js"></script>
 </body>
