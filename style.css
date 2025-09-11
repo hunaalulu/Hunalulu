@@ -1,72 +1,93 @@
-:root{
-  --brand:#00bfa6;      /* تيفاني */
-  --text:#222;
-  --muted:#6b7280;
-  --card:#ffffff;
-  --bg:#f5fffd;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background:var(--bg);
-  color:var(--text);
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #e0f7f5;
+  text-align: center;
 }
 
-/* الهيدر */
-.site-header{
-  text-align:center;
-  padding:16px 12px 8px;
-  background:linear-gradient(180deg,#b9fff3 0%, #eafff9 100%);
-  position: sticky; top:0; z-index:10;
-}
-.logo{
-  width:120px; height:120px; object-fit:cover;
-  border-radius:50%;
-  border:6px solid #fff; box-shadow:0 6px 20px rgba(0,0,0,.08);
-  background:#fff;
-}
-.tagline{margin:8px 0 10px; color:#066; font-weight:600}
-
-/* الفلاتر */
-.filters{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:8px 0 14px}
-.filter-btn{
-  border:1px solid var(--brand); background:#fff; color:var(--brand);
-  padding:8px 12px; border-radius:999px; font-weight:600
-}
-.filter-btn.active, .filter-btn:hover{background:var(--brand); color:#fff}
-
-/* الشبكة */
-.container{max-width:1100px;margin:18px auto;padding:0 12px}
-.grid{
-  display:grid; gap:16px;
-  grid-template-columns:repeat( auto-fill, minmax(210px,1fr) );
+header {
+  background: linear-gradient(to bottom, #a7e5e0, #e0f7f5);
+  padding: 20px;
 }
 
-/* الكرت */
-.card{
-  background:var(--card);
-  border-radius:14px; overflow:hidden;
-  box-shadow:0 6px 18px rgba(0,0,0,.06);
-  display:flex; flex-direction:column;
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.thumb{display:block; background:#f0f0f0}
-.thumb img{
-  width:100%; height:100%;
-  aspect-ratio:1/1; object-fit:cover; display:block;
-}
-.info{padding:12px}
-h3{font-size:16px; margin:0 0 6px}
-.sizes{color:var(--muted); margin:0 0 6px; font-size:13px}
-.price{color:var(--brand); font-weight:700; margin:0 0 10px}
-.order-btn{
-  display:inline-block; text-decoration:none; text-align:center;
-  background:var(--brand); color:#fff; padding:10px 14px; border-radius:10px;
-  font-weight:700;
-}
-.order-btn:hover{filter:brightness(0.95)}
 
-/* الفوتر */
-.site-footer{
-  text-align:center; color:#667085; font-size:13px; padding:24px 10px 40px;
+.logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+h2 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.filter-btn {
+  border: 2px solid #00bfa6;
+  background: white;
+  color: #00bfa6;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #00bfa6;
+  color: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.product img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product h3 {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.sizes {
+  color: #777;
+  font-size: 14px;
+}
+
+.price {
+  color: #00bfa6;
+  font-weight: bold;
+  font-size: 18px;
 }
