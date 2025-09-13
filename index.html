@@ -1,104 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hunalulu Swimwear</title>
   <link rel="stylesheet" href="style.css">
   <style>
     /* General Style */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #b2ebf2; /* Tiffany */
-      text-align: center;
-    }
-
-    header .logo {
-      width: 120px;
-      margin: 20px auto;
-      display: block;
-    }
-
-    .tagline {
-      font-size: 1.2em;
-      color: #000;
-      margin-bottom: 15px;
-    }
+    body{margin:0;font-family:Arial,sans-serif;background-color:#b2ebf2;text-align:center}
+    header .logo{width:120px;margin:20px auto;display:block}
+    .tagline{font-size:1.2em;color:#000;margin-bottom:15px}
 
     /* Filter Buttons */
-    .sizes {
-      margin: 15px 0;
+    .sizes{margin:15px 0}
+    .sizes button{
+      background-color:#b2ebf2;border:2px solid #00a7a7;color:#00a7a7;
+      padding:8px 15px;margin:5px;border-radius:30px;font-size:14px;cursor:pointer
     }
-    .sizes button {
-      background-color: #b2ebf2;
-      border: 2px solid #00a7a7;
-      color: #00a7a7;
-      padding: 8px 15px;
-      margin: 5px;
-      border-radius: 30px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .sizes button:hover,
-    .sizes button.active {
-      background-color: #00a7a7;
-      color: white;
-    }
+    .sizes button:hover,.sizes button.active{background-color:#00a7a7;color:#fff}
 
-    /* Products Section */
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 15px;
+    /* Products: horizontal cards */
+    .products{
+      display:flex;flex-direction:row;gap:20px;padding:15px;
+      overflow-x:auto;scroll-snap-type:x mandatory;justify-content:flex-start
     }
-    .product {
-      background: white;
-      border-radius: 12px;
-      width: 160px;
-      padding: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
+    .products::-webkit-scrollbar{display:none}
+    .product{
+      background:#fff;border-radius:12px;min-width:180px;flex:0 0 auto;
+      padding:10px;box-shadow:0 2px 6px rgba(0,0,0,.1);text-align:center;scroll-snap-align:center
     }
-    .product img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .product-name {
-      font-size: 14px;
-      margin: 8px 0 4px;
-    }
-    .available {
-      font-size: 12px;
-      color: #555;
-      margin-bottom: 5px;
-    }
-    .desc {
-      font-size: 12px;
-      color: #666;
-      margin: 5px 0;
-    }
-    .price {
-      font-size: 16px;
-      font-weight: bold;
-      color: #00a887;
-      margin: 5px 0;
-    }
-    .order-btn {
-      display: block;
-      background-color: #00a7a7;
-      color: white;
-      padding: 8px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 13px;
-      margin-top: 5px;
-    }
-    .order-btn:hover {
-      background-color: #007c7c;
-    }
+    .product img{width:100%;border-radius:8px}
+    .product-name{font-size:14px;margin:8px 0 4px}
+    .available{font-size:12px;color:#555;margin-bottom:5px}
+    .desc{font-size:12px;color:#666;margin:5px 0}
+    .price{font-size:16px;font-weight:700;color:#00a887;margin:5px 0}
+    .order-btn{display:block;background:#00a7a7;color:#fff;padding:8px;text-decoration:none;border-radius:5px;font-size:13px;margin-top:5px}
+    .order-btn:hover{background:#007c7c}
   </style>
 </head>
 <body>
@@ -111,93 +48,85 @@
 
   <!-- Filter Buttons -->
   <nav class="sizes">
-    <button class="active" onclick="filterSize('all')">All</button>
-    <button onclick="filterSize('S')">S</button>
-    <button onclick="filterSize('M')">M</button>
-    <button onclick="filterSize('L')">L</button>
-    <button onclick="filterSize('XL')">XL</button>
-    <button onclick="filterSize('2XL')">2XL</button>
+    <button class="active" onclick="filterSize('all', this)">All</button>
+    <button onclick="filterSize('S', this)">S</button>
+    <button onclick="filterSize('M', this)">M</button>
+    <button onclick="filterSize('L', this)">L</button>
+    <button onclick="filterSize('XL', this)">XL</button>
+    <button onclick="filterSize('2XL', this)">2XL</button>
   </nav>
 
-  <!-- Products -->
+  <!-- Products (use your new image names) -->
   <section class="products">
 
-    <!-- Olive Green Bikini -->
     <div class="product" data-size="S,M,L">
       <img src="images/Olivegreen.jpeg" alt="Olive Green Bikini">
       <h2 class="product-name">Olive Green Bikini</h2>
       <p class="available">Available: S, M, L</p>
-      <p class="desc">Classic two-piece bikini with a flattering tummy control design.</p>
+      <p class="desc">Classic two-piece bikini with a flattering tummy-control design.</p>
       <p class="price">AED 299</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
 
-    <!-- Boyshort -->
     <div class="product" data-size="S,M">
       <img src="images/boyshort.jpeg" alt="One-Piece Boyshort">
       <h2 class="product-name">One-Piece Boyshort</h2>
       <p class="available">Available: S, M</p>
-      <p class="desc">Sporty one-piece swimsuit with full coverage for comfort and fun.</p>
+      <p class="desc">Sporty one-piece with comfy coverage for active beach days.</p>
       <p class="price">AED 240</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
 
-    <!-- Elegant Twist -->
     <div class="product" data-size="M">
       <img src="images/eleganttwist.jpeg" alt="Elegant Twist">
       <h2 class="product-name">Elegant Twist</h2>
       <p class="available">Available: M</p>
-      <p class="desc">Chic black swimsuit with a unique wrap-around twist design.</p>
+      <p class="desc">Chic black swimsuit with a unique wrap-around twist.</p>
       <p class="price">AED 280</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
 
-    <!-- Floral -->
     <div class="product" data-size="S,M,L">
       <img src="images/floral.jpeg" alt="Floral Swimsuit">
       <h2 class="product-name">Floral Swimsuit</h2>
       <p class="available">Available: S, M, L</p>
-      <p class="desc">Fresh floral print swimsuit to brighten up your beach day.</p>
+      <p class="desc">Fresh floral print to brighten your beach day.</p>
       <p class="price">AED 270</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
 
-    <!-- Freedom -->
     <div class="product" data-size="L">
       <img src="images/freedom.jpeg" alt="Freedom Swimsuit">
       <h2 class="product-name">Freedom Swimsuit</h2>
       <p class="available">Available: L</p>
-      <p class="desc">Lightweight and flexible swimsuit for maximum movement freedom.</p>
+      <p class="desc">Lightweight & flexible for maximum movement.</p>
       <p class="price">AED 260</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
 
-    <!-- Red -->
     <div class="product" data-size="XL">
       <img src="images/red.jpeg" alt="Stunning Red">
       <h2 class="product-name">Stunning Red</h2>
       <p class="available">Available: XL</p>
-      <p class="desc">Bold and confident red swimsuit for a standout beach look.</p>
+      <p class="desc">Bold red swimsuit for a standout beach look.</p>
       <p class="price">AED 255</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
 
-    <!-- Royal -->
     <div class="product" data-size="XL">
       <img src="images/royal.jpeg" alt="Royal Blue">
       <h2 class="product-name">Royal Blue</h2>
       <p class="available">Available: XL</p>
-      <p class="desc">Elegant royal blue swimsuit with sleek lines and fit.</p>
+      <p class="desc">Elegant royal blue with sleek lines.</p>
       <p class="price">AED 250</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
 
-    <!-- Sky Blue -->
     <div class="product" data-size="S">
       <img src="images/Sky.jpeg" alt="Sky Blue">
       <h2 class="product-name">Sky Blue</h2>
       <p class="available">Available: S</p>
-      <p class="desc">Cool sky blue swimsuit for a refreshing summer vibe.</p>
+      <p class="desc">Cool sky-blue vibe for sunny days.</p>
       <p class="price">AED 245</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
@@ -206,23 +135,17 @@
 
   <!-- Filter Script -->
   <script>
-    function filterSize(size) {
-      const products = document.querySelectorAll('.product');
-      const buttons = document.querySelectorAll('.sizes button');
+    function filterSize(size, btn){
+      // toggle active button
+      document.querySelectorAll('.sizes button').forEach(b=>b.classList.remove('active'));
+      if(btn) btn.classList.add('active');
 
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      products.forEach(product => {
-        const sizes = product.getAttribute('data-size').split(',');
-        if (size === 'all' || sizes.includes(size)) {
-          product.style.display = 'block';
-        } else {
-          product.style.display = 'none';
-        }
+      // show/hide products
+      document.querySelectorAll('.product').forEach(card=>{
+        const sizes = card.getAttribute('data-size').split(',');
+        card.style.display = (size==='all' || sizes.includes(size)) ? 'block' : 'none';
       });
     }
   </script>
-
 </body>
 </html>
