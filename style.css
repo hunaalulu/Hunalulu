@@ -89,7 +89,7 @@ header .logo {
 .product img {
   width: 100% !important;
   height: 220px !important;          /* ارتفاع ثابت للصور */
-  object-fit: contain !important;    /* عرض كامل بدون قص */
+  object-fit: cover; !important;    /* عرض كامل بدون قص */
   border-radius: 8px;
   display: block;
   margin: 0 auto;
