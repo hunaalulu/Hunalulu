@@ -1,42 +1,68 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>hunalulu swimwear</title>
-  <meta name="description" content="Hunalulu Swimwear - Swim like a mermaid">
-  <link rel="icon" href="images/logo.png">
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huna lulu Swimwear</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="hero">
-    <div class="brand">
-      <img src="images/logo.png" alt="hunalulu logo" class="logo" />
-      <div class="brand-text">
-        <h2 class="brand-name">hunalulu</h2>
-        <span class="brand-sub">swimwear</span>
-      </div>
-    </div>
-    <h1 class="tagline">Swim like a mermaid 🧜‍♀️</h1>
 
-    <!-- تبويبات المقاسات -->
-    <nav class="sizes" id="sizeTabs" aria-label="size filters">
-      <!-- يتم ملؤها من app.js -->
-    </nav>
+  <!-- الشريط العلوي مع اللوجو -->
+  <header>
+    <img src="images/logo.png" alt="Huna lulu Logo" class="logo">
+    <h1 class="tagline">Swim like a mermaid 🧜‍♀️</h1>
   </header>
 
-  <main>
-    <section id="productsGrid" class="grid" aria-live="polite"></section>
-  </main>
+  <!-- تبويبات المقاسات -->
+  <nav class="sizes">
+    <button onclick="filterSize('all')">All</button>
+    <button onclick="filterSize('S')">S</button>
+    <button onclick="filterSize('M')">M</button>
+    <button onclick="filterSize('L')">L</button>
+    <button onclick="filterSize('XL')">XL</button>
+    <button onclick="filterSize('2XL')">2XL</button>
+  </nav>
 
-  <footer class="footer">
-    <p>© <span id="year"></span> hunalulu swimwear</p>
-  </footer>
+  <!-- المنتجات -->
+  <section class="products">
+    <div class="product" data-size="S">
+      <img src="images/swimsuit1.png" alt="Red Swimsuit">
+      <h2>Tummy Control Swimsuit</h2>
+      <p class="price">299 AED</p>
+      <p class="desc">Perfect tummy control for a flattering look.</p>
+      <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
+    </div>
 
-  <script src="app.js"></script>
+    <div class="product" data-size="M">
+      <img src="images/swimsuit2.png" alt="Blue Swimsuit">
+      <h2>Classic Blue Swimwear</h2>
+      <p class="price">240 AED</p>
+      <p class="desc">Elegant and comfortable, ideal for summer.</p>
+      <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
+    </div>
+
+    <div class="product" data-size="L">
+      <img src="images/swimsuit3.png" alt="Tropical Swimsuit">
+      <h2>Tropical Vibes</h2>
+      <p class="price">250 AED</p>
+      <p class="desc">Stand out with bold tropical colors.</p>
+      <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
+    </div>
+  </section>
+
   <script>
-    // سنة الفوتر
-    document.getElementById('year').textContent = new Date().getFullYear();
+    function filterSize(size) {
+      const products = document.querySelectorAll('.product');
+      products.forEach(product => {
+        if (size === 'all' || product.getAttribute('data-size') === size) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
   </script>
+
 </body>
 </html>
