@@ -54,29 +54,30 @@ header .logo {
 .products {
   display: flex !important;
   flex-direction: row !important;
-  flex-wrap: nowrap !important; /* إجبار الصف أن يكون أفقي */
-  gap: 20px !important;
-  padding: 15px !important;
-  overflow-x: auto !important;
+  flex-wrap: nowrap !important;      /* إجبار الصف أن يكون أفقي */
+  gap: 16px !important;
+  padding: 16px !important;
+  overflow-x: auto !important;       /* تمرير جانبي على الموبايل */
   scroll-snap-type: x mandatory !important;
   justify-content: flex-start !important;
   width: 100% !important;
 }
 
 .products::-webkit-scrollbar {
-  display: none; /* Hide scrollbar on mobile */
+  display: none; /* إخفاء شريط التمرير */
 }
 
 /* Product Card */
 .product {
   background: #fff;
   border-radius: 12px;
-  min-width: 180px !important;
+  width: 220px !important;           /* عرض ثابت للكارت */
+  min-width: 220px !important;
   flex: 0 0 auto !important;
+  scroll-snap-align: center !important;
   padding: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  scroll-snap-align: center;
   transition: transform 0.2s ease;
 }
 
@@ -84,9 +85,14 @@ header .logo {
   transform: translateY(-4px);
 }
 
+/* Product Image */
 .product img {
-  width: 100%;
+  width: 100% !important;
+  height: 220px !important;          /* ارتفاع ثابت للصور */
+  object-fit: contain !important;    /* عرض كامل بدون قص */
   border-radius: 8px;
+  display: block;
+  margin: 0 auto;
 }
 
 /* Grid layout for large screens */
@@ -98,7 +104,12 @@ header .logo {
   }
 
   .product {
-    min-width: 220px !important;
+    width: 240px !important;
+    min-width: 240px !important;
+  }
+
+  .product img {
+    height: 240px !important;
   }
 }
 
