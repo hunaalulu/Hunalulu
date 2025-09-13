@@ -4,135 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hunalulu Swimwear</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- كل الستايل هنا لضمان تطبيقه -->
   <style>
-    /* General Style */
-    body{
-      margin:0;
-      font-family:Arial,sans-serif;
-      background-color:#b2ebf2; /* Tiffany */
-      text-align:center;
-    }
+    /* General */
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,sans-serif;background:#b2ebf2;text-align:center}
 
-    header .logo{
-      width:120px;
-      margin:20px auto;
-      display:block;
-    }
+    /* Header */
+    header .logo{width:120px;margin:20px auto;display:block}
+    .tagline{font-size:1.2em;color:#000;margin-bottom:15px}
 
-    .tagline{
-      font-size:1.2em;
-      color:#000;
-      margin-bottom:15px;
-    }
-
-    /* Filter Buttons */
-    .sizes{
-      margin:15px 0;
-    }
+    /* Filter buttons */
+    .sizes{margin:15px 0}
     .sizes button{
-      background-color:#b2ebf2;
-      border:2px solid #00a7a7;
-      color:#00a7a7;
-      padding:8px 15px;
-      margin:5px;
-      border-radius:30px;
-      font-size:14px;
-      cursor:pointer;
+      background:#b2ebf2;border:2px solid #00a7a7;color:#00a7a7;
+      padding:8px 15px;margin:5px;border-radius:30px;font-size:14px;cursor:pointer
     }
-    .sizes button:hover,
-    .sizes button.active{
-      background-color:#00a7a7;
-      color:#fff;
-    }
+    .sizes button:hover,.sizes button.active{background:#00a7a7;color:#fff}
 
-    /* Products - horizontal on mobile, grid on desktop */
+    /* PRODUCTS: صف أفقي على الموبايل */
     .products{
-      display:flex;
-      flex-direction:row;
-      gap:20px;
-      padding:15px;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      justify-content:flex-start;
+      display:flex !important;
+      flex-direction:row !important;
+      flex-wrap:nowrap !important;     /* أهم شيء لمنع النزول تحت بعض */
+      gap:16px !important;
+      padding:16px !important;
+      overflow-x:auto !important;
+      scroll-snap-type:x mandatory !important;
+      justify-content:flex-start !important;
+      width:100% !important;
     }
+    .products::-webkit-scrollbar{display:none}
 
-    .products::-webkit-scrollbar{
-      display:none;
-    }
-
+    /* كرت المنتج بحجم ثابت */
     .product{
-      background:#fff;
-      border-radius:12px;
-      min-width:180px;
-      flex:0 0 auto;
-      padding:10px;
-      box-shadow:0 2px 6px rgba(0,0,0,.1);
-      text-align:center;
-      scroll-snap-align:center;
+      background:#fff;border-radius:12px;
+      width:220px !important; min-width:220px !important;  /* عرض ثابت */
+      flex:0 0 auto !important; scroll-snap-align:center !important;
+      padding:10px; box-shadow:0 2px 6px rgba(0,0,0,.1); text-align:center
     }
 
+    /* الصورة داخل إطار مضبوط */
     .product img{
-      width:100%;
-      border-radius:8px;
+      width:100% !important;
+      height:220px !important;          /* ارتفاع ثابت */
+      object-fit:contain !important;     /* بدّليها إلى cover لو بدك قص أنيق */
+      border-radius:8px; display:block; margin:0 auto
     }
 
-    /* Grid layout for large screens */
+    /* نصوص */
+    .product-name{font-size:14px;margin:8px 0 4px}
+    .available{font-size:12px;color:#555;margin-bottom:5px}
+    .desc{font-size:12px;color:#666;margin:5px 0}
+    .price{font-size:16px;font-weight:700;color:#00a887;margin:5px 0}
+    .order-btn{display:block;background:#00a7a7;color:#fff;padding:8px;text-decoration:none;border-radius:5px;font-size:13px;margin-top:5px}
+
+    /* على الشاشات الكبيرة نحول لشبكة */
     @media (min-width:900px){
-      .products{
-        flex-wrap:wrap;
-        overflow-x:visible;
-        justify-content:center;
-      }
-      .product{
-        min-width:220px;
-      }
-    }
-
-    .product-name{
-      font-size:14px;
-      margin:8px 0 4px;
-    }
-    .available{
-      font-size:12px;
-      color:#555;
-      margin-bottom:5px;
-    }
-    .desc{
-      font-size:12px;
-      color:#666;
-      margin:5px 0;
-    }
-    .price{
-      font-size:16px;
-      font-weight:bold;
-      color:#00a887;
-      margin:5px 0;
-    }
-    .order-btn{
-      display:block;
-      background:#00a7a7;
-      color:#fff;
-      padding:8px;
-      text-decoration:none;
-      border-radius:5px;
-      font-size:13px;
-      margin-top:5px;
-    }
-    .order-btn:hover{
-      background:#007c7c;
+      .products{flex-wrap:wrap !important;overflow-x:visible !important;justify-content:center !important}
+      .product{width:240px !important;min-width:240px !important}
+      .product img{height:240px !important}
     }
   </style>
 </head>
 <body>
 
-  <!-- Logo and Tagline -->
   <header>
     <img src="images/logo.png" alt="Hunalulu Logo" class="logo">
     <h1 class="tagline">Swim like a mermaid 🧜‍♀️</h1>
   </header>
 
-  <!-- Filter Buttons -->
   <nav class="sizes">
     <button class="active" onclick="filterSize('all', this)">All</button>
     <button onclick="filterSize('S', this)">S</button>
@@ -142,7 +84,6 @@
     <button onclick="filterSize('2XL', this)">2XL</button>
   </nav>
 
-  <!-- Products -->
   <section class="products">
     <div class="product" data-size="S,M,L">
       <img src="images/Olivegreen.jpeg" alt="Olive Green Bikini">
@@ -157,7 +98,7 @@
       <img src="images/boyshort.jpeg" alt="One-Piece Boyshort">
       <h2 class="product-name">One-Piece Boyshort</h2>
       <p class="available">Available: S, M</p>
-      <p class="desc">Sporty one-piece swimsuit with comfy coverage.</p>
+      <p class="desc">Sporty one-piece swimsuit with comfy coverage for active beach days.</p>
       <p class="price">AED 240</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
@@ -175,7 +116,7 @@
       <img src="images/floral.jpeg" alt="Floral Swimsuit">
       <h2 class="product-name">Floral Swimsuit</h2>
       <p class="available">Available: S, M, L</p>
-      <p class="desc">Fresh floral print swimsuit to brighten up your beach day.</p>
+      <p class="desc">Fresh floral print to brighten your beach day.</p>
       <p class="price">AED 270</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
@@ -184,7 +125,7 @@
       <img src="images/freedom.jpeg" alt="Freedom Swimsuit">
       <h2 class="product-name">Freedom Swimsuit</h2>
       <p class="available">Available: L</p>
-      <p class="desc">Lightweight and flexible swimsuit for maximum movement freedom.</p>
+      <p class="desc">Lightweight & flexible for maximum movement.</p>
       <p class="price">AED 260</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
@@ -193,7 +134,7 @@
       <img src="images/red.jpeg" alt="Stunning Red">
       <h2 class="product-name">Stunning Red</h2>
       <p class="available">Available: XL</p>
-      <p class="desc">Bold and confident red swimsuit for a standout beach look.</p>
+      <p class="desc">Bold red swimsuit for a standout beach look.</p>
       <p class="price">AED 255</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
@@ -202,7 +143,7 @@
       <img src="images/royal.jpeg" alt="Royal Blue">
       <h2 class="product-name">Royal Blue</h2>
       <p class="available">Available: XL</p>
-      <p class="desc">Elegant royal blue swimsuit with sleek lines and fit.</p>
+      <p class="desc">Elegant royal blue swimsuit with sleek lines.</p>
       <p class="price">AED 250</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
@@ -211,26 +152,21 @@
       <img src="images/Sky.jpeg" alt="Sky Blue">
       <h2 class="product-name">Sky Blue</h2>
       <p class="available">Available: S</p>
-      <p class="desc">Cool sky blue swimsuit for a refreshing summer vibe.</p>
+      <p class="desc">Cool sky-blue vibe for sunny days.</p>
       <p class="price">AED 245</p>
       <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
     </div>
   </section>
 
-  <!-- Filter Script -->
   <script>
     function filterSize(size, btn){
-      // Toggle active button
       document.querySelectorAll('.sizes button').forEach(b=>b.classList.remove('active'));
       if(btn) btn.classList.add('active');
-
-      // Show/Hide products
       document.querySelectorAll('.product').forEach(card=>{
         const sizes = card.getAttribute('data-size').split(',');
         card.style.display = (size==='all' || sizes.includes(size)) ? 'block' : 'none';
       });
     }
   </script>
-
 </body>
 </html>
