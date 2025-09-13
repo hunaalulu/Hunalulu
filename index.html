@@ -56,17 +56,30 @@
     <button onclick="filterSize('2XL', this)">2XL</button>
   </nav>
 
-  <!-- Products (use your new image names) -->
-  <section class="products">
+  /* Products: horizontal cards */
+.products{
+  display:flex;
+  flex-direction: row;     /* صف أفقي */
+  gap:20px;
+  padding:15px;
+  overflow-x:auto;         /* تمرير جانبي بالجوال */
+  scroll-snap-type:x mandatory;
+  justify-content:flex-start;
+}
+.products::-webkit-scrollbar{display:none}
 
-    <div class="product" data-size="S,M,L">
-      <img src="images/Olivegreen.jpeg" alt="Olive Green Bikini">
-      <h2 class="product-name">Olive Green Bikini</h2>
-      <p class="available">Available: S, M, L</p>
-      <p class="desc">Classic two-piece bikini with a flattering tummy-control design.</p>
-      <p class="price">AED 299</p>
-      <a href="https://wa.me/971xxxxxxxxx" class="order-btn">Order Now</a>
-    </div>
+.product{
+  background:#fff;
+  border-radius:12px;
+  min-width:180px;         /* عرض ثابت لكل كرت */
+  flex:0 0 auto;           /* لا يتمدد */
+  padding:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,.1);
+  text-align:center;
+  scroll-snap-align:center;
+}
+
+.product img{width:100%;border-radius:8px}
 
     <div class="product" data-size="S,M">
       <img src="images/boyshort.jpeg" alt="One-Piece Boyshort">
