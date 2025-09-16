@@ -1,7 +1,4 @@
-/* ============================
-   Hunalulu Swimwear Styles
-   ============================ */
-/* ===== إعدادات عامة ===== */
+/* ===== الأساسيات ===== */
 body {
   font-family: Arial, sans-serif;
   background-color: #b2ebf2;
@@ -15,16 +12,17 @@ h1 {
   margin: 20px 0;
 }
 
+/* ===== الحاوية الرئيسية ===== */
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 15px;
   padding: 20px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 
-/* ===== تنسيق كل منتج ===== */
+/* ===== كرت المنتج ===== */
 .product {
   background: white;
   border-radius: 12px;
@@ -45,46 +43,46 @@ h1 {
   width: 100%;
   max-width: 180px;
   height: 220px;
-  object-fit: cover; /* يحافظ على تناسق الصورة */
+  object-fit: cover; /* يجعل الصور بنفس الشكل */
   border-radius: 8px;
   margin-bottom: 10px;
 }
 
-/* ===== اسم المنتج ===== */
-/* اسم المايوه */
+/* ===== اسم المايو ===== */
 .product-name {
-  font-size: 18px;      /* حجم واضح مثل باقي الأسماء */
-  font-weight: bold;     /* يجعل النص بولد */
-  color: #000;           /* لون أسود */
-  text-align: center;    /* توسيط الاسم */
-  margin: 8px 0 4px 0;   /* مسافة متناسقة */
+  font-size: 18px;
+  font-weight: bold;
+  color: #000; /* أسود */
+  text-align: center;
+  margin: 8px 0 4px 0;
 }
 
-/* وصف المايوه */
-.product-description {
-  font-size: 14px;       /* حجم أصغر للوصف */
-  color: #555;           /* لون رمادي للوصف */
-  text-align: center;    /* توسيط الوصف */
-  margin: 4px 0 8px 0;   /* مسافة متناسقة */
-} */
-
-}
-
-}
-
-/* ===== النصوص الأخرى ===== */
-.available,
-.desc,
-.price {
+/* ===== المقاسات ===== */
+.product .sizes,
+.product .available {
   font-size: 14px;
-  color: #555;
-  margin: 4px 0;
+  color: #777; /* رمادي */
+  text-align: center;
+  margin: 0 0 6px;
 }
 
+/* ===== وصف المنتج ===== */
+.product .product-description,
+.product .desc {
+  font-size: 14px;
+  color: #777; /* رمادي */
+  text-align: center;
+  line-height: 1.4;
+  margin: 0 0 10px;
+}
+
+/* ===== السعر ===== */
 .price {
   font-size: 16px;
   font-weight: bold;
-  color: #00bfa6;
+  color: #00bfa6; /* تركواز */
+  text-align: center;
+  margin: 8px 0;
 }
 
 /* ===== زر Order Now ===== */
@@ -97,14 +95,17 @@ h1 {
   margin-top: 8px;
   display: inline-block;
   font-size: 14px;
+  font-weight: bold;
   transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 150px;
 }
 
 .order-btn:hover {
   background-color: #00897b;
 }
 
-/* ===== تنسيق فلترة المقاسات ===== */
+/* ===== أزرار فلترة المقاسات ===== */
 .filter-buttons {
   margin: 15px 0;
 }
