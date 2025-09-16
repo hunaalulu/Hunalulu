@@ -5,7 +5,48 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+<style>
+/* ====== Product Card Styling ====== */
+.product .product-name {
+  font-size: 18px !important;      /* حجم الاسم */
+  font-weight: 700 !important;     /* Bold */
+  color: #000 !important;          /* أسود */
+  margin: 10px 0 6px !important;
+  text-align: center !important;
 }
+
+.product .sizes,
+.product .available,
+.product .desc,
+.product .product-description {
+  font-size: 14px !important;      /* حجم أصغر للمقاس والوصف */
+  font-weight: 400 !important;
+  color: #777 !important;          /* رمادي */
+  margin: 0 0 8px !important;
+  text-align: center !important;
+}
+
+.product .price {
+  font-size: 22px !important;      /* حجم السعر */
+  font-weight: 700 !important;
+  color: #00bfa6 !important;       /* لون أخضر */
+  margin: 6px 0 10px !important;
+  text-align: center !important;
+}
+
+.product .order-btn {
+  display: block;
+  background-color: #00bfa6;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 10px auto 0 auto;
+  width: 80%;
+}
+</style>
 
 h1 {
   color: #333;
