@@ -126,4 +126,22 @@ h1 {
 .filter-btn:hover {
   background-color: #00bfa6;
   color: white;
+}/* ===== الاسم - أسود وبولد ===== */
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000 !important;  /* أسود غامق */
+  text-align: center;
+  margin: 8px 0 4px 0;
+}
+
+/* ===== المقاس والوصف - رمادي فاتح ===== */
+.product .sizes,
+.product .available,
+.product .product-description,
+.product .desc {
+  font-size: 14px;
+  color: #777 !important; /* رمادي */
+  text-align: center;
+  margin: 0 0 6px;
 }
