@@ -1,238 +1,100 @@
-/* ===== الأساسيات ===== */
+/* ====== General Page Styling ====== */
 body {
   font-family: Arial, sans-serif;
-  background-color: #b2ebf2;
+  background-color: #b8edf1; /* خلفية سماوية */
   margin: 0;
   padding: 0;
-  text-align: center;
-<style>
-/* ====== Product Card Styling ====== */
-.product .product-name {
-  font-size: 18px !important;      /* حجم الاسم */
-  font-weight: 700 !important;     /* Bold */
-  color: #000 !important;          /* أسود */
-  margin: 10px 0 6px !important;
-  text-align: center !important;
 }
 
-.product .sizes,
-.product .available,
-.product .desc,
-.product .product-description {
-  font-size: 14px !important;      /* حجم أصغر للمقاس والوصف */
-  font-weight: 400 !important;
-  color: #777 !important;          /* رمادي */
-  margin: 0 0 8px !important;
-  text-align: center !important;
-}
-
-.product .price {
-  font-size: 22px !important;      /* حجم السعر */
-  font-weight: 700 !important;
-  color: #00bfa6 !important;       /* لون أخضر */
-  margin: 6px 0 10px !important;
-  text-align: center !important;
-}
-
-.product .order-btn {
-  display: block;
-  background-color: #00bfa6;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 10px auto 0 auto;
-  width: 80%;
-}
-</style>
-
-h1 {
-  color: #333;
-  margin: 20px 0;
-}
-
-/* ===== الحاوية الرئيسية ===== */
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
   padding: 20px;
-  max-width: 1000px;
-  margin: auto;
 }
 
-/* ===== كرت المنتج ===== */
+/* ====== Product Card Styling ====== */
 .product {
   background: white;
   border-radius: 12px;
-  padding: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
   transition: transform 0.3s ease;
 }
 
 .product:hover {
-  transform: scale(1.03);
+  transform: translateY(-5px);
 }
 
-/* ===== الصور ===== */
 .product img {
-  width: 100%;
-  max-width: 180px;
-  height: 220px;
-  object-fit: cover; /* يجعل الصور بنفس الشكل */
+  max-width: 100%;
   border-radius: 8px;
   margin-bottom: 10px;
 }
 
-/* ===== اسم المايو ===== */
-.product-name {
-  font-size: 18px;
-  font-weight: bold;
-  color: #000; /* أسود */
-  text-align: center;
+/* ====== اسم المايو ====== */
+.product .product-name {
+  font-size: 18px;        /* حجم الاسم */
+  font-weight: bold;       /* الاسم يكون بولد */
+  color: #000;             /* أسود */
   margin: 8px 0 4px 0;
 }
 
-/* ===== المقاسات ===== */
+/* ====== المقاسات ====== */
 .product .sizes,
 .product .available {
   font-size: 14px;
-  color: #777; /* رمادي */
-  text-align: center;
-  margin: 0 0 6px;
+  font-weight: 400;
+  color: #777;             /* رمادي */
+  margin: 0 0 6px 0;
 }
 
-/* ===== وصف المنتج ===== */
-.product .product-description,
-.product .desc {
-  font-size: 14px;
-  color: #777; /* رمادي */
-  text-align: center;
-  line-height: 1.4;
-  margin: 0 0 10px;
-}
-
-/* ===== السعر ===== */
-.price {
-  font-size: 16px;
-  font-weight: bold;
-  color: #00bfa6; /* تركواز */
-  text-align: center;
-  margin: 8px 0;
-}
-
-/* ===== زر Order Now ===== */
-.order-btn {
-  background-color: #00bfa6;
-  color: white;
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 6px;
-  margin-top: 8px;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  max-width: 150px;
-}
-
-.order-btn:hover {
-  background-color: #00897b;
-}
-
-/* ===== أزرار فلترة المقاسات ===== */
-.filter-buttons {
-  margin: 15px 0;
-}
-
-.filter-btn {
-  border: 1px solid #00bfa6;
-  background: white;
-  color: #00bfa6;
-  padding: 8px 12px;
-  border-radius: 20px;
-  margin: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-  background-color: #00bfa6;
-  color: white;
-}/* ===== الاسم - أسود وبولد ===== */
-.product-name {
-  font-size: 18px;
-  font-weight: bold;
-  color: #000 !important;  /* أسود غامق */
-  text-align: center;
-  margin: 8px 0 4px 0;
-}
-
-/* ===== المقاس والوصف - رمادي فاتح ===== */
-.product .sizes,
-.product .available,
-.product .product-description,
-.product .desc {
-  font-size: 14px;
-  color: #777 !important; /* رمادي */
-  text-align: center;
-  margin: 0 0 6px;
-
-  /* ========= اسم المايو ========= */
-.product .product-name {
-  font-size: 18px !important;   /* حجم مناسب مثل الباقي */
-  font-weight: 700 !important;  /* Bold */
-  color: #000 !important;       /* أسود */
-  text-align: center;
-  margin: 10px 0 6px;
-}
-
-/* ========= النصوص الرمادية (المقاس + الوصف) ========= */
-/* تغطّي أي P داخل كرت المنتج */
-.product p {
-  font-size: 14px !important;
-  color: #777 !important;       /* رمادي */
-  font-weight: 400 !important;
-  text-align: center;
-  margin: 0 0 8px;
-}
-
-/* أسماء كلاس شائعة لو كنتِ مستخدماها */
-.product .sizes,
-.product .available,
+/* ====== وصف المايو ====== */
 .product .desc,
 .product .product-description {
-  font-size: 14px !important;
-  color: #777 !important;
-  font-weight: 400 !important;
+  font-size: 14px;
+  color: #777;             /* رمادي */
+  margin: 0 0 10px 0;
 }
 
-/* السعر يبقى أخضر وكبير */
+/* ====== السعر ====== */
 .product .price {
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  color: #00bfa6 !important;
-  margin: 6px 0 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #00bfa6;          /* أخضر */
+  margin: 6px 0 10px 0;
 }
 
-/* زر الطلب كما هو (للتأكيد فقط) */
+/* ====== زر Order Now ====== */
 .product .order-btn {
   display: inline-block;
-  width: 100%;
-  padding: 12px 16px;
-  background: #02a89e;
-  color: #fff !important;
-  text-align: center;
-  border-radius: 10px;
-  font-weight: 600;
+  width: 80%;
+  padding: 10px;
+  background-color: #00bfa6;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
-.product .order-btn:hover { filter: brightness(0.95); }
+
+.product .order-btn:hover {
+  background-color: #009f8c;
+}
+
+/* ====== Responsive Layout ====== */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    padding: 10px;
+  }
+
+  .product .product-name {
+    font-size: 16px;
+  }
+
+  .product .price {
+    font-size: 18px;
+  }
 }
