@@ -2,78 +2,170 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hunalulu Swimwear</title>
 
+<!-- ====== CSS (تصميم كامل) ====== -->
 <style>
-  /* خلفية عامة */
-  body{margin:0;background:#b3f0f2;font-family:Arial,sans-serif;}
+  :root{
+    --mint:#b3f0f2;
+    --brand:#00b894;
+    --ink:#111;
+    --muted:#666;
+    --card:#ffffff;
+    --ring:rgba(0,0,0,.08);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--mint);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+
+  /* الهيدر */
+  .hero{
+    padding:28px 16px 8px;
+    background:linear-gradient(180deg,#bff6f6 0,#b3f0f2 100%);
+    text-align:center
+  }
+  .logo{
+    width:120px;height:120px;margin:0 auto 10px;border-radius:50%;
+    display:grid;place-items:center;background:#9ee7ea;
+    box-shadow:0 6px 16px var(--ring)
+  }
+  .logo img{width:92%;height:92%;object-fit:contain;border-radius:50%}
+  .tagline{font-size:22px;font-weight:700;margin:6px 0 14px}
+
+  /* تبويبات المقاسات */
+  .filters{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:0 12px 16px}
+  .filter-btn{
+    border:2px solid #5ad3d3;background:#e9ffff;color:#0c6666;
+    padding:8px 14px;border-radius:999px;font-weight:700;cursor:pointer
+  }
+  .filter-btn.active{background:var(--brand);border-color:var(--brand);color:#fff}
 
   /* شبكة المنتجات */
-  .container{
-    display:flex;flex-wrap:wrap;justify-content:center;gap:16px;
-    padding:20px;
+  .grid{
+    display:grid;gap:18px;padding:10px 14px 32px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    max-width:1080px;margin:0 auto;
+  }
+  .card{
+    background:var(--card);border-radius:14px;box-shadow:0 10px 22px var(--ring);
+    padding:14px;text-align:center;display:flex;flex-direction:column
+  }
+  /* صندوق صورة بنسبة ثابتة حتى تكون كل البطاقات متماثلة */
+  .imgbox{
+    position:relative;width:100%;padding-top:125%; /* 4:5 */
+    border-radius:10px;overflow:hidden;background:#f6f6f6
+  }
+  .imgbox img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block
   }
 
-  /* بطاقة المنتج */
-  .product{
-    width:320px;max-width:92vw;background:#fff;border-radius:14px;
-    box-shadow:0 8px 18px rgba(0,0,0,.08);
-    padding:14px; text-align:center;
-  }
-  .product img{
-    width:100%;height:auto;border-radius:10px;display:block;
-    object-fit:cover;
-  }
+  .name{font-size:18px;font-weight:800;color:var(--ink);margin:12px 0 4px}
+  .avail{font-size:14px;margin:0 0 6px;color:var(--muted)}   /* المقاس رمادي */
+  .desc{font-size:14px;margin:0 0 10px;color:var(--muted);line-height:1.45} /* الوصف رمادي */
+  .price{font-size:20px;color:var(--brand);font-weight:800;margin:6px 0 12px}
 
-  /* نصوص واضحة مهما كان CSS قديم */
-  .product-name{font-size:22px;font-weight:700;color:#111 !important;margin:12px 0 6px;}
-  .available{font-size:16px;color:#666 !important;margin:0 0 8px;}
-  .desc{font-size:16px;color:#666 !important;margin:0 0 10px;line-height:1.4;}
-  .price{font-size:22px;font-weight:700;color:#00b894 !important;margin:8px 0 12px;}
-
-  /* زر الطلب */
-  .order-btn{
-    display:block;width:100%;text-decoration:none;text-align:center;
-    background:#00b894;color:#fff !important;font-weight:700;
-    padding:12px 14px;border-radius:10px;
+  .order{
+    margin-top:auto;display:block;width:100%;
+    background:var(--brand);color:#fff;text-decoration:none;text-align:center;
+    padding:12px 14px;border-radius:10px;font-weight:800
   }
-  .order-btn:active, .order-btn:hover{filter:brightness(.92);}
+  .order:hover{filter:brightness(.93)}
 </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- Blue Lake -->
-    <div class="product" data-size="M">
-      <img src="images/bluelake.jpeg" alt="Blue Lake swimsuit">
-      <h2 class="product-name">Blue Lake</h2>
-      <p class="available">Available: M</p>
-      <p class="desc">Tummy control swimming dress</p>
-      <p class="price">AED 259</p>
-      <a class="order-btn" href="https://wa.me/971504654412?text=Hi%20Hunalulu!%20I%20want%20to%20order%20Blue%20Lake%20(size%20M)">Order Now</a>
+  <!-- الهيدر -->
+  <header class="hero">
+    <div class="logo">
+      <!-- غيّري المسار إذا اسم الشعار مختلف -->
+      <img src="images/logo.png" alt="Hunalulu logo">
     </div>
+    <div class="tagline">Swim like a mermaid 🧜‍♀️</div>
 
-    <!-- Royal Blue -->
-    <div class="product" data-size="XL">
-      <img src="images/royal.jpeg" alt="Royal Blue swimsuit">
-      <h2 class="product-name">Royal Blue</h2>
-      <p class="available">Available: XL</p>
+    <!-- فلاتر المقاسات -->
+    <nav class="filters" id="filters">
+      <button class="filter-btn active" data-size="all">All</button>
+      <button class="filter-btn" data-size="S">S</button>
+      <button class="filter-btn" data-size="M">M</button>
+      <button class="filter-btn" data-size="L">L</button>
+      <button class="filter-btn" data-size="XL">XL</button>
+      <button class="filter-btn" data-size="2XL">2XL</button>
+    </nav>
+  </header>
+
+  <!-- المنتجات -->
+  <main class="grid" id="productGrid">
+    <!-- مثال 1 -->
+    <article class="card" data-sizes="M">
+      <div class="imgbox"><img src="images/bluelake.jpeg" alt="Blue Lake swimsuit"></div>
+      <h3 class="name">Blue Lake</h3>
+      <p class="avail">Available: M</p>
+      <p class="desc">Tummy control swimming dress.</p>
+      <div class="price">AED 259</div>
+      <a class="order" href="#" data-whats="Blue Lake">Order Now</a>
+    </article>
+
+    <!-- مثال 2 -->
+    <article class="card" data-sizes="XL">
+      <div class="imgbox"><img src="images/royal.jpeg" alt="Royal Blue swimsuit"></div>
+      <h3 class="name">Royal Blue</h3>
+      <p class="avail">Available: XL</p>
       <p class="desc">Elegant royal blue swimsuit with sleek lines.</p>
-      <p class="price">AED 250</p>
-      <a class="order-btn" href="https://wa.me/971504654412?text=Hi%20Hunalulu!%20I%20want%20to%20order%20Royal%20Blue%20(size%20XL)">Order Now</a>
-    </div>
+      <div class="price">AED 250</div>
+      <a class="order" href="#" data-whats="Royal Blue">Order Now</a>
+    </article>
 
-    <!-- Sky Blue -->
-    <div class="product" data-size="S">
-      <img src="images/Sky.jpeg" alt="Sky Blue swimsuit">
-      <h2 class="product-name">Sky Blue</h2>
-      <p class="available">Available: S</p>
+    <!-- مثال 3 -->
+    <article class="card" data-sizes="S">
+      <div class="imgbox"><img src="images/Sky.jpeg" alt="Sky Blue swimsuit"></div>
+      <h3 class="name">Sky Blue</h3>
+      <p class="avail">Available: S</p>
       <p class="desc">Cool sky-blue vibe for sunny days.</p>
-      <p class="price">AED 240</p>
-      <a class="order-btn" href="https://wa.me/971504654412?text=Hi%20Hunalulu!%20I%20want%20to%20order%20Sky%20Blue%20(size%20S)">Order Now</a>
-    </div>
-  </div>
+      <div class="price">AED 240</div>
+      <a class="order" href="#" data-whats="Sky Blue">Order Now</a>
+    </article>
+  </main>
+
+<!-- ====== JS (فلترة + واتساب ديناميكي) ====== -->
+<script>
+  // فلترة حسب المقاس
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.card');
+
+  filterButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      filterButtons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const wanted = btn.dataset.size; // all, S, M...
+
+      cards.forEach(card=>{
+        const sizes = (card.dataset.sizes||'').split(',').map(s=>s.trim().toUpperCase());
+        const show = (wanted==='all') || sizes.includes(wanted.toUpperCase());
+        card.style.display = show ? '' : 'none';
+      });
+      // سكرول خفيف لأعلى الشبكة
+      document.getElementById('productGrid').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+
+  // زر Order Now → يفتح واتساب باسم المنتج + المقاس المختار
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.order');
+    if(!btn) return;
+    e.preventDefault();
+
+    const phone = '971504654412'; // رقمك بدون +
+    const card  = btn.closest('.card');
+    const name  = card.querySelector('.name')?.textContent.trim() || btn.dataset.whats || 'Item';
+    const price = card.querySelector('.price')?.textContent.replace(/[^\d]/g,'') || '';
+    const active = document.querySelector('.filter-btn.active')?.dataset.size || 'all';
+    const sizeText = (active==='all') ? 'Any size' : `Size ${active}`;
+    const msg = encodeURIComponent(`Order: ${name} - ${sizeText}${price?` - AED ${price}`:''}`);
+
+    window.open(`https://wa.me/${phone}?text=${msg}`, '_blank', 'noopener');
+  });
+</script>
 
 </body>
 </html>
