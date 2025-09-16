@@ -1,114 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hunalulu Swimwear</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #b3f0f2;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hunalulu Swimwear</title>
 
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-    }
+<style>
+  /* خلفية عامة */
+  body{margin:0;background:#b3f0f2;font-family:Arial,sans-serif;}
 
-    .product {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin: 10px;
-      width: 150px;
-      text-align: center;
-      padding: 10px;
-      transition: transform 0.2s;
-    }
+  /* شبكة المنتجات */
+  .container{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:16px;
+    padding:20px;
+  }
 
-    .product img {
-      width: 100%;
-      border-radius: 8px;
-    }
+  /* بطاقة المنتج */
+  .product{
+    width:320px;max-width:92vw;background:#fff;border-radius:14px;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+    padding:14px; text-align:center;
+  }
+  .product img{
+    width:100%;height:auto;border-radius:10px;display:block;
+    object-fit:cover;
+  }
 
-    .product:hover {
-      transform: scale(1.05);
-    }
+  /* نصوص واضحة مهما كان CSS قديم */
+  .product-name{font-size:22px;font-weight:700;color:#111 !important;margin:12px 0 6px;}
+  .available{font-size:16px;color:#666 !important;margin:0 0 8px;}
+  .desc{font-size:16px;color:#666 !important;margin:0 0 10px;line-height:1.4;}
+  .price{font-size:22px;font-weight:700;color:#00b894 !important;margin:8px 0 12px;}
 
-    .product-name {
-      font-size: 16px;
-      font-weight: bold;
-      margin: 8px 0 4px;
-      color: #000;
-    }
-
-    .available {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 6px;
-    }
-
-    .desc {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 6px;
-    }
-
-    .price {
-      font-size: 16px;
-      font-weight: bold;
-      color: #00b894;
-      margin-bottom: 10px;
-    }
-
-    .order-btn {
-      display: inline-block;
-      background-color: #00b894;
-      color: white;
-      padding: 8px 12px;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: background-color 0.2s;
-    }
-
-    .order-btn:hover {
-      background-color: #019875;
-    }
-  </style>
+  /* زر الطلب */
+  .order-btn{
+    display:block;width:100%;text-decoration:none;text-align:center;
+    background:#00b894;color:#fff !important;font-weight:700;
+    padding:12px 14px;border-radius:10px;
+  }
+  .order-btn:active, .order-btn:hover{filter:brightness(.92);}
+</style>
 </head>
 <body>
+
   <div class="container">
+    <!-- Blue Lake -->
     <div class="product" data-size="M">
-      <img src="images/bluelake.jpeg" alt="Blue Lake">
+      <img src="images/bluelake.jpeg" alt="Blue Lake swimsuit">
       <h2 class="product-name">Blue Lake</h2>
       <p class="available">Available: M</p>
       <p class="desc">Tummy control swimming dress</p>
       <p class="price">AED 259</p>
-      <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
+      <a class="order-btn" href="https://wa.me/971504654412?text=Hi%20Hunalulu!%20I%20want%20to%20order%20Blue%20Lake%20(size%20M)">Order Now</a>
     </div>
 
+    <!-- Royal Blue -->
     <div class="product" data-size="XL">
-      <img src="images/royal.jpeg" alt="Royal Blue">
+      <img src="images/royal.jpeg" alt="Royal Blue swimsuit">
       <h2 class="product-name">Royal Blue</h2>
       <p class="available">Available: XL</p>
       <p class="desc">Elegant royal blue swimsuit with sleek lines.</p>
       <p class="price">AED 250</p>
-      <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
+      <a class="order-btn" href="https://wa.me/971504654412?text=Hi%20Hunalulu!%20I%20want%20to%20order%20Royal%20Blue%20(size%20XL)">Order Now</a>
     </div>
 
+    <!-- Sky Blue -->
     <div class="product" data-size="S">
-      <img src="images/Sky.jpeg" alt="Sky Blue">
+      <img src="images/Sky.jpeg" alt="Sky Blue swimsuit">
       <h2 class="product-name">Sky Blue</h2>
       <p class="available">Available: S</p>
       <p class="desc">Cool sky-blue vibe for sunny days.</p>
       <p class="price">AED 240</p>
-      <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
+      <a class="order-btn" href="https://wa.me/971504654412?text=Hi%20Hunalulu!%20I%20want%20to%20order%20Sky%20Blue%20(size%20S)">Order Now</a>
     </div>
   </div>
+
 </body>
 </html>
