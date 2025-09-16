@@ -144,4 +144,54 @@ h1 {
   color: #777 !important; /* رمادي */
   text-align: center;
   margin: 0 0 6px;
+
+  /* ========= اسم المايو ========= */
+.product .product-name {
+  font-size: 18px !important;   /* حجم مناسب مثل الباقي */
+  font-weight: 700 !important;  /* Bold */
+  color: #000 !important;       /* أسود */
+  text-align: center;
+  margin: 10px 0 6px;
+}
+
+/* ========= النصوص الرمادية (المقاس + الوصف) ========= */
+/* تغطّي أي P داخل كرت المنتج */
+.product p {
+  font-size: 14px !important;
+  color: #777 !important;       /* رمادي */
+  font-weight: 400 !important;
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+/* أسماء كلاس شائعة لو كنتِ مستخدماها */
+.product .sizes,
+.product .available,
+.product .desc,
+.product .product-description {
+  font-size: 14px !important;
+  color: #777 !important;
+  font-weight: 400 !important;
+}
+
+/* السعر يبقى أخضر وكبير */
+.product .price {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #00bfa6 !important;
+  margin: 6px 0 10px;
+}
+
+/* زر الطلب كما هو (للتأكيد فقط) */
+.product .order-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 16px;
+  background: #02a89e;
+  color: #fff !important;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.product .order-btn:hover { filter: brightness(0.95); }
 }
