@@ -51,12 +51,22 @@ h1 {
 }
 
 /* ===== اسم المنتج ===== */
- .product-name {
-  font-size: 16px; /* نفس حجم باقي العناوين */
-  font-weight: bold; /* يجعل النص غامق مثل البقية */
-  text-align: center; /* توسيط النص */
-  margin: 8px 0; /* مسافة متساوية */
-  color: #000; /* النص باللون الأسود */
+/* اسم المايوه */
+.product-name {
+  font-size: 18px;      /* حجم واضح مثل باقي الأسماء */
+  font-weight: bold;     /* يجعل النص بولد */
+  color: #000;           /* لون أسود */
+  text-align: center;    /* توسيط الاسم */
+  margin: 8px 0 4px 0;   /* مسافة متناسقة */
+}
+
+/* وصف المايوه */
+.product-description {
+  font-size: 14px;       /* حجم أصغر للوصف */
+  color: #555;           /* لون رمادي للوصف */
+  text-align: center;    /* توسيط الوصف */
+  margin: 4px 0 8px 0;   /* مسافة متناسقة */
+} */
 
 }
 
