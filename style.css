@@ -51,12 +51,13 @@ h1 {
 }
 
 /* ===== اسم المنتج ===== */
-..product-name {
-  font-size: 16px;
-  font-weight: bold;
-  color: #000;
-  margin: 10px 0 5px 0;
-  text-align: center;
+...product-name {
+  font-size: 18px; /* حجم أكبر */
+  font-weight: bold; /* يجعل النص Bold */
+  color: #000; /* لون النص أسود */
+  text-align: center; /* توسيط النص */
+  margin: 10px 0 5px 0; /* مسافة حول النص */
+}
 
 }
 
