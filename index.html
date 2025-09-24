@@ -1,211 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hunalulu Swimwear</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #b2ebf2;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hunalulu Swimwear</title>
+<style>
+  /* =============== Base =============== */
+  :root{
+    --tiffany:#bff1ee;           /* تيفاني فاتح */
+    --tiffany-2:#a9ece8;
+    --teal:#12b4b3;              /* أزرار وتبويبات */
+    --teal-dark:#0f9f9e;
+    --card:#ffffff;
+    --ink:#0f172a;               /* عناوين */
+    --muted:#6b7280;             /* نصوص رمادية */
+    --price:#10b981;             /* أخضر السعر */
+    --ring:rgba(18,180,179,.25);
+    --shadow:0 10px 25px rgba(15,23,42,.08);
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--tiffany),var(--tiffany-2));}
 
-    /* Logo */
-    .logo {
-      display: block;
-      margin: 20px auto;
-      width: 120px;
-    }
+  /* =============== Header =============== */
+  .wrap{max-width:1100px;margin:auto;padding:28px 16px 60px}
+  .brand{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:10px}
+  .brand img{width:150px;height:150px;object-fit:contain;border-radius:999px;box-shadow:var(--shadow)}
+  h1{margin:0 0 12px;font-size:28px;font-weight:800;text-align:center}
+  .badges{display:flex;flex-direction:column;gap:10px;align-items:center;margin:8px auto 18px;max-width:720px}
+  .badge{width:100%; background:var(--teal); color:#fff; border-radius:16px; padding:12px 16px; text-align:center; box-shadow:var(--shadow); font-weight:600}
+  .filters{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:6px 0 20px}
+  .chip{border:2px solid var(--teal);color:var(--teal);background:#e6fffd;padding:10px 18px;border-radius:999px;font-weight:700;cursor:pointer;transition:.15s}
+  .chip.active{background:var(--teal);color:#fff;box-shadow:0 0 0 6px var(--ring)}
 
-    /* Title */
-    h1 {
-      text-align: center;
-      font-size: 24px;
-      margin-top: 10px;
-    }
+  /* =============== Grid =============== */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
 
-    /* Notification bars */
-    .notification {
-      background-color: #00bfa5;
-      color: white;
-      text-align: center;
-      margin: 10px 20px;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 16px;
-    }
+  /* =============== Card =============== */
+  .product{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  /* صندوق موحّد للصورة */
+  .img-box{width:100%;height:340px;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
+  .img-box img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
 
-    /* Filter Buttons */
-    .filter-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 15px 0;
-      flex-wrap: wrap;
-    }
-
-    .filter-buttons button {
-      padding: 10px 18px;
-      border: 2px solid #00bfa5;
-      background: white;
-      color: #00bfa5;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .filter-buttons button.active {
-      background-color: #00bfa5;
-      color: white;
-    }
-
-    /* Product Grid */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-      padding: 15px;
-    }
-
-    .product {
-      background: white;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .product img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    .product h3 {
-      font-size: 18px;
-      margin: 10px 0 5px;
-    }
-
-    .product .size {
-      color: gray;
-      font-size: 14px;
-    }
-
-    .product .description {
-      color: gray;
-      font-size: 14px;
-      margin: 5px 0;
-    }
-
-    .product .price {
-      font-size: 18px;
-      color: #00bfa5;
-      font-weight: bold;
-    }
-
-    .order-btn {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 8px 15px;
-      background-color: #00bfa5;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      text-decoration: none;
-    }
-  </style>
+  .body{padding:16px 18px 18px}
+  .name{font-size:22px;font-weight:800;line-height:1.2;margin:0 0 8px}
+  .sizes{margin:0 0 8px;color:var(--muted);font-weight:600}
+  .desc{margin:0 0 12px;color:var(--muted)}
+  .price{color:var(--price);font-size:22px;font-weight:800;margin:0 0 12px}
+  .cta{display:block;text-align:center;background:var(--teal);color:#fff;text-decoration:none;font-weight:800;border-radius:12px;padding:12px 14px;transition:.15s}
+  .cta:hover{background:var(--teal-dark)}
+  .hide{display:none!important}
+</style>
 </head>
 <body>
-  body {
-  font-family: Arial, sans-serif;
-  background-color: #a7e7e1; /* تيفاني فاتح */
-  margin: 0;
-  padding: 0;
+  <div class="wrap">
+    <!-- Logo + Title -->
+    <div class="brand">
+      <img src="images/logo.png" alt="hunalulu logo" />
+      <h1>Swim like a mermaid 🧜‍♀️</h1>
+    </div>
+
+    <!-- Announcements -->
+    <div class="badges">
+      <div class="badge">🌊 We offer <strong>Cash on Delivery</strong> for your convenience!</div>
+      <div class="badge">✨ All our swimsuits feature <strong>Tummy Control</strong> for a flattering and confident fit!</div>
+    </div>
+
+    <!-- Size Filters -->
+    <div class="filters" id="sizeFilters">
+      <button class="chip active" data-size="ALL">All</button>
+      <button class="chip" data-size="S">S</button>
+      <button class="chip" data-size="M">M</button>
+      <button class="chip" data-size="L">L</button>
+      <button class="chip" data-size="XL">XL</button>
+      <button class="chip" data-size="2XL">2XL</button>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid" id="products"></div>
+  </div>
+
+<script>
+/* =============== Products ===============
+  ملاحظة:
+  - احرصي أن تكون أسماء الصور *مطابقة تمامًا* لما في مجلد images/
+  - لو الصورة ما تنوجد، الكرت بينحذف تلقائيًا (onerror)
+  - عدّلي المقاسات لاحقًا براحتك (sizes: ['S','M', ...])
+*/
+const products = [
+  // بعض الموجودين سابقًا
+  {name:'Olive Green Bikini', img:'Olivegreen.jpeg', price:299, sizes:['S','M','L'], desc:'Classic two-piece bikini with a flattering tummy-control design.'},
+  {name:'One-Piece Boyshort', img:'boyshort.jpeg', price:240, sizes:['S','M'], desc:'Sporty one-piece swimsuit with comfy coverage for active beach days.'},
+  {name:'Blue Lake Dress', img:'bluelake.jpeg', price:259, sizes:['M'], desc:'Elegant blue tummy control swim dress with stylish cut-out design.'},
+  {name:'Royal', img:'royal.jpeg', price:260, sizes:['S','M','L'], desc:'Classic deep blue swimsuit for an elegant beach look.'},
+  {name:'Midnight Wave Dress', img:'midnightwave.jpeg', price:275, sizes:['2XL'], desc:'Elegant black swim dress with a flowy, flattering design.'},
+
+  // المضافة الجديدة (من لقطات الشاشة)
+  {name:'Lunara', img:'lunara.jpeg', price:255, sizes:['S','M'], desc:'Soft lines & feminine silhouette for dreamy beach days.'},
+  {name:'Naughty', img:'naughty.jpeg', price:239, sizes:['S'], desc:'Playful cut and flirty mood—made to stand out.'},
+  {name:'Navy Glow', img:'navyglow.jpeg', price:249, sizes:['M','L'], desc:'Deep navy shade with sleek, shaping seams.'},
+  {name:'Neon Night', img:'neonnight.jpeg', price:259, sizes:['S','M'], desc:'Pop-neon vibe with confident tummy control.'},
+  {name:'Noir', img:'noir.jpeg', price:265, sizes:['L','XL'], desc:'Timeless black with refined, sculpting fit.'},
+  {name:'Ocean Breeze', img:'oceanpreeze.jpeg', price:249, sizes:['M'], desc:'Sea-breeze feel in a light, comfy one-piece.'},
+  {name:'Olive Tree', img:'olivetree.jpeg', price:245, sizes:['S','M'], desc:'Earthy olive tone with soft shaping panels.'},
+  {name:'Pinky Promise', img:'pinkypromise.jpeg', price:235, sizes:['S'], desc:'Sweet pink hues with a flattering wrap look.'},
+  {name:'Rainbow Wave', img:'rainbowwave.jpeg', price:269, sizes:['M','L'], desc:'Color splash stripes for joyful summer energy.'},
+  {name:'Red', img:'red.jpeg', price:255, sizes:['XL'], desc:'Bold red statement with sleek ruching.'},
+  {name:'Royal Bee', img:'royalbee.jpeg', price:252, sizes:['M'], desc:'Chic contrast straps with elegant lines.'},
+  {name:'Ruby', img:'ruby.jpeg', price:258, sizes:['S','M'], desc:'Vibrant ruby tone with sculpting details.'},
+  {name:'Sandy Glow', img:'sandyglow.jpeg', price:242, sizes:['S','M'], desc:'Warm sandy hue—lightweight & comfy.'},
+  {name:'Santorini', img:'santorini.jpeg', price:268, sizes:['M','L'], desc:'Aegean-inspired blue & white elegance.'},
+  {name:'Scarlet', img:'scarlet.jpeg', price:257, sizes:['S','M','L'], desc:'Sleek scarlet with flattering tummy control.'},
+  {name:'Sea Mist', img:'seamist.jpeg', price:246, sizes:['S','M'], desc:'Soft sea-mist tone with airy comfort.'},
+  {name:'Shadow Luxe', img:'shadowluxe.jpeg', price:271, sizes:['L','XL'], desc:'Luxe matte finish with confident shaping.'},
+  {name:'Summer Glow', img:'summerglow.jpeg', price:239, sizes:['S'], desc:'Sunny glow and playful silhouette.'},
+  {name:'Sun Kissed', img:'sunkissed.jpeg', price:244, sizes:['M'], desc:'Tan-enhancing tone with soft lines.'},
+  {name:'Twilight', img:'twilight.jpeg', price:251, sizes:['M','L'], desc:'Deep twilight shade with wrap details.'},
+  {name:'Veloura', img:'veloura.jpeg', price:262, sizes:['L'], desc:'Velvety look with smoothing fit.'},
+  {name:'Viva Flora', img:'vivaflora.jpeg', price:248, sizes:['S','M'], desc:'Blooming floral pattern, chic & comfy.'},
+  {name:'Wink Wink', img:'winkwink.jpeg', price:233, sizes:['S'], desc:'Fun, flirty cut for playful summer days.'},
+  {name:'Calamentin', img:'calamentin.jpeg', price:249, sizes:['M'], desc:'Beautiful design with a flattering fit for beach days.'},
+  {name:'Aloha', img:'aloha.jpeg', price:245, sizes:['S','M'], desc:'Island-ready one-piece with breezy vibe.'},
+  {name:'Sky Blue', img:'Sky.jpeg', price:241, sizes:['S'], desc:'Cool sky-blue vibe for sunny days.'},
+  {name:'Black Pearl', img:'blackpearl.jpeg', price:268, sizes:['M','L'], desc:'Sophisticated black with jewel-like sheen.'},
+  {name:'Black Swan', img:'blackswan.jpeg', price:272, sizes:['L','XL'], desc:'Swan-neck elegance with sculpting lines.'},
+  {name:'Blue Motion', img:'bluemotion.jpeg', price:253, sizes:['S','M'], desc:'Smooth blue panels that flatter movement.'},
+  {name:'Candy Shop', img:'candyshop.jpeg', price:235, sizes:['S'], desc:'Candy-tone stripes with tummy control.'},
+  {name:'Cherries', img:'cherriesh.jpeg', price:236, sizes:['S'], desc:'Cherry-pink pop with cute charm.'},
+  {name:'Classic Diva', img:'classicdiva.jpeg', price:260, sizes:['M','L'], desc:'Classic diva cut with sleek lines.'},
+  {name:'Elegant Twist', img:'eleganttwist.jpeg', price:255, sizes:['S','M'], desc:'Twist-front detail with refined shaping.'},
+  {name:'Flamingo', img:'flamingo.jpeg', price:238, sizes:['S'], desc:'Playful flamingo tone—light and fun.'},
+  {name:'Flora', img:'flora.jpeg', price:242, sizes:['M'], desc:'Soft floral print with comfy coverage.'},
+  {name:'Freedom', img:'freedom.jpeg', price:260, sizes:['L'], desc:'Lightweight & flexible for maximum movement.'},
+  {name:'Garden', img:'garden .jpeg', price:247, sizes:['M'], desc:'Garden blooms in a chic silhouette.'},
+  {name:'Green Forest', img:'greenforest.jpeg', price:252, sizes:['M','L'], desc:'Forest green shade with shaping seams.'},
+  {name:'Jungle Bloom', img:'junglebloom.jpeg', price:246, sizes:['S','M'], desc:'Lush jungle print, bold & lively.'},
+  {name:'Lavender Bliss', img:'lavenderbliss.jpeg', price:243, sizes:['S','M'], desc:'Lavender tone with soft ruching.'},
+  {name:'Black Neon', img:'blackneon.jpeg', price:250, sizes:['M'], desc:'Neon trims on sleek black base.'},
+  {name:'Black Beauty', img:'blackbeaty.jpeg', price:251, sizes:['M','L'], desc:'Elegant black lines with tummy control.'}
+];
+
+/* =============== Render =============== */
+const grid = document.getElementById('products');
+
+function waLink(name){
+  // عدّلي الرقم لاحقًا
+  const phone = '971000000000';
+  const text = encodeURIComponent(`Hello Hunalulu 👋 I want to order: ${name}`);
+  return `https://wa.me/${phone}?text=${text}`;
 }
 
-  <!-- Logo -->
-  <img src="images/logo.png" alt="Hunalulu Logo" class="logo">
-
-  <!-- Title -->
-  <h1>Swim like a mermaid 🧜‍♀️</h1>
-
-  <!-- Notification bars -->
-  <div class="notification">🌊 We offer <b>Cash on Delivery</b> for your convenience!</div>
-  <div class="notification">✨ All our swimsuits feature <b>Tummy Control</b> for a flattering and confident fit!</div>
-
-  <!-- Filter Buttons -->
-  <div class="filter-buttons">
-    <button class="active" onclick="filterProducts('all')">All</button>
-    <button onclick="filterProducts('S')">S</button>
-    <button onclick="filterProducts('M')">M</button>
-    <button onclick="filterProducts('L')">L</button>
-    <button onclick="filterProducts('XL')">XL</button>
-    <button onclick="filterProducts('2XL')">2XL</button>
-  </div>
-
-  <!-- Product Grid -->
-  <div class="product-grid" id="productGrid">
-    <!-- Example Product -->
-    <div class="product" data-size="M">
-      <img src="images/Olivegreen.jpeg" alt="Olive Green Bikini">
-      <h3>Olive Green Bikini</h3>
-      <div class="size">Available: S, M, L</div>
-      <div class="description">Classic two-piece bikini with a flattering tummy-control design.</div>
-      <div class="price">AED 299</div>
-      <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
+function productCard(p){
+  const el = document.createElement('article');
+  el.className = 'product';
+  el.dataset.sizes = p.sizes.join(',');
+  el.innerHTML = `
+    <div class="img-box">
+      <img src="images/${p.img}" alt="${p.name}" onerror="this.closest('.product').remove();" />
     </div>
-
-    <div class="product" data-size="S">
-      <img src="images/boyshort.jpeg" alt="One-Piece Boyshort">
-      <h3>One-Piece Boyshort</h3>
-      <div class="size">Available: S, M</div>
-      <div class="description">Sporty one-piece swimsuit with comfy coverage for active beach days.</div>
-      <div class="price">AED 240</div>
-      <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
+    <div class="body">
+      <h2 class="name">${p.name}</h2>
+      <p class="sizes">Available: ${p.sizes.join(', ')}</p>
+      <p class="desc">${p.desc}</p>
+      <p class="price">AED ${p.price}</p>
+      <a class="cta" href="${waLink(p.name)}" target="_blank" rel="noopener">Order Now</a>
     </div>
+  `;
+  return el;
+}
 
-    <div class="product" data-size="2XL">
-      <img src="images/midnightwave.jpeg" alt="Midnight Wave Dress">
-      <h3>Midnight Wave Dress</h3>
-      <div class="size">Available: 2XL</div>
-      <div class="description">Elegant black swim dress with a flowy, flattering design.</div>
-      <div class="price">AED 275</div>
-      <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-    </div>
+function render(list){
+  grid.innerHTML = '';
+  list.forEach(p => grid.appendChild(productCard(p)));
+}
+render(products);
 
-    <div class="product" data-size="M">
-      <img src="images/bluelake.jpeg" alt="Blue Lake Dress">
-      <h3>Blue Lake Dress</h3>
-      <div class="size">Available: M</div>
-      <div class="description">Elegant blue tummy control swim dress with stylish cut-out design.</div>
-      <div class="price">AED 259</div>
-      <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-    </div>
-  </div>
+/* =============== Filter =============== */
+document.getElementById('sizeFilters').addEventListener('click', (e)=>{
+  const btn = e.target.closest('.chip');
+  if(!btn) return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
 
-  <!-- Filter Script -->
-  <script>
-    function filterProducts(size) {
-      const products = document.querySelectorAll('.product');
-      const buttons = document.querySelectorAll('.filter-buttons button');
+  const size = btn.dataset.size;
+  if(size === 'ALL'){ render(products); return; }
 
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      products.forEach(product => {
-        if (size === 'all' || product.getAttribute('data-size').includes(size)) {
-          product.style.display = 'block';
-        } else {
-          product.style.display = 'none';
-        }
-      });
-    }
-  </script>
-
+  const filtered = products.filter(p => p.sizes.includes(size));
+  render(filtered);
+});
+</script>
 </body>
 </html>
