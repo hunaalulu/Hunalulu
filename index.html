@@ -4,134 +4,208 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hunalulu Swimwear</title>
-
+  <link rel="stylesheet" href="style.css">
   <style>
-    /* إعدادات عامة */
     body {
       font-family: Arial, sans-serif;
+      background-color: #b2ebf2;
       margin: 0;
       padding: 0;
-      background: #e6f9f9;
     }
 
-    /* تنسيق حاوية المنتجات */
-    .container {
+    /* Logo */
+    .logo {
+      display: block;
+      margin: 20px auto;
+      width: 120px;
+    }
+
+    /* Title */
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    /* Notification bars */
+    .notification {
+      background-color: #00bfa5;
+      color: white;
+      text-align: center;
+      margin: 10px 20px;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    /* Filter Buttons */
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-buttons button {
+      padding: 10px 18px;
+      border: 2px solid #00bfa5;
+      background: white;
+      color: #00bfa5;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .filter-buttons button.active {
+      background-color: #00bfa5;
+      color: white;
+    }
+
+    /* Product Grid */
+    .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 15px;
-      padding: 20px;
-    }
-
-    /* كل بطاقة منتج */
-    .product {
-      background: #fff;
-      border-radius: 12px;
-      text-align: center;
       padding: 15px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
     }
 
-    .product:hover {
-      transform: translateY(-5px);
+    .product {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
-    /* حجم الصور ثابت */
     .product img {
       width: 100%;
-      height: 240px;
-      object-fit: contain;
+      height: auto;
       border-radius: 8px;
-      margin-bottom: 10px;
     }
 
-    /* اسم المنتج */
-    .product h2 {
-      font-size: 16px;
-      font-weight: bold;
+    .product h3 {
+      font-size: 18px;
       margin: 10px 0 5px;
     }
 
-    /* تفاصيل المنتج */
-    .product .available,
-    .product .desc {
-      font-size: 14px;
+    .product .size {
       color: gray;
-      margin: 3px 0;
+      font-size: 14px;
     }
 
-    /* السعر */
+    .product .description {
+      color: gray;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
     .product .price {
       font-size: 18px;
-      color: #009688;
+      color: #00bfa5;
       font-weight: bold;
-      margin: 8px 0;
     }
 
-    /* زر الطلب */
-    .product .order-btn {
-      background-color: #00a99d;
-      color: #fff;
-      padding: 10px 20px;
+    .order-btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 15px;
+      background-color: #00bfa5;
+      color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       font-size: 14px;
-      transition: background-color 0.3s ease;
-    }
-
-    .product .order-btn:hover {
-      background-color: #007f75;
+      text-decoration: none;
     }
   </style>
 </head>
-
 <body>
-  <header style="text-align: center; padding: 20px;">
-    <img src="images/logo.png" alt="Hunalulu Logo" style="width:120px;">
-    <h1>Swim like a mermaid 🧜‍♀️</h1>
-  </header>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #a7e7e1; /* تيفاني فاتح */
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- المنتجات -->
-  <div class="container">
+  <!-- Logo -->
+  <img src="images/logo.png" alt="Hunalulu Logo" class="logo">
 
-    <!-- مثال على منتج -->
-    <div class="product">
-      <img src="images/midnightwave.jpeg" alt="Midnight Wave Dress">
-      <h2>Midnight Wave Dress</h2>
-      <p class="available">Available: 2XL</p>
-      <p class="desc">Elegant black swim dress with a flowy, flattering design.</p>
-      <p class="price">AED 275</p>
-      <button class="order-btn">Order Now</button>
-    </div>
+  <!-- Title -->
+  <h1>Swim like a mermaid 🧜‍♀️</h1>
 
-    <div class="product">
-      <img src="images/royal.jpeg" alt="Royal">
-      <h2>Royal</h2>
-      <p class="available">Available: S, M, L</p>
-      <p class="desc">Classic deep blue swimsuit for an elegant beach look.</p>
-      <p class="price">AED 260</p>
-      <button class="order-btn">Order Now</button>
-    </div>
+  <!-- Notification bars -->
+  <div class="notification">🌊 We offer <b>Cash on Delivery</b> for your convenience!</div>
+  <div class="notification">✨ All our swimsuits feature <b>Tummy Control</b> for a flattering and confident fit!</div>
 
-    <div class="product">
-      <img src="images/olivegreen.jpeg" alt="Olive Green Bikini">
-      <h2>Olive Green Bikini</h2>
-      <p class="available">Available: S, M, L</p>
-      <p class="desc">Classic two-piece bikini with a flattering tummy-control design.</p>
-      <p class="price">AED 299</p>
-      <button class="order-btn">Order Now</button>
-    </div>
-
-    <div class="product">
-      <img src="images/bluelake.jpeg" alt="Blue Lake Dress">
-      <h2>Blue Lake Dress</h2>
-      <p class="available">Available: M</p>
-      <p class="desc">Elegant blue tummy control swim dress with stylish cut-out design.</p>
-      <p class="price">AED 259</p>
-      <button class="order-btn">Order Now</button>
-    </div>
-
+  <!-- Filter Buttons -->
+  <div class="filter-buttons">
+    <button class="active" onclick="filterProducts('all')">All</button>
+    <button onclick="filterProducts('S')">S</button>
+    <button onclick="filterProducts('M')">M</button>
+    <button onclick="filterProducts('L')">L</button>
+    <button onclick="filterProducts('XL')">XL</button>
+    <button onclick="filterProducts('2XL')">2XL</button>
   </div>
+
+  <!-- Product Grid -->
+  <div class="product-grid" id="productGrid">
+    <!-- Example Product -->
+    <div class="product" data-size="M">
+      <img src="images/Olivegreen.jpeg" alt="Olive Green Bikini">
+      <h3>Olive Green Bikini</h3>
+      <div class="size">Available: S, M, L</div>
+      <div class="description">Classic two-piece bikini with a flattering tummy-control design.</div>
+      <div class="price">AED 299</div>
+      <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
+    </div>
+
+    <div class="product" data-size="S">
+      <img src="images/boyshort.jpeg" alt="One-Piece Boyshort">
+      <h3>One-Piece Boyshort</h3>
+      <div class="size">Available: S, M</div>
+      <div class="description">Sporty one-piece swimsuit with comfy coverage for active beach days.</div>
+      <div class="price">AED 240</div>
+      <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
+    </div>
+
+    <div class="product" data-size="2XL">
+      <img src="images/midnightwave.jpeg" alt="Midnight Wave Dress">
+      <h3>Midnight Wave Dress</h3>
+      <div class="size">Available: 2XL</div>
+      <div class="description">Elegant black swim dress with a flowy, flattering design.</div>
+      <div class="price">AED 275</div>
+      <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
+    </div>
+
+    <div class="product" data-size="M">
+      <img src="images/bluelake.jpeg" alt="Blue Lake Dress">
+      <h3>Blue Lake Dress</h3>
+      <div class="size">Available: M</div>
+      <div class="description">Elegant blue tummy control swim dress with stylish cut-out design.</div>
+      <div class="price">AED 259</div>
+      <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
+    </div>
+  </div>
+
+  <!-- Filter Script -->
+  <script>
+    function filterProducts(size) {
+      const products = document.querySelectorAll('.product');
+      const buttons = document.querySelectorAll('.filter-buttons button');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      products.forEach(product => {
+        if (size === 'all' || product.getAttribute('data-size').includes(size)) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
