@@ -4,613 +4,134 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hunalulu Swimwear</title>
+
   <style>
-  <script>
-  // === قوائم الملفات كما هي داخل images/ ===
-  // إذا عندك ملف فيه مس
+    /* إعدادات عامة */
     body {
       font-family: Arial, sans-serif;
-      background-color: #b3f0f2;
       margin: 0;
       padding: 0;
-      text-align: center;
+      background: #e6f9f9;
     }
-    header {
-      padding: 20px;
-    }
-    header img {
-      width: 120px;
-      height: auto;
-    }
-    h1 {
-      font-size: 22px;
-      margin: 10px 0;
-    }
-    .banner {
-      background-color: #00a99d;
-      color: white;
-      padding: 10px;
-      border-radius: 8px;
-      margin: 5px auto;
-      width: 90%;
-      font-size: 16px;
-    }
-    .filter-buttons {
-      margin: 20px 0;
-    }
-    .filter-buttons button {
-      border: 2px solid #00a99d;
-      background: white;
-      color: #00a99d;
-      padding: 10px 20px;
-      margin: 5px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .filter-buttons .active {
-      background-color: #00a99d;
-      color: white;
-    }
-    .products {
+
+    /* تنسيق حاوية المنتجات */
+    .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 15px;
       padding: 20px;
-      max-width: 900px;
-      margin: auto;
     }
+
+    /* كل بطاقة منتج */
     .product {
-      background: white;
+      background: #fff;
       border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
       padding: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    /* حجم الصور ثابت */
     .product img {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
+      height: 240px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 10px;
     }
+
+    /* اسم المنتج */
     .product h2 {
-      font-size: 18px;
+      font-size: 16px;
+      font-weight: bold;
       margin: 10px 0 5px;
     }
-    .product p {
+
+    /* تفاصيل المنتج */
+    .product .available,
+    .product .desc {
       font-size: 14px;
       color: gray;
       margin: 3px 0;
     }
-    .price {
-  color: #009688; /* اللون الأخضر مثل باقي الأسعار */
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  margin: 8px 0;
 
+    /* السعر */
+    .product .price {
+      font-size: 18px;
+      color: #009688;
+      font-weight: bold;
+      margin: 8px 0;
     }
-    .order-btn {
+
+    /* زر الطلب */
+    .product .order-btn {
       background-color: #00a99d;
-      color: white;
+      color: #fff;
       padding: 10px 20px;
       border: none;
       border-radius: 8px;
-      text-decoration: none;
+      cursor: pointer;
       font-size: 14px;
-      display: inline-block;
+      transition: background-color 0.3s ease;
     }
-  </style>
-<style>
-.product img {
-  width: 100%;
-  max-height: 340px; /* عدّل الرقم إذا بدك الطول أكبر أو أصغر */
-  object-fit: contain; /* يحافظ على نسبة الصورة بدون قص */
-  display: block;
-  margin: 0 auto;
-}
-</style>
 
-</head>
-  <head>
-  <meta charset="UTF-8">
-  <title>Hunalulu</title>
-  <link rel="stylesheet" href="style.css">
-  
-  <style>
-    .product img {
-      width: 100%;
-      max-height: 340px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto;
+    .product .order-btn:hover {
+      background-color: #007f75;
     }
   </style>
 </head>
-  
+
 <body>
-  <header>
-    <img src="images/logo.png" alt="Hunalulu Logo">
+  <header style="text-align: center; padding: 20px;">
+    <img src="images/logo.png" alt="Hunalulu Logo" style="width:120px;">
     <h1>Swim like a mermaid 🧜‍♀️</h1>
   </header>
 
-  <div class="banner">🌊 We offer <strong>Cash on Delivery</strong> for your convenience!</div>
-  <div class="banner">✨ All our swimsuits feature <strong>Tummy Control</strong> for a flattering and confident fit!</div>
+  <!-- المنتجات -->
+  <div class="container">
 
-  <div class="filter-buttons">
-    <button class="active">All</button>
-    <button>S</button>
-    <button>M</button>
-    <button>L</button>
-    <button>XL</button>
-    <button>2XL</button>
-  </div>
-
-  <!-- Midnight Wave -->
-<div class="product" data-size="2XL">
-  <img src="images/midnightwave.jpeg" alt="Midnight Wave Dress">
-  <h2 class="product-name">Midnight Wave Dress</h2>
-  <p class="available">Available: 2XL</p>
-  <p class="desc">Elegant black swim dress with a flowy, flattering design.</p>
-  <p class="price">AED 275</p>
-  <a href="https://wa.me/971504654412" class="order-btn">Order Now</a>
-</div>
-
-<!-- Royal -->
-<div class="product" data-size="L">
-  <img src="images/royal.jpeg" alt="Royal">
-  <h2 class="product-name">Royal</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Classic deep blue swimsuit for an elegant beach look.</p>
-  <p class="price">AED 260</p>
-  <a href="https://wa.me/971504654412" class="order-btn">Order Now</a>
-</div>
-
-<!-- Ruby -->
-<div class="product" data-size="M">
-  <img src="images/ruby.jpeg" alt="Ruby">
-  <h2 class="product-name">Ruby</h2>
-  <p class="available">Available: M, L</p>
-  <p class="desc">Vibrant ruby red one-piece swimsuit with tummy control.</p>
-  <p class="price">AED 255</p>
-  <a href="https://wa.me/971504654412" class="order-btn">Order Now</a>
-</div>
-
-<!-- Sandy Glow -->
-<div class="product" data-size="M">
-  <img src="images/sandyglow.jpeg" alt="Sandy Glow">
-  <h2 class="product-name">Sandy Glow</h2>
-  <p class="available">Available: S, M</p>
-  <p class="desc">Soft beige swimsuit with a natural, glowing style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971504654412" class="order-btn">Order Now</a>
-</div>
-
-<!-- Sea Mist -->
-<div class="product" data-size="XL">
-  <img src="images/seamist.jpeg" alt="Sea Mist">
-  <h2 class="product-name">Sea Mist</h2>
-  <p class="available">Available: M, L, XL</p>
-  <p class="desc">Ocean-inspired swimsuit for a refreshing beach vibe.</p>
-  <p class="price">AED 270</p>
-  <a href="https://wa.me/971504654412" class="order-btn">Order Now</a>
-</div>
-
-<!-- Pinky Promise -->
-<div class="product" data-size="S">
-  <img src="images/pinkypromise.jpeg" alt="Pinky Promise">
-  <h2 class="product-name">Pinky Promise</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Flirty pink design perfect for sunny days.</p>
-  <p class="price">AED 249</p>
-  <a href="https://wa.me/971504654412" class="order-btn">Order Now</a>
-</div>
-
-  <div class="products">
-    <!-- Olive Green -->
+    <!-- مثال على منتج -->
     <div class="product">
-      <img src="images/Olivegreen.jpeg" alt="Olive Green Bikini">
+      <img src="images/midnightwave.jpeg" alt="Midnight Wave Dress">
+      <h2>Midnight Wave Dress</h2>
+      <p class="available">Available: 2XL</p>
+      <p class="desc">Elegant black swim dress with a flowy, flattering design.</p>
+      <p class="price">AED 275</p>
+      <button class="order-btn">Order Now</button>
+    </div>
+
+    <div class="product">
+      <img src="images/royal.jpeg" alt="Royal">
+      <h2>Royal</h2>
+      <p class="available">Available: S, M, L</p>
+      <p class="desc">Classic deep blue swimsuit for an elegant beach look.</p>
+      <p class="price">AED 260</p>
+      <button class="order-btn">Order Now</button>
+    </div>
+
+    <div class="product">
+      <img src="images/olivegreen.jpeg" alt="Olive Green Bikini">
       <h2>Olive Green Bikini</h2>
-      <p>Available: S, M, L</p>
-      <p>Classic two-piece bikini with a flattering tummy-control design.</p>
-      <div class="price">AED 299</div>
-      <a href="#" class="order-btn">Order Now</a>
+      <p class="available">Available: S, M, L</p>
+      <p class="desc">Classic two-piece bikini with a flattering tummy-control design.</p>
+      <p class="price">AED 299</p>
+      <button class="order-btn">Order Now</button>
     </div>
 
-    <!-- Boyshort -->
-    <div class="product">
-      <img src="images/boyshort.jpeg" alt="One-Piece Boyshort">
-      <h2>One-Piece Boyshort</h2>
-      <p>Available: S, M</p>
-      <p>Sporty one-piece swimsuit with comfy coverage for active beach days.</p>
-      <div class="price">AED 240</div>
-      <a href="#" class="order-btn">Order Now</a>
-    </div>
-
-    <div class="product" data-size="2XL">
-  <img src="images/midnightwave.jpeg" alt="Midnight Wave Dress">
-  <h2 class="product-name">Midnight Wave Dress</h2>
-  <p class="available">Available: 2XL</p>
-  <p class="desc">Elegant black swim dress with a flowy, flattering design.</p>
-  <p class="price">AED 275</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-    
-    <!-- Blue Lake -->
     <div class="product">
       <img src="images/bluelake.jpeg" alt="Blue Lake Dress">
       <h2>Blue Lake Dress</h2>
-      <p>Available: M</p>
-      <p>Elegant blue tummy control swim dress with stylish cut-out design.</p>
-      <div class="price">AED 259</div>
-      <a href="#" class="order-btn">Order Now</a>
-    </div> 
-
-  <div class="product" data-size="M">
-  <img src="images/calamentin.jpeg" alt="Calamentin">
-  <h2 class="product-name">Calamentin</h2>
-  <p class="available">Available: M</p>
-  <p class="desc">Beautiful design with a flattering fit for beach days.</p>
-  <p class="price">AED 249</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<!-- المنتجات الجديدة -->
-<div class="product" data-size="M">
-  <img src="images/lunara.jpeg" alt="Lunara">
-  <h2 class="product-name">Lunara</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-
-<div class="product" data-size="M">
-  <img src="images/naughty.jpeg" alt="Naughty">
-  <h2 class="product-name">Naughty</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/navyglow.jpeg" alt="Navy Glow">
-  <h2 class="product-name">Navy Glow</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/noir.jpeg" alt="Noir">
-  <h2 class="product-name">Noir</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/oceanpreeze.jpeg" alt="Ocean Preeze">
-  <h2 class="product-name">Ocean Preeze</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/olivetree.jpeg" alt="Olive Tree">
-  <h2 class="product-name">Olive Tree</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/pinkypromise.jpeg" alt="Pinky Promise">
-  <h2 class="product-name">Pinky Promise</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/rainbowwave.jpeg" alt="Rainbow Wave">
-  <h2 class="product-name">Rainbow Wave</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/red.jpeg" alt="Red">
-  <h2 class="product-name">Red</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/royal.jpeg" alt="Royal">
-  <h2 class="product-name">Royal</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/royalbee.jpeg" alt="Royal Bee">
-  <h2 class="product-name">Royal Bee</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/ruby.jpeg" alt="Ruby">
-  <h2 class="product-name">Ruby</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/sandyglow.jpeg" alt="Sandy Glow">
-  <h2 class="product-name">Sandy Glow</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/santorini.jpeg" alt="Santorini">
-  <h2 class="product-name">Santorini</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/scarlet.jpeg" alt="Scarlet">
-  <h2 class="product-name">Scarlet</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-<div class="product" data-size="M">
-  <img src="images/seamist.jpeg" alt="Sea Mist">
-  <h2 class="product-name">Sea Mist</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant swimwear designed for comfort and style.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-    <div class="product" data-size="L">
-  <img src="images/classicdiva.jpeg" alt="Classic Diva Swimsuit">
-  <h2 class="product-name">Classic Diva</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Timeless one-piece swimsuit for a classy beach day.</p>
-  <p class="price">AED 270</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div> 
-
-    <div class="product" data-size="M">
-  <img src="images/cherriesh.jpeg" alt="Cherriesh Swimsuit">
-  <h2 class="product-name">Cherriesh Swimsuit</h2>
-  <p class="available">Available: M</p>
-  <p class="desc">Stylish design perfect for beach days.</p>
-  <p class="price">AED 255</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-
-    <div class="product" data-size="M">
-  <img src="images/greenforest.jpeg" alt="Green Forest Swimsuit">
-  <h2 class="product-name">Green Forest</h2>
-  <p class="available">Available: M, L</p>
-  <p class="desc">Nature-inspired design with a flattering fit.</p>
-  <p class="price">AED 260</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-    <div class="product" data-size="L">
-  <img src="images/junglebloom.jpeg" alt="Jungle Bloom Swimsuit">
-  <h2 class="product-name">Jungle Bloom</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Colorful tropical print for a standout beach look.</p>
-  <p class="price">AED 280</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-    <div class="product" data-size="M">
-  <img src="images/garden.jpeg" alt="Garden Swimsuit">
-  <h2 class="product-name">Garden</h2>
-  <p class="available">Available: M, L</p>
-  <p class="desc">Fresh garden-inspired swimsuit with bold colors.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-    
-
-    <!-- Freedom -->
-    <div class="product">
-      <img src="images/freedom.jpeg" alt="Freedom Swimsuit">
-      <h2>Freedom Swimsuit</h2>
-      <p>Available: L</p>
-      <p>Lightweight & flexible for maximum movement.</p>
-      <div class="price">AED 260</div>
-      <a href="#" class="order-btn">Order Now</a>
+      <p class="available">Available: M</p>
+      <p class="desc">Elegant blue tummy control swim dress with stylish cut-out design.</p>
+      <p class="price">AED 259</p>
+      <button class="order-btn">Order Now</button>
     </div>
 
-
-    <div class="product" data-size="M">
-  <img src="images/aloha.jpeg" alt="Aloha Swimsuit">
-  <h2 class="product-name">Aloha Swimsuit</h2>
-  <p class="available">Available: S, M, L</p>
-  <p class="desc">Elegant tropical style perfect for summer.</p>
-  <p class="price">AED 259</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-    <div class="product" data-size="L">
-  <img src="images/barbielook.jpeg" alt="Barbie Look Swimsuit">
-  <h2 class="product-name">Barbie Look</h2>
-  <p class="available">Available: S, M</p>
-  <p class="desc">Trendy pink design for a standout beach look.</p>
-  <p class="price">AED 260</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-    <div class="product" data-size="XL">
-  <img src="images/blackneon.jpeg" alt="Black Neon Swimsuit">
-  <h2 class="product-name">Black Neon</h2>
-  <p class="available">Available: M, L, XL</p>
-  <p class="desc">Sporty black swimsuit with neon accents.</p>
-  <p class="price">AED 270</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-    <div class="product" data-size="M">
-  <img src="images/blackpearl.jpeg" alt="Black Pearl Swimsuit">
-  <h2 class="product-name">Black Pearl</h2>
-  <p class="available">Available: S, M</p>
-  <p class="desc">Classic elegant black swimsuit.</p>
-  <p class="price">AED 250</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-    
-    <!-- Flamingo -->
-    <div class="product">
-      <img src="images/flamingo.jpeg" alt="Flamingo Swimsuit">
-      <h2>Flamingo Swimsuit</h2>
-      <p>Available: XL</p>
-      <p>Bold and colorful for a standout beach look.</p>
-      <div class="price">AED 255</div>
-      <a href="#" class="order-btn">Order Now</a>
-    </div>
-<div class="product" data-size="M">
-  <img src="images/candyshop.jpeg" alt="Candy Shop Swimsuit">
-  <h2 class="product-name">Candy Shop</h2>
-  <p class="available">Available: S, M</p>
-  <p class="desc">Playful candy-inspired swimsuit for summer fun.</p>
-  <p class="price">AED 230</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-<div class="product" data-size="L">
-  <img src="images/bluemotion.jpeg" alt="Blue Motion Swimsuit">
-  <h2 class="product-name">Blue Motion</h2>
-  <p class="available">Available: M, L</p>
-  <p class="desc">Stylish blue swimsuit with modern design.</p>
-  <p class="price">AED 255</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-    <div class="product" data-size="S">
-  <img src="images/blackswan.jpeg" alt="Black Swan Swimsuit">
-  <h2 class="product-name">Black Swan</h2>
-  <p class="available">Available: S, M</p>
-  <p class="desc">Sophisticated style with a perfect fit.</p>
-  <p class="price">AED 245</p>
-  <a href="https://wa.me/971000000000" class="order-btn">Order Now</a>
-</div>
-
-    
-    <!-- Sky -->
-    <div class="product">
-      <img src="images/Sky.jpeg" alt="Sky Blue">
-      <h2>Sky Blue</h2>
-      <p>Available: S</p>
-      <p>Cool sky-blue vibe for sunny days.</p>
-      <div class="price">AED 245</div>
-      <a href="#" class="order-btn">Order Now</a>
-    </div>
-
-    <!-- Chess Chic -->
-    <div class="product">
-      <img src="images/ChesschicL.jpeg" alt="Chess Chic">
-      <h2>Chess Chic</h2>
-      <p>Available: L</p>
-      <p>Classic chic design with a modern touch.</p>
-      <div class="price">AED 265</div>
-      <a href="#" class="order-btn">Order Now</a>
-    </div>
-
-    <!-- Elegant Twist -->
-    <div class="product">
-      <img src="images/eleganttwist.jpeg" alt="Elegant Twist">
-      <h2>Elegant Twist</h2>
-      <p>Available: M, L</p>
-      <p>Elegant twist design for a unique beach style.</p>
-      <div class="price">AED 270</div>
-      <a href="#" class="order-btn">Order Now</a>
-    </div>
-
-    <!-- Lavender Bliss -->
-    <div class="product">
-      <img src="images/lavenderbliss.jpeg" alt="Lavender Bliss">
-      <h2>Lavender Bliss</h2>
-      <p>Available: S, M</p>
-      <p>Soft lavender tones with tummy control comfort.</p>
-      <div class="price">AED 275</div>
-      <a href="#" class="order-btn">Order Now</a>
-    </div>
-
-    <!-- Floral -->
-    <div class="product">
-      <img src="images/floral.jpeg" alt="Floral Delight">
-      <h2>Floral Delight</h2>
-      <p>Available: M, L</p>
-      <p>Fresh floral design with elegant coverage.</p>
-      <div class="price">AED 280</div>
-      <a href="#" class="order-btn">Order Now</a>
-    </div>
-
-    <!-- Garden -->
-    <div class="product">
-      <img src="images/garden.jpeg" alt="Garden Bliss">
-      <h2>Garden Bliss</h2>
-      <p>Available: L</p>
-      <p>Beautiful garden-inspired patterns for summer vibes.</p>
-      <div class="price">AED 285</div>
-      <a href="#" class="order-btn">Order Now</a>
-    </div>
-
-    <!-- Black Orchid -->
-    <div class="product">
-      <img src="images/blackorchide.jpeg" alt="Black Orchid">
-      <h2>Black Orchid</h2>
-      <p>Available: XL</p>
-      <p>Elegant black orchid swimsuit for bold looks.</p>
-      <div class="price">AED 290</div>
-      <a href="#" class="order-btn">Order Now</a>
-    </div>
-
-    <!-- Black Beauty -->
-    <div class="product">
-      <img src="images/blackbeaty.jpeg" alt="Black Beauty">
-      <h2>Black Beauty</h2>
-      <p>Available: XL</p>
-      <p>Timeless black piece with a modern twist.</p>
-      <div class="price">AED 295</div>
-      <a href="#" class="order-btn">Order Now</a>
-    </div>
   </div>
 </body>
 </html>
