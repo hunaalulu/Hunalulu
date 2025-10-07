@@ -16,13 +16,15 @@ const cleanFile = f => f
   .trim();
 
 // 3) دالة توليد عنوان مرتّب Capital ومسافات صح
-function prettyTitle(file) {
-  const base = file
-    .replace(/\.(jpe?g|png)$/i, '')      // يشيل الامتداد
-    .replace(/[-_]+/g, ' ')              // شرطات -> مسافات
-    .replace(/([a-z])([A-Z])/g, '$1 $2') // MidnightWave -> Midnight Wave
-    .replace(/(\d+xl)/gi, '')            // يشيل 2XL, 3XL من الاسم إن وجدت
-    .trim();
+function prettyTitle(file){
+    const base = file
+        .replace(/\.(jpe?g|png)$/i, '')     // احذف الامتداد
+        .replace(/[-_]+/g, ' ')             // حوّل الشرطات إلى مسافات
+        .replace(/([a-z])([A-Z])/g, '$1 $2')// أضف مسافة بين حروف متصلة مثل "MidnightWave"
+        .replace(/\bxl\b/gi, 'XL')          // خليه يقرأ XL بشكل واضح
+        .trim();
+    return base.charAt(0).toUpperCase() + base.slice(1);
+
 
   return base
     .split(/\s+/)
