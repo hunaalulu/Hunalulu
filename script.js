@@ -1,38 +1,57 @@
-// فلترة المنتجات حسب المقاس
-function filterProducts(size) {
-  const products = document.querySelectorAll('.product-card');
-  const tabs = document.querySelectorAll('.tab');
+<script>
+// 1) كل أسماء الملفات (مثل عندك)
+const imageFiles = [
+  "garden.jpeg","greenforest.jpeg","junglebloom.jpeg","laguna.jpeg","lattelove.jpeg","lavenderbliss.jpeg",
+  "lunara.jpeg","midnightwave.jpeg","naughty.jpeg","navyglow.jpeg","neonnight.jpeg","noir.jpeg",
+  "oceanpreeze.jpeg","olivetree.jpeg","pinkypromise.jpeg","rainbowwave.jpeg","red.jpeg","royal.jpeg",
+  "royalbee.jpeg","ruby.jpeg","sandyglow.jpeg","santorini.jpeg","scarlet.jpeg","seamist.jpeg",
+  "shadowluxe.jpeg","summerglow.jpeg","sunkissed.jpeg","twilight.jpeg","veloura.jpeg","vivaflora.jpeg","winkwink.jpeg",
+  "alohA.jpeg","blackbeaty.jpeg","blackneon.jpeg","bluelake.jpeg","bluemotion.jpeg","boyshort.jpeg",
+  "chesschicL.jpeg","classicdiva.jpeg","eleganttwist.jpeg","flamingo.jpeg","flora.jpeg","freedom.jpeg","Sky.jpeg"
+];
 
-  tabs.forEach(tab => tab.classList.remove('active'));
-  if (event && event.target) {
-    event.target.classList.add('active');
-  }
+// 2) دالة تنظيف العنوان من الامتداد وغيره (لو حابة)
+const cleanFile = f => f
+  .replace(/\.(jpe?g|png)$/i, '')
+  .trim();
 
-  products.forEach(product => {
-    const sizes = product.getAttribute('data-size').split(' ');
-    if (size === 'all' || sizes.includes(size)) {
-      product.style.display = 'block';
-    } else {
-      product.style.display = 'none';
-    }
-  });
+// 3) دالة توليد عنوان مرتّب Capital ومسافات صح
+function prettyTitle(file) {
+  const base = file
+    .replace(/\.(jpe?g|png)$/i, '')      // يشيل الامتداد
+    .replace(/[-_]+/g, ' ')              // شرطات -> مسافات
+    .replace(/([a-z])([A-Z])/g, '$1 $2') // MidnightWave -> Midnight Wave
+    .replace(/(\d+xl)/gi, '')            // يشيل 2XL, 3XL من الاسم إن وجدت
+    .trim();
+
+  return base
+    .split(/\s+/)
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(' ');
 }
 
-// زر Order Now → يرسل رسالة واتساب فيها تفاصيل المنتج
-document.addEventListener('click', e => {
-  const btn = e.target.closest('.order-btn');
-  if (!btn) return;
+// 4) بناء بطاقة المنتج
+function productCard(file) {
+  const src = `images/${file}`;
+  const title = prettyTitle(file);
+  return `
+    <div class="product" data-size="all">
+      <div class="img-box">
+        <img src="${src}" alt="${title}" loading="lazy" />
+      </div>
+      <h3 class="product-name">${title}</h3>
+      <p class="sizes">Available: S, M, L</p>
+      <p class="desc">Elegant one-piece swimsuit with sleek lines and tummy-control fit.</p>
+      <p class="price">AED 250</p>
+      <a class="order-btn" href="https://wa.me/971000000000">Order Now</a>
+    </div>
+  `;
+}
 
-  e.preventDefault();
+// 5) ضخّ البطاقات في الشبكة
+const grid = document.getElementById('grid');
+grid.innerHTML = imageFiles.map(productCard).join('');
 
-  const card = btn.closest('.product-card');
-  const title = card.querySelector('.title').textContent.trim();
-  const price = card.querySelector('.price').textContent.trim();
-  const activeTab = document.querySelector('.tab.active').textContent.trim();
-
-  const size = activeTab === 'All' ? 'Any size' : `Size ${activeTab}`;
-  const message = encodeURIComponent(`Order: ${title} - ${size} - ${price}`);
-  const phone = '971504654412'; // رقم الواتساب
-
-  window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-});
+// 6) (اختياري) تشوفي التحويل صح؟
+console.log('Preview titles:', imageFiles.map(f => [f, prettyTitle(f)]));
+</script>
