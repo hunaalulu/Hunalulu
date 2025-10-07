@@ -93,12 +93,20 @@ const imageFiles = [
 const cleanFile = f => f.replace(/\s+\.(jpe?g|png)$/i, '.$1');
 
 /* ====== 2) توليد عنوان جميل من اسم الملف ====== */
-function prettyTitle(file){
-  const base = file.replace(/\.(jpe?g|png)$/i,'')
-                   .replace(/[-_]+/g,' ')
-                   .replace(/(\d+xl)/i,'')    // نحذف لاحقة المقاس من الاسم الظاهر
-                   .trim();
-  return base.replace(/\b\w/g, m => m.toUpperCase()); // Capitalize Words
+function prettyTitle(file) {
+  const base = file
+    .replace(/\.(jpe?g|png)$/i, '')      // يشيل الامتداد (.jpeg .jpg .png)
+    .replace(/[-_]+/g, ' ')              // يحول الشرطات إلى مسافات
+    .replace(/([a-z])([A-Z])/g, '$1 $2') // يضيف مسافة بين الحروف الكبيرة والصغيرة (مثل MidnightWave → Midnight Wave)
+    .replace(/(\d+xl)/gi, '')            // يشيل المقاسات من الاسم (مثل 2XL)
+    .trim();                             // يحذف المسافات الزائدة بالبداية أو النهاية
+
+  // يحول أول حرف من كل كلمة إلى كابيتال
+  return base
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
 }
 
 /* ====== 3) وصف افتراضي بسيط حسب كلمات بالعنوان ====== */
