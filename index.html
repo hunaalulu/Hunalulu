@@ -6,64 +6,76 @@
 <title>Hunalulu | Swim like a mermaid</title>
 <style>
   :root{
-    --bg: #c9f2f2;         /* تيفاني فاتح */
-    --teal:#0aa79b;        /* أزرار وأسعار */
-    --teal-dark:#06897f;
-    --text:#1c1f23;
-    --muted:#6b7b85;       /* نص رمادي */
+    --bg1:#bff1ee;        /* تيفاني فاتح */
+    --bg2:#a9ece8;
+    --teal:#12b4b3;       /* أزرار وأسعار */
+    --teal-dark:#0f9f9e;
+    --ink:#0f172a;
+    --muted:#6b7280;      /* نص رمادي */
     --card:#ffffff;
-    --ring:#aee6e3;
-    --radius:16px;
-    --shadow: 0 8px 20px rgba(0,0,0,.08);
+    --ring:rgba(18,180,179,.25);
+    --radius:18px;
+    --shadow:0 10px 25px rgba(15,23,42,.08);
   }
-  html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
-  .wrap{max-width:1080px;margin:auto;padding:24px 16px 64px;}
-  .logo{display:block;margin:8px auto 8px; width:150px; height:150px; border-radius:50%; overflow:hidden; box-shadow:var(--shadow); background:#66d1cd22; display:grid; place-items:center;}
-  .logo img{width:100%; height:100%; object-fit:cover;}
-  h1{margin:6px 0 14px; text-align:center; font-size:28px;}
-  /* الشرائط */
-  .notices{display:grid; gap:10px; margin:8px 0 14px;}
-  .notice{background:var(--teal); color:#fff; padding:12px 16px; border-radius:50px; text-align:center; box-shadow:var(--shadow); font-weight:600;}
-  .notice small{font-weight:400; opacity:.95}
-  /* التبويبات */
-  .size-tabs{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:10px 0 18px}
-  .tab{border:2px solid var(--teal); color:var(--teal); background:transparent; padding:10px 18px; border-radius:40px; font-weight:700; cursor:pointer}
-  .tab.active{background:var(--teal); color:#fff;}
-  /* الشبكة */
-  .grid{display:grid; gap:18px; grid-template-columns:repeat(2,1fr);}
-  @media (min-width:900px){ .grid{grid-template-columns:repeat(3,1fr);} }
-  /* كرت المنتج */
-  .product{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column;}
-  .img-box{width:100%; height:340px; display:flex; align-items:center; justify-content:center; background:#fff; overflow:hidden;}
-  .img-box img{max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block;}
-  .content{padding:14px 16px 18px;}
-  .name{font-size:22px; font-weight:800; margin:8px 0 6px; text-align:center;}
-  .sizes{margin:0; color:var(--muted); text-align:center;}
-  .desc{margin:10px 0 14px; color:var(--muted); text-align:center; line-height:1.35;}
-  .price{margin:0 0 12px; font-size:22px; font-weight:900; color:var(--teal); text-align:center;}
-  .cta{display:block; text-align:center; background:var(--teal); color:#fff; text-decoration:none; font-weight:800; padding:12px 16px; border-radius:14px; box-shadow:var(--shadow);}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg1),var(--bg2));}
+
+  .wrap{max-width:1100px;margin:auto;padding:28px 16px 64px}
+
+  /* Header */
+  .brand{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:8px}
+  .brand img{width:150px;height:150px;object-fit:contain;border-radius:999px;box-shadow:var(--shadow)}
+  h1{margin:0 0 10px;font-size:28px;font-weight:800;text-align:center}
+  .badges{display:flex;flex-direction:column;gap:10px;align-items:center;margin:8px auto 18px;max-width:760px}
+  .badge{width:100%;background:var(--teal);color:#fff;border-radius:16px;padding:12px 16px;text-align:center;box-shadow:var(--shadow);font-weight:600}
+
+  /* Filters */
+  .filters{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:6px 0 20px}
+  .chip{border:2px solid var(--teal);color:var(--teal);background:#e6fffd;padding:10px 18px;border-radius:999px;font-weight:700;cursor:pointer;transition:.15s}
+  .chip.active{background:var(--teal);color:#fff;box-shadow:0 0 0 6px var(--ring)}
+
+  /* Grid */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+  /* Card */
+  .product{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .img-box{width:100%;height:340px;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden}
+  .img-box img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+  .body{padding:16px 18px 18px;text-align:center}
+  .name{font-size:22px;font-weight:800;line-height:1.2;margin:0 0 8px}
+  .sizes{margin:0 0 8px;color:var(--muted);font-weight:600}
+  .desc{margin:0 0 12px;color:var(--muted)}
+  .price{color:#10b981;font-size:22px;font-weight:800;margin:0 0 12px}
+  .cta{display:block;text-align:center;background:var(--teal);color:#fff;text-decoration:none;font-weight:800;border-radius:12px;padding:12px 14px;transition:.15s}
   .cta:hover{background:var(--teal-dark)}
-  /* حافة لطيفة حول الشبكة */
-  .grid-pad{background:#e5fbfb; border:2px solid var(--ring); border-radius:28px; padding:18px;}
+
+  /* Pad */
+  .grid-pad{background:#e5fbfb;border:2px solid var(--ring);border-radius:28px;padding:18px}
 </style>
 </head>
 <body>
   <div class="wrap">
-    <span class="logo"><img src="images/logo.png" alt="hunalulu logo"></span>
-    <h1>Swim like a mermaid 🧜‍♀️</h1>
-
-    <div class="notices">
-      <div class="notice">🌊 We offer <b>Cash on Delivery</b> for your convenience!</div>
-      <div class="notice">✨ All our swimsuits feature <b>Tummy Control</b> for a flattering and confident fit!</div>
+    <!-- Logo + Title -->
+    <div class="brand">
+      <img src="images/logo.png" alt="Hunalulu logo" />
+      <h1>Swim like a mermaid 🧜‍♀️</h1>
     </div>
 
-    <div class="size-tabs">
-      <button class="tab active" data-size="ALL">All</button>
-      <button class="tab" data-size="S">S</button>
-      <button class="tab" data-size="M">M</button>
-      <button class="tab" data-size="L">L</button>
-      <button class="tab" data-size="XL">XL</button>
-      <button class="tab" data-size="2XL">2XL</button>
+    <!-- Announcements -->
+    <div class="badges">
+      <div class="badge">🌊 We offer <strong>Cash on Delivery</strong> for your convenience!</div>
+      <div class="badge">✨ All our swimsuits feature <strong>Tummy Control</strong> for a flattering and confident fit!</div>
+    </div>
+
+    <!-- Size Filters -->
+    <div class="filters" id="sizeFilters">
+      <button class="chip active" data-size="ALL">All</button>
+      <button class="chip" data-size="S">S</button>
+      <button class="chip" data-size="M">M</button>
+      <button class="chip" data-size="L">L</button>
+      <button class="chip" data-size="XL">XL</button>
+      <button class="chip" data-size="2XL">2XL</button>
     </div>
 
     <div class="grid-pad">
@@ -72,120 +84,135 @@
   </div>
 
 <script>
-/* ====== 1) أسماء كل الصور في مجلّد images (ما عدا الشعار) ====== */
+/* ========= 1) ضعي أسماء كل الصور الموجودة داخل مجلد images/ =========
+   ملاحظة:
+   - اكتبي الأسماء تمامًا كما هي (حروف كبيرة/صغيرة، بدون مسافات).
+   - لا تضعي logo.png هنا.
+   - تقدري تزيدي/تنقصي الأسماء بحرية. */
 const imageFiles = [
-  // من القوائم التي أرسلتِها
+  // أمثلة — استبدلي/أضيفي حسب الموجود لديك:
+  "olivegreen.jpeg","boyshort.jpeg","bluelake.jpeg","royal.jpeg","midnightwave.jpeg",
+  "lunara.jpeg","naughty.jpeg","navyglow.jpeg","neonnight.jpeg","noir.jpeg","oceanpreeze.jpeg","olivetree.jpeg",
+  "pinkypromise.jpeg","rainbowwave.jpeg","red.jpeg","royalbee.jpeg","ruby.jpeg","sandyglow.jpeg","santorini.jpeg",
+  "scarlet.jpeg","seamist.jpeg","shadowluxe.jpeg","summerglow.jpeg","sunkissed.jpeg","twilight.jpeg","veloura.jpeg",
   "garden.jpeg","greenforest.jpeg","junglebloom.jpeg","laguna.jpeg","lattelove.jpeg","lavenderbliss.jpeg",
-  "lunara.jpeg","midnightwave.jpeg","naughty.jpeg","navyglow.jpeg","neonnight.jpeg","noir.jpeg",
-  "oceanpreeze.jpeg","olivetree.jpeg","pinkypromise.jpeg","rainbowwave.jpeg","red.jpeg","royal.jpeg",
-  "royalbee.jpeg","ruby.jpeg","sandyglow.jpeg","santorini.jpeg","scarlet.jpeg","seamist.jpeg",
-  "shadowluxe.jpeg","summerglow.jpeg","sunkissed.jpeg","twilight.jpeg","veloura.jpeg",
-
-  // من القائمة السابقة (موجودة عندك أيضاً)
-  "aloha.jpeg","blackbeaty.jpeg","blackneon.jpeg","blackorchide.jpeg","blackpearl.jpeg","blackswan.jpeg",
-  "bluelake.jpeg","bluemotion.jpeg","boyshort.jpeg","calamentin.jpeg","candyshop.jpeg","cherriesh.jpeg",
-  "chesschic.jpeg","classicdiva.jpeg","eleganttwist.jpeg","flamingo.jpeg","floral.jpeg","freedom.jpeg",
-  "Olivegreen.jpeg","Sky.jpeg", "lolia.jpeg",
-  "harmony.jpeg"
+  "bluemotion.jpeg","candyshop.jpeg","cherriesh.jpeg","classicdiva.jpeg","eleganttwist.jpeg","flamingo.jpeg","flora.jpeg",
+  "freedom.jpeg","Sky.jpeg","blackneon.jpeg","blackpearl.jpeg","blackswan.jpeg","blackbeaty.jpeg",
+  "lolia.jpeg","harmony.jpeg" // المايوهات الجديدة Lolia و Harmony
 ];
 
-/* لو في أسماء فيها مسافات زائدة، بنحاول نصححها */
-const cleanFile = f => f.replace(/\s+\.(jpe?g|png)$/i, '.$1');
+/* ========= 2) عناوين مخصصة لبعض الأسماء الموصولة (اختياري) ========= */
+const titleOverrides = {
+  midnightwave: 'Midnight Wave',
+  oceanpreeze: 'Ocean Preeze',
+  neonnight: 'Neon Night',
+  olivetree: 'Olive Tree',
+  navyglow: 'Navy Glow',
+  pinkypromise: 'Pinky Promise',
+  rainbowwave: 'Rainbow Wave',
+  summerglow: 'Summer Glow',
+  shadowluxe: 'Shadow Luxe',
+  blackbeaty: 'Black Beauty', // تصحيح تهجئة الملف لو كان blackbeaty.jpeg
+  sky: 'Sky Blue',
+  lolia: 'Lolia',
+  harmony: 'Harmony'
+};
 
-/* ====== 2) توليد عنوان جميل من اسم الملف ====== */
-function prettyTitle(file) {
-  const base = file
-    .replace(/\.(jpe?g|png)$/i, '')      // يشيل الامتداد (.jpeg .jpg .png)
-    .replace(/[-_]+/g, ' ')              // يحول الشرطات إلى مسافات
-    .replace(/([a-z])([A-Z])/g, '$1 $2') // يضيف مسافة بين الحروف الكبيرة والصغيرة (مثل MidnightWave → Midnight Wave)
-    .replace(/(\d+xl)/gi, '')            // يشيل المقاسات من الاسم (مثل 2XL)
-    .trim();                             // يحذف المسافات الزائدة بالبداية أو النهاية
-
-  // يحول أول حرف من كل كلمة إلى كابيتال
-  return base
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-
+/* ========= 3) دوال مساعدة ========= */
+function toTitleCase(str){
+  return str.replace(/\w\S*/g, w => w[0].toUpperCase() + w.slice(1).toLowerCase());
 }
 
-/* ====== 3) وصف افتراضي بسيط حسب كلمات بالعنوان ====== */
+/* تفصل الكلمات وتعمل Capital لكل كلمة */
+function prettyTitle(file){
+  const stem = file.replace(/^.*[\\/]/,'').replace(/\.(jpe?g|png)$/i,'');
+  const key = stem.toLowerCase();
+  if (titleOverrides[key]) return titleOverrides[key];
+
+  const spaced = stem
+    .replace(/[-_]+/g,' ')              // شرطات/أندر سكور → مسافات
+    .replace(/([a-z])([A-Z])/g,'$1 $2') // CamelCase → مسافة
+    .trim();
+
+  return toTitleCase(spaced);
+}
+
+/* تقدير مقاسات افتراضي — عدّليه لاحقًا لكل منتج عند الحاجة */
+function inferSizes(file){
+  const f = file.toLowerCase();
+  if(f.includes('2xl')||f.includes('xxl')) return ['2XL'];
+  if(f.includes('xl')) return ['XL'];
+  if(f.includes('lolia')||f.includes('harmony')) return ['L']; // حسب طلبك
+  return ['S','M','L'];
+}
+
+/* وصف افتراضي بسيط */
 function autoDesc(title){
   const t = title.toLowerCase();
   if(t.includes('bikini')) return 'Classic two-piece bikini with a flattering tummy-control design.';
   if(t.includes('dress'))  return 'Elegant swim dress with stylish lines and flattering tummy control.';
-  if(t.includes('boyshort')) return 'Sporty one-piece swimsuit with comfy coverage for active beach days.';
+  if(t.includes('boyshort')) return 'Sporty one-piece with comfy coverage for active beach days.';
   return 'Elegant one-piece swimsuit with sleek lines and tummy-control fit.';
 }
 
-/* ====== 4) مقاسات افتراضية حسب الاسم (تقدير) ====== */
-function inferSizes(file){
-  const f = file.toLowerCase();
-  if(f.includes('2xl') || f.includes('xxl')) return ['2XL'];
-  if(f.includes('xl')) return ['XL'];
-  // الافتراضي – انتِ لاحقاً بتعدّلي براحتك
-  return ['S','M','L'];
-}
-
-/* ====== 5) سعر افتراضي (يمكن تعديله) ====== */
+/* سعر افتراضي */
 function inferPrice(title){
-  // تسعير بسيط مختلف شوي حتى يبين طبيعي
-  if(title.toLowerCase().includes('bikini')) return 299;
-  if(title.toLowerCase().includes('dress'))  return 275;
+  const t = title.toLowerCase();
+  if(t.includes('bikini')) return 299;
+  if(t.includes('dress'))  return 275;
+  if(t.includes('lolia'))  return 270;
+  if(t.includes('harmony'))return 265;
   return 250;
 }
 
-/* ====== 6) بناء بيانات المنتجات من الصور ====== */
-const products = imageFiles
-  .map(cleanFile)
-  .filter(f => f.toLowerCase() !== 'logo.png') // نتأكد
-  .map(file => {
-    const title = prettyTitle(file);
-    return {
-      id: title.toLowerCase().replace(/\s+/g,'-'),
-      image: 'images/' + encodeURI(file),
-      name: title,
-      sizes: inferSizes(file),
-      desc: autoDesc(title),
-      price: inferPrice(title)
-    };
-  });
+/* ========= 4) تحويل الصور إلى بيانات منتجات ========= */
+const products = imageFiles.map(file=>{
+  const name = prettyTitle(file);
+  return {
+    name,
+    img: `images/${file}`,
+    sizes: inferSizes(file),
+    desc: autoDesc(name),
+    price: inferPrice(name)
+  }
+});
 
-/* ====== 7) رسم الكروت ====== */
+/* ========= 5) رسم المنتجات ========= */
 const grid = document.getElementById('grid');
-function render(list){
-  grid.innerHTML = '';
-  list.forEach(p => {
-    const card = document.createElement('article');
-    card.className = 'product';
-    card.dataset.sizes = p.sizes.join(',');
-    card.innerHTML = `
-      <div class="img-box">
-        <img loading="lazy" src="${p.image}" alt="${p.name}">
-      </div>
-      <div class="content">
-        <h2 class="name">${p.name}</h2>
-        <p class="sizes">Available: ${p.sizes.join(', ')}</p>
-        <p class="desc">${p.desc}</p>
-        <p class="price">AED ${p.price}</p>
-        <a class="cta" href="https://wa.me/971000000000?text=Hi%20I%27d%20like%20to%20order%20${encodeURIComponent(p.name)}" target="_blank" rel="noopener">Order Now</a>
-      </div>`;
-    grid.appendChild(card);
-  });
+function waLink(name){
+  const phone = '971504654412'; // رقم الواتساب الخاص بك بدون مسافات
+  const text = encodeURIComponent(`Hello Hunalulu 👋 I want to order: ${name}`);
+  return `https://wa.me/${phone}?text=${text}`;
 }
+function card(p){
+  return `
+  <article class="product" data-sizes="${p.sizes.join(',')}">
+    <div class="img-box">
+      <img loading="lazy" src="${p.img}" alt="${p.name}" onerror="this.closest('.product').remove();" />
+    </div>
+    <div class="body">
+      <h2 class="name">${p.name}</h2>
+      <p class="sizes">Available: ${p.sizes.join(', ')}</p>
+      <p class="desc">${p.desc}</p>
+      <p class="price">AED ${p.price}</p>
+      <a class="cta" href="${waLink(p.name)}" target="_blank" rel="noopener">Order Now</a>
+    </div>
+  </article>`;
+}
+function render(list){ grid.innerHTML = list.map(card).join(''); }
 render(products);
 
-/* ====== 8) الفلتر حسب المقاس ====== */
-const tabs = document.querySelectorAll('.tab');
-tabs.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    tabs.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const size = btn.dataset.size;
-    if(size==='ALL'){ render(products); return; }
-    render(products.filter(p => p.sizes.includes(size)));
-  });
+/* ========= 6) الفلترة حسب المقاس ========= */
+document.getElementById('sizeFilters').addEventListener('click', (e)=>{
+  const btn = e.target.closest('.chip');
+  if(!btn) return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  const size = btn.dataset.size;
+  if(size==='ALL'){ render(products); return; }
+  const filtered = products.filter(p => p.sizes.includes(size));
+  render(filtered);
 });
-</script> src="script.js"></script>
+</script>
 </body>
 </html>
