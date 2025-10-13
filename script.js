@@ -16,21 +16,6 @@ const cleanFile = f => f
   .trim();
 
 // 3) دالة توليد عنوان مرتّب Capital ومسافات صح
-function prettyTitle(file){
-    const base = file
-        .replace(/\.(jpe?g|png)$/i, '')     // احذف الامتداد
-        .replace(/[-_]+/g, ' ')             // حوّل الشرطات إلى مسافات
-        .replace(/([a-z])([A-Z])/g, '$1 $2')// أضف مسافة بين حروف متصلة مثل "MidnightWave"
-        .replace(/\bxl\b/gi, 'XL')          // خليه يقرأ XL بشكل واضح
-        .trim();
-    return base.charAt(0).toUpperCase() + base.slice(1);
-
-
-  return base
-    .split(/\s+/)
-    .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-    .join(' ');
-}
 
 // 4) بناء بطاقة المنتج
 function productCard(file) {
@@ -48,7 +33,23 @@ function productCard(file) {
       <a class="order-btn" href="https://wa.me/971000000000">Order Now</a>
     </div>
   `;
-}
+// ====== تصحيح وتجميل أسماء المنتجات تلقائيًا ======
+function prettyTitle(file) {
+  // حذف الامتداد (jpeg, png ...)
+  const base = file
+    .replace(/\.(jpe?g|png)$/i, '')
+    .replace(/[-_]+/g, ' ') // حوّل "-" و "_" لمسافات
+    .replace(/([a-z])([A-Z])/g, '$1 $2') // فكّ CamelCase مثل "OceanPreeze"
+    .replace(/([a-z]+)(?=[A-Z])/g, '$1 ') // أضف مسافة قبل الأحرف الكبيرة
+    .replace(/\s+/g, ' ') // إزالة المسافات الزائدة
+    .trim();
+
+  // تحويل أول حرف من كل كلمة إلى كبير (Capital)
+  return base
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
 
 // 5) ضخّ البطاقات في الشبكة
 const grid = document.getElementById('grid');
