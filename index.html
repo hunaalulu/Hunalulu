@@ -87,7 +87,6 @@
 <script>
 /* 1) كل أسماء الملفات الموجودة داخل images/  */
 const imageFiles = [
-  // من الصور التي أرسلتِها (جميعها بأسماء محدثة مع الشرطة السفلية)
   "aloha.jpeg","aurora.jpeg","barbie-look.jpeg","bella.jpeg",
   "black_beaty.jpeg","black_neon.jpeg","black_orchide.jpeg","black_panther.jpeg",
   "black_pearl.jpeg","black_swan.jpeg","bloom.jpeg","blue_lake.jpeg","blue_motion.jpeg",
@@ -101,10 +100,12 @@ const imageFiles = [
   "olive-green.jpeg","pinky_promise.jpeg","rainbow_wave.jpeg","red.jpeg","roar.jpeg",
   "royal.jpeg","royal_bee.jpeg","ruby.jpeg","sage.jpeg","sandy_glow.jpeg","santorini.jpeg",
   "savanna.jpeg","scarlet.jpeg","seamist.jpeg","shadow_luxe.jpeg","summer_glow.jpeg",
-  "sun_kissed.jpeg","twilight.jpeg","velour.jpeg","veloura.jpeg","vivaflora.jpeg","Sky.
-  "images/blue-rose.jpeg","gabana.jpeg","navy-grace.jpeg","black-pearl.jpeg"
-"sun-splash.jpeg","ocean-breeze.jpeg"
-"sunny-mood.jpeg","bouquet.jpeg",
+  "sun_kissed.jpeg","twilight.jpeg","velour.jpeg","veloura.jpeg","vivaflora.jpeg",
+
+  // الصور الجديدة
+  "blue-rose.jpeg","gabana.jpeg","navy-grace.jpeg","black-pearl.jpeg",
+  "sun-splash.jpeg","ocean-breeze.jpeg","sunny-mood.jpeg","bouquet.jpeg"
+];
 /* 2) تحويل اسم الملف إلى عنوان جميل مع فراغات و Capital */
 function prettyTitle(file){
   const base = file.replace(/\.(jpe?g|png)$/i,'')
