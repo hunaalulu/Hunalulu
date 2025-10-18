@@ -119,66 +119,63 @@ function prettyTitle(file){
     .replace(/\bKissed\b/,'Kissed')
     .replace(/\bPreeze\b/,'Preeze')   // لو الاسم مقصود
     .replace(/\bBoy Short\b/,'Boyshort')
-    .replace(/\bOlive Green\b/,'Olive Green'); 
+    .replace(/\bOlive Green\b/,'Olive 
+}
+/* ==== swimsuit type detection ==== */
+const BIKINI_SET  = new Set(["Olive Green", "Tiger Collection", "Cotton Candy"]);
+const TANKINI_SET = new Set(["Rainbow Wave", "Blue Lake"]);
+
+function detectType(title){
+  if (BIKINI_SET.has(title))  return "bikini";
+  if (TANKINI_SET.has(title)) return "tankini";
+  return "onepiece"; // default
 }
 
-/* 3) وصف افتراضي + أوصاف مخصصة لبعض الموديلات */
-const defaultDesc = "Elegant one-piece swimsuit with sleek lines and tummy-control fit.";
-const descOverrides = {
-  "Midnight Wave": "Elegant black swim dress with a flowy, flattering design.",
-  "Royal": "Classic deep-blue swimsuit for an elegant beach look.",
-  "Red": "Bold red swimsuit for a standout beach look.",
-  "Blue Lake": "Elegant blue tummy-control swim dress with stylish cut-out design.",
-  "Olive Green": "Classic two-piece bikini with a flattering tummy-control design.",
-  "Boyshort": "Sporty one-piece swimsuit with comfy coverage for active beach days."
+/* ==== English description templates ==== */
+const EN_DESC_BY_TYPE = {
+  onepiece: "Elegant one-piece swim dress with inner tummy-control shorts for a smooth and secure fit.",
+  bikini:   "Chic two-piece bikini set (top + bottoms) crafted for a confident, flattering beach look.",
+  tankini:  "Stylish two-piece tankini (long top + shorts/skirt) with inner tummy-control lining for comfort and coverage."
 };
 
-/* 4) مقاسات وأسعار مخصصة عند الحاجة */
-const overrides = {
-  // مثال: مقاس واحد فقط
-  "Lolia": { sizes:["L"], price:255, desc:"Playful pink swim dress with flattering tummy control." },
-  "Harmony": { sizes:["L"], price:260, desc:"Elegant black & pink tankini look with supportive fit." },
-  // أمثلة أسعار/مقاسات
-  "Midnight Wave": { sizes:["2XL"], price:275 },
-  "Royal": { sizes:["S","M","L"], price:260 },
-  "Red": { sizes:["M","L"], price:265 },
-  "Blue Lake": { sizes:["M"], price:259 },
+/* ==== Marketing tags by type ==== */
+const EN_TAGS_BY_TYPE = {
+  onepiece: "Resort-ready | Tummy control | Quick-dry fabric | Soft stretch",
+  bikini:   "Summer essential | Flattering fit | Beach glow | Mermaid-inspired",
+  tankini:  "Comfort coverage | Sun-safe style | Poolside elegance | Travel must-have"
 };
 
-/* 5) توليد بيانات المنتجات */
+/* ==== Generate product data ==== */
 function makeProductData(file){
   const title = prettyTitle(file);
-  const key = title;
-  const sizes = (overrides[key]?.sizes) ?? ["S","M","L"];
-  const price = (overrides[key]?.price) ?? 250;
-  const desc = overrides[key]?.desc ?? descOverrides[key] ?? defaultDesc;
-  return {
-    file, title, sizes, price, desc
-  };
+  const key   = title;
+  const sizes = ["S","M","L"]; // default sizes
+  const price = 250;           // default price
+  const type  = detectType(title);
+  const desc  = EN_DESC_BY_TYPE[type];
+  const tags  = EN_TAGS_BY_TYPE[type];
+  return { file, title, sizes, price, desc, tags };
 }
 
-const products = imageFiles.map(makeProductData);
-
-/* 6) رسم الكروت */
-const grid = document.getElementById('grid');
-
+/* ==== Create product cards ==== */
 function productCard(p){
   const sizeAttr = p.sizes.join(',');
   return `
   <div class="product" data-sizes="${sizeAttr}">
     <div class="img-box">
-      <img src="images/${p.file}" alt="${p.title}">
+      <img src="images/${p.file}" alt="${p.title}" loading="lazy">
     </div>
-    <div class="pad">
-      <h3 class="name">${p.title}</h3>
-      <p class="sizes">Available: ${p.sizes.join(', ')}</p>
-      <p class="desc">${p.desc}</p>
-      <div class="price">AED ${p.price}</div>
-      <a class="cta" href="https://wa.me/971000000000?text=Hi%20I%20want%20${encodeURIComponent(p.title)}">Order Now</a>
-    </div>
+    <h3 class="product-name">${p.title}</h3>
+    <p class="sizes">Available: ${p.sizes.join(', ')}</p>
+    <p class="desc">${p.desc}</p>
+    <p class="tags">${p.tags}</p>
+    <p class="price">AED ${p.price}</p>
+    <a class="order-btn" href="https://wa.me/971000000000">Order Now</a>
   </div>`;
 }
 
+/* ==== Generate product list ==== */
+const products = imageFiles.map(makeProductData);
 function render(list){
   grid.innerHTML = list.map(productCard).join('');
 }
