@@ -68,3 +68,20 @@
   content: " ✨";
   color: #ccefed;
 }
+/* ==== HunaLulu Price Styling - Luxury Gold ==== */
+.product .price {
+  color: #c9a24b;                 /* Elegant gold shade */
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+  margin-top: 6px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 6px rgba(255, 245, 210, 0.4);
+  transition: transform 0.2s ease-in-out;
+}
+
+.product .price:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 8px rgba(255, 255, 200, 0.6);
+}
