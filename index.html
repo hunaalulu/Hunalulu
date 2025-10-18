@@ -174,12 +174,19 @@ function productCard(p){
   </div>`;
 }
 const grid = document.getElementById('grid');
-/* ==== Generate product list ==== */
 const products = imageFiles.map(makeProductData);
+
+console.log('images:', imageFiles.length, imageFiles.slice(0,5));
+console.log('products:', products.length);
+console.log('grid exists?', !!grid);
+
 function render(list){
   grid.innerHTML = list.map(productCard).join('');
 }
-render(products);
+
+window.addEventListener('DOMContentLoaded', () => {
+  render(products);
+});
 
 /* 7) فلترة المقاسات */
 const chips = [...document.querySelectorAll('.chip')];
