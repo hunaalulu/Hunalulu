@@ -46,3 +46,25 @@
   background: #00796b; /* لون أغمق عند المرور */
 }
 </style>
+/* ==== HunaLulu tags styling ==== */
+.product .tags {
+  color: #7eddd3;               /* Tiffany Blue */
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+  margin-bottom: 8px;
+  text-align: center;
+  display: block;
+}
+
+/* optional subtle shimmer effect */
+.product .tags::before {
+  content: "✨ ";
+  color: #ccefed;
+}
+.product .tags::after {
+  content: " ✨";
+  color: #ccefed;
+}
