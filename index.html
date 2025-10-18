@@ -102,68 +102,31 @@ const imageFiles = [
   "savanna.jpeg","scarlet.jpeg","seamist.jpeg","shadow_luxe.jpeg","summer_glow.jpeg",
   "sun_kissed.jpeg","twilight.jpeg","velour.jpeg","veloura.jpeg","vivaflora.jpeg"
 ];
-  
-
-/* 2) تحويل اسم الملف إلى عنوان جميل مع فراغات و Capital */
-function prettyTitle(file){
-  const base = file.replace(/\.(jpe?g|png)$/i,'')
-                   .replace(/[_-]+/g,' ')
-                   .replace(/\s+/g,' ')
-                   .trim();
-  // Title Case
-  const titled = base.split(' ').map(w => w ? w[0].toUpperCase()+w.slice(1) : w).join(' ');
-  // بعض التصحيحات اليدوية الشهيرة
-  return titled
-    .replace(/\bBeaty\b/,'Beauty')
-    .replace(/\bOrchide\b/,'Orchid')
-    .replace(/\bKissed\b/,'Kissed')
-    .replace(/\bPreeze\b/,'Preeze')   // لو الاسم مقصود
-    .replace(/\bBoy Short\b/,'Boyshort')
-    .replace(/\bOlive Green\b/,'Olive 
+  /* === helpers === */
+function baseName(file){
+  return file.replace(/\.(jpeg|jpg|png|webp)$/i, '');
 }
-/* ==== swimsuit type detection ==== */
-const BIKINI_SET  = new Set(["Olive Green", "Tiger Collection", "Cotton Candy"]);
-const TANKINI_SET = new Set(["Rainbow Wave", "Blue Lake"]);
-
-function detectType(title){
-  if (BIKINI_SET.has(title))  return "bikini";
-  if (TANKINI_SET.has(title)) return "tankini";
-  return "onepiece"; // default
-}
-
-/* ==== English description templates ==== */
-const EN_DESC_BY_TYPE = {
-  onepiece: "Elegant one-piece swim dress with inner tummy-control shorts for a smooth and secure fit.",
-  bikini:   "Chic two-piece bikini set (top + bottoms) crafted for a confident, flattering beach look.",
-  tankini:  "Stylish two-piece tankini (long top + shorts/skirt) with inner tummy-control lining for comfort and coverage."
-};
-
-/* ==== Marketing tags by type ==== */
-const EN_TAGS_BY_TYPE = {
-  onepiece: "Resort-ready | Tummy control | Quick-dry fabric | Soft stretch",
-  bikini:   "Summer essential | Flattering fit | Beach glow | Mermaid-inspired",
-  tankini:  "Comfort coverage | Sun-safe style | Poolside elegance | Travel must-have"
-};
-
-/* ==== Generate product data ==== */
-function makeProductData(file){
-  const title = prettyTitle(file);
-  const key   = title;
-  const sizes = ["S","M","L"]; // default sizes
-  const price = 250;           // default price
-  const type  = detectType(title);
-  const desc  = EN_DESC_BY_TYPE[type];
-  const tags  = EN_TAGS_BY_TYPE[type];
-  return { file, title, sizes, price, desc, tags };
-}
-
-/* ==== Create product cards ==== */
 function productCard(p){
   const sizeAttr = p.sizes.join(',');
+  const base = baseName(p.file);
   return `
   <div class="product" data-sizes="${sizeAttr}">
     <div class="img-box">
-      <img src="images/${p.file}" alt="${p.title}" loading="lazy">
+      <picture>
+        <source srcset="images/${base}.webp" type="image/webp">
+        <source srcset="images/${base}.jpg"  type="image/jpeg">
+        <source srcset="images/${base}.png"  type="image/png">
+        <img src="images/${p.file}" alt="${p.title}" loading="lazy"
+             onerror="(function(img){
+               const exts=['jpg','jpeg','png','webp'];
+               const b='${base}';
+               let i=0;
+               (function tryNext(){
+                 if(i>=exts.length){ img.onerror=null; return; }
+                 img.src='images/'+b+'.'+exts[i++];
+               })();
+             })(this)">
+      </picture>
     </div>
     <h3 class="product-name">${p.title}</h3>
     <p class="sizes">Available: ${p.sizes.join(', ')}</p>
@@ -173,18 +136,24 @@ function productCard(p){
     <a class="order-btn" href="https://wa.me/971000000000">Order Now</a>
   </div>`;
 }
+
+/* === mount === */
 const grid = document.getElementById('grid');
 const products = imageFiles.map(makeProductData);
 
-console.log('images:', imageFiles.length, imageFiles.slice(0,5));
-console.log('products:', products.length);
-console.log('grid exists?', !!grid);
-
 function render(list){
+  if(!grid){
+    console.error('grid element not found. Add: <div id="grid" class="grid"></div> above <script>.');
+    return;
+  }
   grid.innerHTML = list.map(productCard).join('');
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  // تشخيص سريع في الكونسول
+  console.log('images count:', imageFiles.length, imageFiles.slice(0,5));
+  console.log('products count:', products.length);
+  console.log('grid exists?', !!grid);
   render(products);
 });
 
