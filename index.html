@@ -1,571 +1,412 @@
-<!doctype html>
-<html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Hunalulu Swimwear</title>
-<style>
-  :root{
-    --bg:#c9f3f1;           /* تيفاني فاتح */
-    --bg-soft:#b9ece9;      /* تيفاني أغمق شوي للتباين الخفيف */
-    --card:#ffffff;
-    --ink:#0e2b2a;
-    --muted:#7a8b8a;
-    --brand:#10a39b;
-    --price:#0a9c78;
-    --pill:#11a9a1;
-    --shadow:0 8px 24px rgba(6,48,46,.10);
-    --radius:18px;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-    background:linear-gradient(180deg,var(--bg),var(--bg-soft) 420px,var(--bg));
-    color:var(--ink);
-  }
-  .wrap{max-width:1080px;margin:auto;padding:24px 16px 80px}
-  .logo{
-    display:block;
-    margin:12px auto 6px;
-    width:140px;
-    height:140px;
-    object-fit:contain;
-  }
-  h1{
-    margin:8px 0 16px;
-    text-align:center;
-    font-size:28px;
-  }
-  .notice{
-    max-width:820px;
-    margin:10px auto;
-    border-radius:14px;
-    padding:14px 16px;
-    background:#10a39b;
-    color:#fff;
-    box-shadow:var(--shadow);
-    line-height:1.4;
-  }
-  .notice + .notice{margin-top:8px}
+  <meta charset="UTF-8">
+  <title>Hunalulu Swimwear</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  .filters{
-    display:flex;
-    gap:14px;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin:18px 0 12px;
-  }
-  .chip{
-    padding:10px 18px;
-    border-radius:999px;
-    border:2px solid #11a9a1;
-    background:#e8fbfa;
-    color:#077772;
-    font-weight:600;
-    cursor:pointer;
-    user-select:none;
-    transition:.2s;
-  }
-  .chip.active{
-    background:var(--pill);
-    color:#fff;
-    border-color:var(--pill);
-    transform:translateY(-1px);
-  }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:22px;
-  }
-  @media (min-width:860px){
-    .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-  }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #b7f4f0, #e7fffb);
+      color: #024047;
+    }
 
-  .product{
-    background:var(--card);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-  }
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem 3rem;
+    }
 
-  .img-box{
-    width:100%;
-    height:340px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#fff;
-    overflow:hidden;
-  }
-  .img-box img{
-    max-width:100%;
-    max-height:100%;
-    object-fit:contain;
-    display:block;
-  }
+    .logo {
+      display: block;
+      max-width: 140px;
+      margin: 0 auto 0.5rem;
+    }
 
-  .pad{padding:16px 18px 14px}
-  .name{
-    font-size:20px;
-    font-weight:800;
-    margin:0 0 6px;
-  }
-  .sizes,.desc{
-    margin:2px 0;
-    color:var(--muted);
-    line-height:1.45;
-  }
-  .tags{
-    margin:2px 0;
-    color:#7eddd3;
-    font-style:italic;
-    letter-spacing:.4px;
-  }
-  .price{
-    color:var(--price);
-    font-weight:800;
-    font-size:22px;
-    margin:10px 0 12px;
-  }
-  .cta{
-    display:block;
-    text-align:center;
-    font-weight:700;
-    background:#11a9a1;
-    color:#fff;
-    border:none;
-    border-radius:12px;
-    padding:12px 16px;
-    text-decoration:none;
-    transition:.15s;
-    box-shadow:0 6px 16px rgba(17,169,161,.25);
-  }
-  .cta:active{transform:translateY(1px)}
-  footer{
-    margin-top:28px;
-    text-align:center;
-    color:#5f6e6d;
-    font-size:14px;
-  }
-</style>
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .notice {
+      background: #009688;
+      color: #fff;
+      padding: 0.8rem 1rem;
+      border-radius: 18px;
+      margin-bottom: 0.6rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .notice b {
+      font-weight: 700;
+    }
+
+    /* فلتر المقاسات */
+    #size-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+      margin: 1.3rem 0 1.5rem;
+    }
+
+    #size-filters .chip {
+      border: none;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      background: #f4f7f7;
+      color: #024047;
+      transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.1s;
+    }
+
+    #size-filters .chip:hover {
+      background: #e3f2f1;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    #size-filters .chip.active {
+      background: #009688;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.16);
+    }
+
+    /* شبكة المايوهات */
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: #ffffffcc;
+      border-radius: 14px;
+      padding: 0.7rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 0.45rem;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+      text-transform: capitalize;
+    }
+
+    .card .size {
+      font-size: 0.78rem;
+      opacity: 0.85;
+    }
+
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
   <div class="wrap">
-    <img src="images/logo.png" alt="hunalulu logo" class="logo" />
+    <!-- لو عندك لوجو اسمه logo.png داخل images راح يظهر هنا -->
+    <img src="images/logo.png" alt="Hunalulu" class="logo" onerror="this.style.display='none'">
+
     <h1>Swim like a mermaid 🧜‍♀️</h1>
 
     <div class="notice">🌊 We offer <b>Cash on Delivery</b> for your convenience!</div>
     <div class="notice">✨ All our swimsuits feature <b>Tummy Control</b> for a flattering and confident fit!</div>
 
-    <div class="filters" id="filters">
-      <button class="chip active" data-size="ALL">All</button>
+    <!-- فلتر المقاسات -->
+    <div id="size-filters">
+      <button class="chip active" data-size="All">All</button>
+      <button class="chip" data-size="XS">XS</button>
       <button class="chip" data-size="S">S</button>
       <button class="chip" data-size="M">M</button>
       <button class="chip" data-size="L">L</button>
       <button class="chip" data-size="XL">XL</button>
       <button class="chip" data-size="2XL">2XL</button>
+      <button class="chip" data-size="3XL">3XL</button>
+      <button class="chip" data-size="5XL">5XL</button>
     </div>
 
-    <div id="grid" class="grid"></div>
+    <!-- شبكة المايوهات -->
+    <div id="grid"></div>
 
     <footer>© Hunalulu</footer>
   </div>
 
-<script>
-/* 1) كل أسماء الملفات الموجودة داخل images/  */
-const imageFiles = [
-  "Sky.jpeg",
-  "aloha.jpeg",
-  "aurora.jpeg",
-  "barbie-look.jpeg",
-  "barbie-splash.jpeg",
-  "bella.jpeg",
-  "berry-bloom.jpeg",
-  "black-bow.jpeg",
-  "black-olive.jpeg",
-  "black_beaty.jpeg",
-  "black_neon.jpeg",
-  "black_orchide.jpeg",
-  "black_panther.jpeg",
-  "black_pearl.jpeg",
-  "black_swan.jpeg",
-  "bling-bling.jpeg",
-  "bloom.jpeg",
-  "blossom-blue.jpeg",
-  "blue-lagoon.jpeg",
-  "blue_lake.jpeg",
-  "blue_motion.jpeg",
-  "blueberry.jpeg",
-  "blush_wave.jpeg",
-  "bouquet.jpeg",
-  "boy_short.jpeg",
-  "burgundy_charm.jpeg",
-  "calamentin.jpeg",
-  "calm.jpeg",
-  "candy_shop.jpeg",
-  "cherrish.jpeg",
-  "cherry_berry.jpeg",
-  "chess_chic.jpeg",
-  "chic-chack.jpeg",
-  "classic_diva.jpeg",
-  "cool-mood.jpeg",
-  "cotton_candy.jpeg",
-  "curve-waist.jpeg",
-  "deep_wave.jpeg",
-  "dolce.jpeg",
-  "elegant_twist.jpeg",
-  "flamingo.jpeg",
-  "flora.jpeg",
-  "floral.jpeg",
-  "flower-garden.jpeg",
-  "freedom.jpeg",
-  "garden.jpeg",
-  "garnet.jpeg",
-  "golden-waist.jpeg",
-  "harmony.jpeg",
-  "hot-red.jpeg",
-  "indigo.jpeg",
-  "jasmine.jpeg",
-  "laguna.jpeg",
-  "latte_love.jpeg",
-  "lavender_bliss.jpeg",
-  "lemonade.jpeg",
-  "lolia.jpeg",
-  "midnight_wave.jpeg",
-  "mommy-wave.jpeg",
-  "naughty.jpeg",
-  "navy-grace.jpeg",
-  "navy_glow.jpeg",
-  "neon_night.jpeg",
-  "noir.jpeg",
-  "ocean_preeze.jpeg",
-  "olive-green.jpeg",
-  "olive_tree.jpeg",
-  "pinky_promise.jpeg",
-  "purple-mood.png",
-  "rainbow_wave.jpeg",
-  "red.jpeg",
-  "relax.jpeg",
-  "roar.jpeg",
-  "romance.jpeg",
-  "royal.jpeg",
-  "royal_bee.jpeg",
-  "ruby-dream.jpeg",
-  "ruby.jpeg",
-  "sage.jpeg",
-  "sandy_glow.jpeg",
-  "santorini.jpeg",
-  "sassy-red.jpeg",
-  "savanna.jpeg",
-  "scarlet.jpeg",
-  "sea-motion.jpeg",
-  "seamist.jpeg",
-  "shadow_luxe.jpeg",
-  "simple-comfy.jpeg",
-  "skyline.jpeg",
-  "speedo.jpeg",
-  "strong-neon.jpeg",
-  "summer-aura.jpeg",
-  "summer_glow.jpeg",
-  "sun_kissed.jpeg",
-  "sunny-mood.jpeg",
-  "sunrise.jpeg",
-  "tropical.jpeg",
-  "twilight.jpeg",
-  "velour.jpeg",
-  "veloura.jpeg",
-  "velvet.jpeg",
-  "violet_pop.jpeg",
-  "vivaflora.jpeg",
-  "wavy.jpeg",
-  "white-pearl.jpeg",
-  "wild-spirit.jpeg",
-  "wink_wink.jpeg",
-  "switch-vibes.jpeg",
-  "flip-and-glow.jpeg",
-  "double-wave.jpeg",
-  "double-delight.jpeg"
-];
-<script>
-// المقاسات النهائية الموحدة (18W = 2XL، 20W = 3XL، 30W = 5XL)
-const productSizes = {
-  sky: "XS",
-  aloha: "L",
-  aurora: "XL",
-  "barbie-look": "L",
-  "blue-lagoon": "2XL",
-  "blue_motion": "S",
-  "blush_wave": "S",
-  bouquet: "M",
-  calamentin: "L",
-  calm: "L",
-  "cherry_berry": "5XL",     // ✅ كان 30W
-  "classic_diva": "2XL",
-  "berry-bloom": "2XL",
-  romance: "L",
-  "sea-motion": "M",
-  lemonade: "L",
-  "ruby-dream": "2XL",
-  "flower-garden": "S",
-  bloom: "M",
-  bella: "XL",
-  "black-olive": "M",
-  "wink_wink": "XL",
-  "navy-grace": "L",
-  "black_beaty": "M",
-  "black_pearl": "L",
-  "ocean_preeze": "2XL",     // ✅ كان 18W
-  "sandy_glow": "L",
-  "bling-bling": "M",
-  "strong-neon": "S",
-  naughty: "XL",
-  indigo: "XL",
-  laguna: "S",
-  "lavender_bliss": "M",
-  lolia: "L",
-  "navy_glow": "XL",
-  "neon_night": "S",
-  "royal_bee": "M",
-  "sunny-mood": "L",
-  sunrise: "S",
-  "rosy-dream": "XL",
-  veloura: "M",
-  harmony: "XXXL",
-  twilight: "3XL",            // ✅ كان 20W
-  "latte_love": "S",
-  roar: "L",
-  "pinky_promise": "M",
-  sage: "XXL",
-  scarlet: "L",
-  vivaflora: "2XL",
-  santorini: "M",
-  "sun_kissed": "S",
-  "midnight_wave": "XL",
-  royal: "XS",
-  ruby: "L",
-  velvet: "L",
-  "shadow_luxe": "L",
-  "chic-chack": "M",
-  seamist: "S",
-  "rainbow_wave": "M",
-  "violet_pop": "L",
-  velour: "M",
-  flora: "M",
-  freedom: "S",
-  speedo: "S",
-  "boy_short": "XS",
-  "classic_chic": "M",
-  savanna: "24/M, 3XL",
-  wavy: "2XL",
-  flamingo: "L",
-  cherrish: "L",
-  floral: "S",
-  "elegant_twist": "L",
-  garden: "XL",
-  garnet: "L",
-  red: "L",
-  "switch-vibes": "S",
-  "flip-and-glow": "S",
-  "double-wave": "S",
-  "double-delight": "S",
-  tropical: "3XL"
-};
-</script>
-/* 2) تحويل اسم الملف إلى عنوان جميل مع فراغات و Capital */
-function prettyTitle(file){
-  const base = file.replace(/\.(jpe?g|png|webp)$/i,'')
-                   .replace(/[_-]+/g,' ')
-                   .replace(/\s+/g,' ')
-                   .trim();
-
-  // Title Case
-  const titled = base.split(' ')
-    .map(w => w ? w[0].toUpperCase()+w.slice(1) : w)
-    .join(' ');
-
-  // تصحيحات يدوية شائعة
-  return titled
-    .replace(/\bBeaty\b/, 'Beauty')
-    .replace(/\bOrchide\b/, 'Orchid')
-    .replace(/\bKissed\b/, 'Kissed')
-    .replace(/\bPreeze\b/, 'Preeze')   // لو عندك اسم هيك
-    .replace(/\bBoy Short\b/, 'Boyshort')
-    .replace(/\bOlive Green\b/, 'Olive Green');
-}
-
-/* ==== تحديد نوع القطعة (مبدئي) ==== */
-const BIKINI_SET  = new Set(["Olive Green", "Cotton Candy"]);
-const TANKINI_SET = new Set(["Rainbow Wave", "Blue Lake"]);
-
-function detectType(title){
-  if (BIKINI_SET.has(title))  return "bikini";
-  if (TANKINI_SET.has(title)) return "tankini";
-  return "onepiece";
-}
-
-/* ==== وصف + تاغات إنجليزي حسب النوع ==== */
-const EN_DESC_BY_TYPE = {
-  onepiece: "Elegant one-piece swim dress with inner tummy-control shorts for a smooth and secure fit.",
-  bikini:   "Chic two-piece bikini set (top + bottoms) crafted for a confident, flattering beach look.",
-  tankini:  "Stylish two-piece tankini (long top + shorts/skirt) with inner tummy-control lining for comfort and coverage."
-};
-const EN_TAGS_BY_TYPE = {
-  onepiece: "Resort-ready | Tummy control | Quick-dry fabric | Soft stretch",
-  bikini:   "Summer essential | Flattering fit | Beach glow | Mermaid-inspired",
-  tankini:  "Comfort coverage | Sun-safe style | Poolside elegance | Travel must-have"
-};
-
-/* ==== توليد بيانات المنتج ==== */
-function makeProductData(file){
-  const title = prettyTitle(file);
-  const type  = detectType(title);
-
-  // مبدئياً نخلي مقاس S M L لحد ما تعطيني المقاسات الصحيحة لكل موديل
-  const sizes = ["S","M","L"];
-
-  // أسعار حسب كلامك:
-  // بكيني: 189
-  // فساتين سباحة: 220
-  // قطعة واحدة فخمة: 259
-  // قطعة واحدة خاصة: 224
-  let price;
-  if (["wild-spirit.jpeg", "blossom-blue.jpeg", "summer-aura.jpeg", "tropical.jpeg"].includes(file)) {
-    price = 189;          // بكيني
-  } else if (file === "barbie-splash.jpeg") {
-    price = 220;          // فستان سباحة
-  } else if (["white-pearl.jpeg", "mommy-wave.jpeg"].includes(file)) {
-    price = 259;          // قطعة واحدة فخمة
-  } else if (file === "purple-mood.png") {
-    price = 224;          // قطعة واحدة خاصة
-  } else {
-    price = 189;          // باقي الموديلات مبدئياً 189
-  }
-
-  const desc = EN_DESC_BY_TYPE[type];
-  const tags = EN_TAGS_BY_TYPE[type];
-
-  return { file, title, sizes, price, desc, tags };
-}
-
-/* ==== بطاقة المنتج ==== */
-function productCard(p){
-  const sizeAttr = p.sizes.join(',');
-  return `
-  <div class="product" data-sizes="${sizeAttr}">
-    <div class="img-box">
-      <img src="images/${p.file}" alt="${p.title}" loading="lazy">
-    </div>
-    <div class="pad">
-      <h3 class="name">${p.title}</h3>
-      <p class="sizes">Available: ${p.sizes.join(', ')}</p>
-      <p class="desc">${p.desc}</p>
-      <p class="tags">${p.tags}</p>
-      <p class="price">AED ${p.price}</p>
-      <a class="cta" href="https://wa.me/971000000000">Order Now</a>
-    </div>
-  </div>`;
-}
-
-/* ==== الرسم ==== */
-const grid = document.getElementById('grid');
-const products = imageFiles.map(makeProductData);
-
-function render(list){
-  grid.innerHTML = list.map(productCard).join('');
-}
-render(products);
-
-/* ==== فلترة المقاسات ==== */
-const chips = [...document.querySelectorAll('.chip')];
-chips.forEach(ch => ch.addEventListener('click', ()=>{
-  chips.forEach(c=>c.classList.remove('active'));
-  ch.classList.add('active');
-  const size = ch.dataset.size;
-  if(size === 'ALL'){
-    render(products);
-    return;
-  }
-  render(products.filter(p => p.sizes.includes(size)));
-}));
-</script>
   <script>
-/* 🎨 تعريف المايوهات والمقاسات */
-const imageFiles = [
-  "aloha.jpeg","aurora.jpeg","barbie-look.jpeg","blue-lagoon.jpeg","blue-motion.jpeg",
-  "blush-wave.jpeg","bouquet.jpeg","diva.jpeg","calm.jpeg","cherry_berry.jpeg","classic_diva.jpeg",
-  "berry-bloom.jpeg","romance.jpeg","sea-motion.jpeg","lemonade.jpeg","ruby-dream.jpeg",
-  "flower-garden.jpeg","bloom.jpeg","bella.jpeg","black-olive.jpeg","wink_wink.jpeg",
-  "navy-grace.jpeg","black-beaty.jpeg","black-pearl.jpeg","tiger.jpeg","noir.jpeg",
-  "ocean_preeze.jpeg","sandy_glow.jpeg","bling-bling.jpeg","strong-neon.jpeg",
-  "naughty.jpeg","indigo.jpeg","laguna.jpeg","jasmine.jpeg","lavender_bliss.jpeg",
-  "lolia.jpeg","navy_glow.jpeg","neon-night.jpeg","royal_bee.jpeg","sunny-mood.jpeg","sunrise.jpeg",
-  "rosy-dream.jpeg","veloura.jpeg","harmony.jpeg","twilight.jpeg","latte_love.jpeg","roar.jpeg",
-  "pinky_promise.jpeg","sage.jpeg","scarlet.jpeg","viva_flora.jpeg","santorini.jpeg",
-  "sun_kissed.jpeg","midnight_wave.jpeg","royal.jpeg","ruby.jpeg","velvet.jpeg",
-  "shadow_luxe.jpeg","chic_chack.jpeg","seamist.jpeg","rainbow_wave.jpeg","clementine.jpeg",
-  "violet_pop.jpeg","velour.jpeg","flora.jpeg","freedom.jpeg","speedo.jpeg","boy_short.jpeg",
-  "lunara.jpeg","classic_chic.jpeg","savanna.jpeg","wavy.jpeg","black-bow.jpeg",
-  "cotton_candy.jpeg","dolce.jpeg","sky.jpeg","flamingo.jpeg","cherish.jpeg","floral.jpeg",
-  "elegant_twist.jpeg","garden.jpeg","garnet.jpeg","green_forest.jpeg","red.jpeg",
-  "tropical.jpeg","switch-vibes.jpeg","double-wave.jpeg","double-delight.jpeg"
-];
+    // قائمة الصور (يجب أن تكون موجودة داخل مجلد images بنفس الأسماء)
+    const imageFiles = [
+      "Sky.jpeg",
+      "aloha.jpeg",
+      "aurora.jpeg",
+      "barbie-look.jpeg",
+      "barbie-splash.jpeg",
+      "bella.jpeg",
+      "berry-bloom.jpeg",
+      "black-bow.jpeg",
+      "black-olive.jpeg",
+      "black_beaty.jpeg",
+      "black_neon.jpeg",
+      "black_orchide.jpeg",
+      "black_panther.jpeg",
+      "black_pearl.jpeg",
+      "black_swan.jpeg",
+      "bling-bling.jpeg",
+      "bloom.jpeg",
+      "blossom-blue.jpeg",
+      "blue-lagoon.jpeg",
+      "blue_lake.jpeg",
+      "blue_motion.jpeg",
+      "blueberry.jpeg",
+      "blush_wave.jpeg",
+      "bouquet.jpeg",
+      "boy_short.jpeg",
+      "burgundy_charm.jpeg",
+      "calamentin.jpeg",
+      "calm.jpeg",
+      "candy_shop.jpeg",
+      "cherrish.jpeg",
+      "cherry_berry.jpeg",
+      "chess_chic.jpeg",
+      "chic-chack.jpeg",
+      "classic_diva.jpeg",
+      "cool-mood.jpeg",
+      "cotton_candy.jpeg",
+      "curve-waist.jpeg",
+      "deep_wave.jpeg",
+      "dolce.jpeg",
+      "elegant_twist.jpeg",
+      "flamingo.jpeg",
+      "flora.jpeg",
+      "floral.jpeg",
+      "flower-garden.jpeg",
+      "freedom.jpeg",
+      "garden.jpeg",
+      "garnet.jpeg",
+      "golden-waist.jpeg",
+      "harmony.jpeg",
+      "hot-red.jpeg",
+      "indigo.jpeg",
+      "jasmine.jpeg",
+      "laguna.jpeg",
+      "latte_love.jpeg",
+      "lavender_bliss.jpeg",
+      "lemonade.jpeg",
+      "lolia.jpeg",
+      "midnight_wave.jpeg",
+      "mommy-wave.jpeg",
+      "naughty.jpeg",
+      "navy-grace.jpeg",
+      "navy_glow.jpeg",
+      "neon_night.jpeg",
+      "noir.jpeg",
+      "ocean_preeze.jpeg",
+      "olive-green.jpeg",
+      "olive_tree.jpeg",
+      "pinky_promise.jpeg",
+      "purple-mood.png",
+      "rainbow_wave.jpeg",
+      "red.jpeg",
+      "relax.jpeg",
+      "roar.jpeg",
+      "romance.jpeg",
+      "royal.jpeg",
+      "royal_bee.jpeg",
+      "ruby-dream.jpeg",
+      "ruby.jpeg",
+      "sage.jpeg",
+      "sandy_glow.jpeg",
+      "santorini.jpeg",
+      "sassy-red.jpeg",
+      "savanna.jpeg",
+      "scarlet.jpeg",
+      "sea-motion.jpeg",
+      "seamist.jpeg",
+      "shadow_luxe.jpeg",
+      "simple-comfy.jpeg",
+      "skyline.jpeg",
+      "speedo.jpeg",
+      "strong-neon.jpeg",
+      "summer-aura.jpeg",
+      "summer_glow.jpeg",
+      "sun_kissed.jpeg",
+      "sunny-mood.jpeg",
+      "sunrise.jpeg",
+      "tropical.jpeg",
+      "twilight.jpeg",
+      "velour.jpeg",
+      "veloura.jpeg",
+      "velvet.jpeg",
+      "violet_pop.jpeg",
+      "vivaflora.jpeg",
+      "wavy.jpeg",
+      "white-pearl.jpeg",
+      "wild-spirit.jpeg",
+      "wink_wink.jpeg",
+      "switch-vibes.jpeg",
+      "flip-and-glow.jpeg",
+      "double-wave.jpeg",
+      "double-delight.jpeg"
+    ];
 
-/* 📏 تحديد المقاسات */
-const productSizes = {
-  "aloha": "L", "aurora": "XL", "barbie-look": "L", "blue-lagoon": "2XL", "blue-motion": "S",
-  "blush-wave": "S", "bouquet": "M", "diva": "S", "calm": "L", "cherry_berry": "5XL",
-  "classic_diva": "2XL", "berry-bloom": "2XL", "romance": "L", "sea-motion": "M", "lemonade": "L",
-  "ruby-dream": "2XL", "flower-garden": "S", "bloom": "M", "bella": "XL", "black-olive": "M",
-  "wink_wink": "XL", "navy-grace": "L", "black-beaty": "M", "black-pearl": "L", "tiger": "L",
-  "noir": "XL", "ocean_preeze": "2XL", "sandy_glow": "L", "bling-bling": "M", "strong-neon": "S",
-  "naughty": "XL", "indigo": "XL", "laguna": "S", "jasmine": "S", "lavender_bliss": "M",
-  "lolia": "L", "navy_glow": "XL", "neon-night": "S", "royal_bee": "M", "sunny-mood": "L",
-  "sunrise": "S", "rosy-dream": "XL", "veloura": "M", "harmony": "3XL", "twilight": "3XL",
-  "latte_love": "S", "roar": "L", "pinky_promise": "M", "sage": "2XL", "scarlet": "L",
-  "viva_flora": "2XL", "santorini": "M", "sun_kissed": "S", "midnight_wave": "XL",
-  "royal": "XS", "ruby": "L", "velvet": "L", "shadow_luxe": "L", "chic_chack": "M",
-  "seamist": "S", "rainbow_wave": "M", "clementine": "L", "violet_pop": "L", "velour": "M",
-  "flora": "M", "freedom": "S", "speedo": "S", "boy_short": "XS", "classic_chic": "M",
-  "savanna": "3XL", "wavy": "2XL", "black-bow": "L", "cotton_candy": "M", "dolce": "L",
-  "sky": "XS", "flamingo": "L", "cherish": "L", "floral": "S", "elegant_twist": "L",
-  "garden": "XL", "garnet": "L", "green_forest": "L", "red": "L", "tropical": "3XL",
-  "switch-vibes": "S", "double-wave": "S", "double-delight": "S"
-};
+    // مقاس كل مايوه (بناءً على الشغل اللي سوّيناه)
+    const productSizes = {
+      sky: "XS",
+      aloha: "L",
+      aurora: "XL",
+      "barbie-look": "L",
+      "blue-lagoon": "2XL",
+      "blue_motion": "S",
+      "blush_wave": "S",
+      bouquet: "M",
+      calamentin: "L",
+      calm: "L",
+      "cherry_berry": "5XL",
+      "classic_diva": "2XL",
+      "berry-bloom": "2XL",
+      romance: "L",
+      "sea-motion": "M",
+      lemonade: "L",
+      "ruby-dream": "2XL",
+      "flower-garden": "S",
+      bloom: "M",
+      bella: "XL",
+      "black-olive": "M",
+      "wink_wink": "XL",
+      "navy-grace": "L",
+      "black_beaty": "M",
+      "black_pearl": "L",
+      "ocean_preeze": "2XL",
+      "sandy_glow": "L",
+      "bling-bling": "M",
+      "strong-neon": "S",
+      naughty: "XL",
+      indigo: "XL",
+      laguna: "S",
+      "lavender_bliss": "M",
+      lolia: "L",
+      "navy_glow": "XL",
+      "neon_night": "S",
+      "royal_bee": "M",
+      "sunny-mood": "L",
+      sunrise: "S",
+      "rosy-dream": "XL",
+      veloura: "M",
+      harmony: "XXXL",
+      twilight: "3XL",
+      "latte_love": "S",
+      roar: "L",
+      "pinky_promise": "M",
+      sage: "XXL",
+      scarlet: "L",
+      vivaflora: "2XL",
+      santorini: "M",
+      "sun_kissed": "S",
+      "midnight_wave": "XL",
+      royal: "XS",
+      ruby: "L",
+      velvet: "L",
+      "shadow_luxe": "L",
+      "chic-chack": "M",
+      seamist: "S",
+      "rainbow_wave": "M",
+      "violet_pop": "L",
+      velour: "M",
+      flora: "M",
+      freedom: "S",
+      speedo: "S",
+      "boy_short": "XS",
+      "classic_chic": "M",
+      savanna: "3XL",
+      wavy: "2XL",
+      flamingo: "L",
+      cherrish: "L",
+      floral: "S",
+      "elegant_twist": "L",
+      garden: "XL",
+      garnet: "L",
+      red: "L",
+      "switch-vibes": "S",
+      "flip-and-glow": "S",
+      "double-wave": "S",
+      "double-delight": "S",
+      tropical: "3XL"
+    };
 
-/* 🖼️ عرض الصور حسب المقاس */
-const grid = document.getElementById('grid');
+    const grid = document.getElementById('grid');
 
-function renderGallery(filter = "All") {
-  grid.innerHTML = "";
-  imageFiles.forEach(file => {
-    const name = file.replace(/\.(jpeg|jpg|png)$/i, '');
-    const size = productSizes[name] || "N/A";
-    if (filter === "All" || size === filter) {
-      const div = document.createElement('div');
-      div.className = "card";
-      div.innerHTML = `
-        <img src="images/${file}" alt="${name}" loading="lazy">
-        <h3>${name.replace(/[-_]/g, ' ')}</h3>
-        <p class="size-label">Size: ${size}</p>
-      `;
-      grid.appendChild(div);
+    function toBaseName(file) {
+      return file.replace(/\.(jpe?g|png)$/i, '');
     }
-  });
-}
 
-renderGallery();
+    function niceTitle(file) {
+      const base = toBaseName(file).replace(/[-_]+/g, ' ');
+      return base.split(' ').map(w => w ? w[0].toUpperCase() + w.slice(1) : '').join(' ');
+    }
 
-/* 🎛️ فلتر المقاسات */
-document.querySelectorAll('.chip').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.chip').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderGallery(btn.textContent.
-                  
-</script>
+    function renderGallery(filterSize = "All") {
+      grid.innerHTML = "";
+
+      imageFiles.forEach(file => {
+        const base = toBaseName(file);
+        const size = productSizes[base] || "—";
+
+        if (filterSize !== "All" && size !== filterSize) return;
+
+        const card = document.createElement('div');
+        card.className = "card";
+
+        const img = document.createElement('img');
+        img.src = "images/" + file;
+        img.alt = base;
+
+        const title = document.createElement('h3');
+        title.textContent = niceTitle(file);
+
+        const sizeEl = document.createElement('p');
+        sizeEl.className = "size";
+        sizeEl.textContent = "Size: " + size;
+
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(sizeEl);
+
+        grid.appendChild(card);
+      });
+    }
+
+    // تفعيل الفلتر
+    document.querySelectorAll('#size-filters .chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#size-filters .chip').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const size = btn.dataset.size;
+        renderGallery(size);
+      });
+    });
+
+    // أول تحميل
+    renderGallery("All");
+  </script>
 </body>
 </html>
