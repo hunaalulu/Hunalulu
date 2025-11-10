@@ -46,9 +46,7 @@
       line-height: 1.4;
     }
 
-    .notice b {
-      font-weight: 700;
-    }
+    .notice b { font-weight: 700; }
 
     /* فلتر المقاسات */
     #size-filters {
@@ -116,6 +114,38 @@
       opacity: 0.85;
     }
 
+    .price {
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-top: 0.1rem;
+      color: #00796b;
+    }
+
+    .desc {
+      font-size: 0.75rem;
+      margin: 0.35rem 0 0.6rem;
+      color: #355;
+    }
+
+    .order-btn {
+      display: inline-block;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      background: #00bfa5;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+
+    .order-btn:hover {
+      background: #009688;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
     footer {
       margin-top: 2rem;
       text-align: center;
@@ -126,9 +156,7 @@
 </head>
 <body>
   <div class="wrap">
-    <!-- لو عندك لوجو اسمه logo.png داخل images راح يظهر هنا -->
     <img src="images/logo.png" alt="Hunalulu" class="logo" onerror="this.style.display='none'">
-
     <h1>Swim like a mermaid 🧜‍♀️</h1>
 
     <div class="notice">🌊 We offer <b>Cash on Delivery</b> for your convenience!</div>
@@ -154,7 +182,13 @@
   </div>
 
   <script>
-    // قائمة الصور (يجب أن تكون موجودة داخل مجلد images بنفس الأسماء)
+    // 📞 رقم الواتساب (عدّليه لرقمك بدون +)
+    const phoneNumber = "971566722323"; // <-- عدّلي هذا بس
+
+    // وصف بسيط موحّد
+    const defaultDescription = "Tummy-control swimsuit with soft, quick-dry fabric.";
+
+    // قائمة الصور (تأكدي إن كلهم داخل images/)
     const imageFiles = [
       "Sky.jpeg",
       "aloha.jpeg",
@@ -269,7 +303,7 @@
       "double-delight.jpeg"
     ];
 
-    // مقاس كل مايوه (بناءً على الشغل اللي سوّيناه)
+    // المقاسات (اللي اتفقنا عليهم)
     const productSizes = {
       sky: "XS",
       aloha: "L",
@@ -312,12 +346,12 @@
       sunrise: "S",
       "rosy-dream": "XL",
       veloura: "M",
-      harmony: "XXXL",
+      harmony: "3XL",
       twilight: "3XL",
       "latte_love": "S",
       roar: "L",
       "pinky_promise": "M",
-      sage: "XXL",
+      sage: "2XL",
       scarlet: "L",
       vivaflora: "2XL",
       santorini: "M",
@@ -353,54 +387,170 @@
       tropical: "3XL"
     };
 
+    // الأسعار بالدرهم
+    const productPrices = {
+      sky: 199,
+      aloha: 199,
+      aurora: 229,
+      "barbie-look": 229,
+      "barbie-splash": 229,
+      "blue-lagoon": 229,
+      "blue_motion": 229,
+      "blush_wave": 229,
+      bouquet: 229,
+      calamentin: 199,
+      calm: 199,
+      "cherry_berry": 249,
+      "classic_diva": 249,
+      "berry-bloom": 229,
+      romance: 229,
+      "sea-motion": 229,
+      lemonade: 229,
+      "ruby-dream": 249,
+      "flower-garden": 229,
+      bloom: 199,
+      bella: 199,
+      "black-olive": 199,
+      "black-bow": 199,
+      "black_beaty": 199,
+      "black_neon": 229,
+      "black_orchide": 249,
+      "black_panther": 229,
+      "black_pearl": 249,
+      "black_swan": 249,
+      "bling-bling": 229,
+      "blossom-blue": 229,
+      "blue_lake": 229,
+      blueberry: 229,
+      "boy_short": 199,
+      "burgundy_charm": 229,
+      cotton_candy: 199,
+      "curve-waist": 199,
+      "deep_wave": 199,
+      dolce: 199,
+      "elegant_twist": 249,
+      flamingo: 229,
+      flora: 199,
+      floral: 229,
+      "flower-garden": 229,
+      freedom: 199,
+      garden: 199,
+      garnet: 229,
+      "golden-waist": 249,
+      harmony: 249,
+      "hot-red": 229,
+      indigo: 199,
+      jasmine: 229,
+      laguna: 229,
+      "latte_love": 249,
+      "lavender_bliss": 229,
+      lemonade: 229,
+      lolia: 229,
+      "midnight_wave": 249,
+      "mommy-wave": 229,
+      naughty: 229,
+      "navy-grace": 249,
+      "navy_glow": 249,
+      "neon_night": 229,
+      noir: 199,
+      "ocean_preeze": 249,
+      "olive-green": 199,
+      "olive_tree": 199,
+      "pinky_promise": 229,
+      "purple-mood": 229,
+      "rainbow_wave": 229,
+      red: 199,
+      relax: 199,
+      roar: 229,
+      romance: 229,
+      royal: 249,
+      "royal_bee": 249,
+      ruby: 249,
+      "ruby-dream": 249,
+      sage: 249,
+      "sandy_glow": 249,
+      santorini: 249,
+      "sassy-red": 229,
+      savanna: 199,
+      scarlet: 249,
+      seamist: 249,
+      "shadow_luxe": 229,
+      "simple-comfy": 199,
+      skyline: 229,
+      speedo: 229,
+      "strong-neon": 229,
+      "summer-aura": 249,
+      "summer_glow": 249,
+      "sun_kissed": 249,
+      "sunny-mood": 229,
+      sunrise: 229,
+      tropical: 249,
+      twilight: 229,
+      velour: 249,
+      veloura: 249,
+      velvet: 249,
+      "violet_pop": 229,
+      vivaflora: 249,
+      wavy: 229,
+      "white-pearl": 249,
+      "wild-spirit": 249,
+      "wink_wink": 229,
+      "switch-vibes": 229,
+      "flip-and-glow": 229,
+      "double-wave": 229,
+      "double-delight": 229
+    };
+
     const grid = document.getElementById('grid');
 
-    function toBaseName(file) {
-      return file.replace(/\.(jpe?g|png)$/i, '');
+    function baseName(file) {
+      return file.replace(/\.(jpe?g|png)$/i, '').toLowerCase();
     }
 
     function niceTitle(file) {
-      const base = toBaseName(file).replace(/[-_]+/g, ' ');
-      return base.split(' ').map(w => w ? w[0].toUpperCase() + w.slice(1) : '').join(' ');
+      const base = baseName(file).replace(/[-_]+/g, ' ');
+      return base.split(' ')
+        .map(w => w ? w[0].toUpperCase() + w.slice(1) : '')
+        .join(' ');
     }
 
     function renderGallery(filterSize = "All") {
       grid.innerHTML = "";
 
       imageFiles.forEach(file => {
-        const base = toBaseName(file);
+        const base = baseName(file);
         const size = productSizes[base] || "—";
+        const price = productPrices[base] || 229;
+        const title = niceTitle(file);
+        const priceLabel = price + " AED";
 
         if (filterSize !== "All" && size !== filterSize) return;
 
+        const msg = encodeURIComponent(
+          `Hi! I want to order ${title} (Size ${size}) for ${priceLabel}.`
+        );
+        const waLink = `https://wa.me/${phoneNumber}?text=${msg}`;
+
         const card = document.createElement('div');
         card.className = "card";
-
-        const img = document.createElement('img');
-        img.src = "images/" + file;
-        img.alt = base;
-
-        const title = document.createElement('h3');
-        title.textContent = niceTitle(file);
-
-        const sizeEl = document.createElement('p');
-        sizeEl.className = "size";
-        sizeEl.textContent = "Size: " + size;
-
-        card.appendChild(img);
-        card.appendChild(title);
-        card.appendChild(sizeEl);
-
+        card.innerHTML = `
+          <img src="images/${file}" alt="${title}">
+          <h3>${title}</h3>
+          <p class="size">Size: ${size}</p>
+          <p class="price">${priceLabel}</p>
+          <p class="desc">${defaultDescription}</p>
+          <a class="order-btn" href="${waLink}" target="_blank">Order Now</a>
+        `;
         grid.appendChild(card);
       });
     }
 
-    // تفعيل الفلتر
+    // تفعيل أزرار الفلتر
     document.querySelectorAll('#size-filters .chip').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#size-filters .chip').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const size = btn.dataset.size;
+        const size = btn.dataset.size || "All";
         renderGallery(size);
       });
     });
