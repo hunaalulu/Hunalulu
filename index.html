@@ -492,5 +492,80 @@ chips.forEach(ch => ch.addEventListener('click', ()=>{
   render(products.filter(p => p.sizes.includes(size)));
 }));
 </script>
+  <script>
+/* 🎨 تعريف المايوهات والمقاسات */
+const imageFiles = [
+  "aloha.jpeg","aurora.jpeg","barbie-look.jpeg","blue-lagoon.jpeg","blue-motion.jpeg",
+  "blush-wave.jpeg","bouquet.jpeg","diva.jpeg","calm.jpeg","cherry_berry.jpeg","classic_diva.jpeg",
+  "berry-bloom.jpeg","romance.jpeg","sea-motion.jpeg","lemonade.jpeg","ruby-dream.jpeg",
+  "flower-garden.jpeg","bloom.jpeg","bella.jpeg","black-olive.jpeg","wink_wink.jpeg",
+  "navy-grace.jpeg","black-beaty.jpeg","black-pearl.jpeg","tiger.jpeg","noir.jpeg",
+  "ocean_preeze.jpeg","sandy_glow.jpeg","bling-bling.jpeg","strong-neon.jpeg",
+  "naughty.jpeg","indigo.jpeg","laguna.jpeg","jasmine.jpeg","lavender_bliss.jpeg",
+  "lolia.jpeg","navy_glow.jpeg","neon-night.jpeg","royal_bee.jpeg","sunny-mood.jpeg","sunrise.jpeg",
+  "rosy-dream.jpeg","veloura.jpeg","harmony.jpeg","twilight.jpeg","latte_love.jpeg","roar.jpeg",
+  "pinky_promise.jpeg","sage.jpeg","scarlet.jpeg","viva_flora.jpeg","santorini.jpeg",
+  "sun_kissed.jpeg","midnight_wave.jpeg","royal.jpeg","ruby.jpeg","velvet.jpeg",
+  "shadow_luxe.jpeg","chic_chack.jpeg","seamist.jpeg","rainbow_wave.jpeg","clementine.jpeg",
+  "violet_pop.jpeg","velour.jpeg","flora.jpeg","freedom.jpeg","speedo.jpeg","boy_short.jpeg",
+  "lunara.jpeg","classic_chic.jpeg","savanna.jpeg","wavy.jpeg","black-bow.jpeg",
+  "cotton_candy.jpeg","dolce.jpeg","sky.jpeg","flamingo.jpeg","cherish.jpeg","floral.jpeg",
+  "elegant_twist.jpeg","garden.jpeg","garnet.jpeg","green_forest.jpeg","red.jpeg",
+  "tropical.jpeg","switch-vibes.jpeg","double-wave.jpeg","double-delight.jpeg"
+];
+
+/* 📏 تحديد المقاسات */
+const productSizes = {
+  "aloha": "L", "aurora": "XL", "barbie-look": "L", "blue-lagoon": "2XL", "blue-motion": "S",
+  "blush-wave": "S", "bouquet": "M", "diva": "S", "calm": "L", "cherry_berry": "5XL",
+  "classic_diva": "2XL", "berry-bloom": "2XL", "romance": "L", "sea-motion": "M", "lemonade": "L",
+  "ruby-dream": "2XL", "flower-garden": "S", "bloom": "M", "bella": "XL", "black-olive": "M",
+  "wink_wink": "XL", "navy-grace": "L", "black-beaty": "M", "black-pearl": "L", "tiger": "L",
+  "noir": "XL", "ocean_preeze": "2XL", "sandy_glow": "L", "bling-bling": "M", "strong-neon": "S",
+  "naughty": "XL", "indigo": "XL", "laguna": "S", "jasmine": "S", "lavender_bliss": "M",
+  "lolia": "L", "navy_glow": "XL", "neon-night": "S", "royal_bee": "M", "sunny-mood": "L",
+  "sunrise": "S", "rosy-dream": "XL", "veloura": "M", "harmony": "3XL", "twilight": "3XL",
+  "latte_love": "S", "roar": "L", "pinky_promise": "M", "sage": "2XL", "scarlet": "L",
+  "viva_flora": "2XL", "santorini": "M", "sun_kissed": "S", "midnight_wave": "XL",
+  "royal": "XS", "ruby": "L", "velvet": "L", "shadow_luxe": "L", "chic_chack": "M",
+  "seamist": "S", "rainbow_wave": "M", "clementine": "L", "violet_pop": "L", "velour": "M",
+  "flora": "M", "freedom": "S", "speedo": "S", "boy_short": "XS", "classic_chic": "M",
+  "savanna": "3XL", "wavy": "2XL", "black-bow": "L", "cotton_candy": "M", "dolce": "L",
+  "sky": "XS", "flamingo": "L", "cherish": "L", "floral": "S", "elegant_twist": "L",
+  "garden": "XL", "garnet": "L", "green_forest": "L", "red": "L", "tropical": "3XL",
+  "switch-vibes": "S", "double-wave": "S", "double-delight": "S"
+};
+
+/* 🖼️ عرض الصور حسب المقاس */
+const grid = document.getElementById('grid');
+
+function renderGallery(filter = "All") {
+  grid.innerHTML = "";
+  imageFiles.forEach(file => {
+    const name = file.replace(/\.(jpeg|jpg|png)$/i, '');
+    const size = productSizes[name] || "N/A";
+    if (filter === "All" || size === filter) {
+      const div = document.createElement('div');
+      div.className = "card";
+      div.innerHTML = `
+        <img src="images/${file}" alt="${name}" loading="lazy">
+        <h3>${name.replace(/[-_]/g, ' ')}</h3>
+        <p class="size-label">Size: ${size}</p>
+      `;
+      grid.appendChild(div);
+    }
+  });
+}
+
+renderGallery();
+
+/* 🎛️ فلتر المقاسات */
+document.querySelectorAll('.chip').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderGallery(btn.textContent.
+                  
+</script>
 </body>
 </html>
